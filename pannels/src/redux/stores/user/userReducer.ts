@@ -1,9 +1,9 @@
-import { IError } from "./../interfaces/IError";
-import { IUserState } from "./../interfaces/IUserState";
-import { IStore } from "./../interfaces/IStore";
-import { EUserActionTypes } from "./../actionTypes.ts/userActionTypes";
-import { IAction } from "./../interfaces/IAction";
-import { UUserActions } from "../actions/userActions";
+import { IError } from "../../models/IError";
+import { IUserState } from "./models/IUserState";
+import { IStore } from "../../models/IStore";
+import { EUserActionTypes } from "./userActionTypes";
+import { IAction } from "../../models/IAction";
+import { UUserActions } from "./userActions";
 
 export interface IInitalUserState extends IUserState {
   isLoading: boolean;

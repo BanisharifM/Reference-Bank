@@ -1,26 +1,46 @@
-import React from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { IStore } from "./redux/interfaces/IStore";
-import { loginUser } from "./redux/actions/userActions";
+import { IStore } from "./redux/models/IStore";
+import { loginUser } from "./redux/stores/user/userActions";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import Axios from "axios";
+import useSWR from "swr";
+import { LSService } from "./services/LocalStorage/localStorage";
+import api from "./services/api";
 
 const App = () => {
-  const user = useSelector<IStore>((store) => store.user);
+  const user = useSelector((store: IStore) => store.user);
+  const [fetchAuth, setFetchAuth] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const handleLogin = () => {
-    Axios.post("https://api.restino.ir/accounts/api/v1/authenticate/", {
-      username: "09213198172",
-      password: "@1378Alisajad",
-    }).then((res) => {
-      dispatch(loginUser(res.data.access));
-    });
+  const [tokens, setTokens] = useState({});
+  const handleLogin = async () => {
+    const tokens = await api.authenticateUser(
+      "/authenticate/",
+      username,
+      password
+    );
+    tokens && setTokens(tokens);
+    tokens && LSService.setToken(tokens);
+    dispatch(loginUser());
   };
-  console.log(user);
   return (
     <div>
+      <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.currentTarget.value)}
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.currentTarget.value)}
+      />
       <button onClick={handleLogin}>Loggin</button>
+      {user.isAuth && <p>{user.username}</p>}
+      {user.isLoading && <p>user is Loading</p>}
     </div>
   );
 };
