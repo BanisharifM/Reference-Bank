@@ -2,14 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { Provider } from "react-redux";
-import { store } from "./redux";
-import { Router } from "react-router-dom";
+import { store, persistor } from "./redux";
+import { Router, Route } from "react-router-dom";
 import { browserHistory } from "./services/navigation/navigation";
+import PrivateRoute from "./components/PrivateRoute";
+import PrivatePage from "./scenes/PrivatePage";
+import { PersistGate } from "redux-persist/integration/react";
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>
-      <App />
-    </Router>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router history={browserHistory}>
+        <Route component={App} path="/" exact/>
+        <PrivateRoute component={PrivatePage} path="/private" />
+      </Router>
+    </PersistGate>
   </Provider>,
   document.querySelector("#root")
 );

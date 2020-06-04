@@ -9,6 +9,7 @@ const PrivateRoute: React.FC<RouteProps & { component: any }> = ({
 }) => {
   //it should be update
   const user = useSelector((store: IStore) => store.user);
+  console.log(user, " in private route");
   return (
     <Route
       {...rest}
@@ -22,7 +23,7 @@ const PrivateRoute: React.FC<RouteProps & { component: any }> = ({
                 {/* {toast.error("برای ادامه وارد شوید")} */}
                 <Redirect
                   to={{
-                    pathname: "/login",
+                    pathname: "/",
                     state: { from: props.location },
                   }}
                 />

@@ -11,7 +11,6 @@ import api from "./services/api";
 
 const App = () => {
   const user = useSelector((store: IStore) => store.user);
-  const [fetchAuth, setFetchAuth] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
