@@ -1,5 +1,5 @@
-import { IUserState } from "./IUserState";
+import { IInitalUserState } from "./../reducers/userReducer";
 
 export interface IStore {
-  user: IUserState;
+  user: IInitalUserState;
 }

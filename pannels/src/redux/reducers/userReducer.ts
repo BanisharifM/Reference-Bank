@@ -3,7 +3,7 @@ import { IUserState } from "./../interfaces/IUserState";
 import { IStore } from "./../interfaces/IStore";
 import { EUserActionTypes } from "./../actionTypes.ts/userActionTypes";
 import { IAction } from "./../interfaces/IAction";
-import { UUserActions } from "../actions/UserActions";
+import { UUserActions } from "../actions/userActions";
 
 export interface IInitalUserState extends IUserState {
   isLoading: boolean;
@@ -12,8 +12,14 @@ export interface IInitalUserState extends IUserState {
 }
 
 const initialUserState: IInitalUserState = {
+  avatar: "",
+  date_joined: "",
+  description: "",
+  email: "",
+  first_name: "",
+  national_code: "",
+  last_name: "",
   username: "",
-  password: "",
   isLoading: false,
   error: "",
   isAuth: false,
@@ -24,7 +30,7 @@ export default (
   action: IAction<UUserActions>
 ): IInitalUserState => {
   switch (action.type) {
-    case EUserActionTypes.LOGIN_PENDING:
+    case EUserActionTypes.LOGIN:
       return {
         ...state,
         isLoading: true,

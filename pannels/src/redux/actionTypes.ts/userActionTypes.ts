@@ -1,5 +1,5 @@
 export enum EUserActionTypes {
-  LOGIN_PENDING,
+  LOGIN,
   LOGIN_SUCCESS,
   LOGIN_FAILD ,
   LOGOUT
