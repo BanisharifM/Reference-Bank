@@ -20,9 +20,7 @@ const sideNav = () => {
                 role="button"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >
-                Steave Gection <span className="caret"></span>
-              </a>
+              >حسین اشرفی</a>
               <div className="dropdown-menu animated flipInY">
                 {/* <!-- text--> */}
                 <a href="javascript:void(0)" className="dropdown-item">
@@ -56,7 +54,7 @@ const sideNav = () => {
         {/* <!-- Sidebar navigation--> */}
         <nav className="sidebar-nav">
           <ul id="sidebarnav">
-            <li className="nav-small-cap">--- PERSONAL</li>
+            <li className="nav-small-cap">--- شخصی</li>
             <li>
               {" "}
               <a
@@ -124,7 +122,7 @@ const sideNav = () => {
                 aria-expanded="false"
               >
                 <i className="ti-email"></i>
-                <span className="hide-menu">Inbox</span>
+                <span className="hide-menu">صندوق ورودی</span>
               </a>
               <ul aria-expanded="false" className="collapse">
                 <li>
@@ -147,7 +145,7 @@ const sideNav = () => {
               >
                 <i className="ti-palette"></i>
                 <span className="hide-menu">
-                  Ui Elements{" "}
+                  عناصر ظاهری{" "}
                   <span className="badge badge-pill badge-primary text-white ml-auto">
                     25
                   </span>
@@ -245,7 +243,7 @@ const sideNav = () => {
                 </li>
               </ul>
             </li>
-            <li className="nav-small-cap">--- FORMS, TABLE &amp; WIDGETS</li>
+            <li className="nav-small-cap">--- فرم ها, جداول &amp; ویجت ها</li>
             <li>
               {" "}
               <a
@@ -254,7 +252,7 @@ const sideNav = () => {
                 aria-expanded="false"
               >
                 <i className="ti-layout-media-right-alt"></i>
-                <span className="hide-menu">Forms</span>
+                <span className="hide-menu">فرم ها</span>
               </a>
               <ul aria-expanded="false" className="collapse">
                 <li>
@@ -326,7 +324,7 @@ const sideNav = () => {
                 aria-expanded="false"
               >
                 <i className="ti-layout-accordion-merged"></i>
-                <span className="hide-menu">Tables</span>
+                <span className="hide-menu">جداول</span>
               </a>
               <ul aria-expanded="false" className="collapse">
                 <li>
