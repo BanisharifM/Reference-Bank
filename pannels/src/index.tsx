@@ -1,3 +1,6 @@
+/** start importin styles */
+import "./assets/css/style.css";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -12,10 +15,10 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <Router history={browserHistory}>
-        <Route component={App} path="/" exact/>
+        <Route component={App} path="/" exact />
         <PrivateRoute component={PrivatePage} path="/private" />
       </Router>
     </PersistGate>
   </Provider>,
-  document.querySelector("#root")
+  document.querySelector("#main-wrapper")
 );
