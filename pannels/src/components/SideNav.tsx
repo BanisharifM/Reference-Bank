@@ -26,7 +26,7 @@ const sideNav = () => {
               <div className="dropdown-menu animated flipInY">
                 {/* <!-- text--> */}
                 <a href="javascript:void(0)" className="dropdown-item">
-                  <i className="ti-user"></i> My Profile
+                  <i className="ti-user"></i> پروفایل
                 </a>
                 {/* <!-- text--> */}
                 <a href="javascript:void(0)" className="dropdown-item">
@@ -66,7 +66,7 @@ const sideNav = () => {
               >
                 <i className="icon-speedometer"></i>
                 <span className="hide-menu">
-                  Dashboard{" "}
+                  داشبورد{" "}
                   <span className="badge badge-pill badge-cyan ml-auto">4</span>
                 </span>
               </a>
@@ -93,7 +93,7 @@ const sideNav = () => {
                 aria-expanded="false"
               >
                 <i className="ti-layout-grid2"></i>
-                <span className="hide-menu">Apps</span>
+                <span className="hide-menu">اپ ها</span>
               </a>
               <ul aria-expanded="false" className="collapse">
                 <li>

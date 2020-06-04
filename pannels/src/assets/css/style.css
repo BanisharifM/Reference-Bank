@@ -19206,7 +19206,7 @@ section {
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1400px;
-    --font-family-sans-serif: "Poppins", sans-serif;
+    --font-family-sans-serif: "Vazir", sans-serif;
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 }
 
@@ -19217,13 +19217,13 @@ section {
 }
 
 html {
-    font-family: sans-serif;
+    font-family: "Vazir", sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%
 }
 
 body {
-    font-family: Poppins, sans-serif;
+    font-family: "Vazir", sans-serif;
     line-height: 1.5;
     color: #212529;
     background-color: #edf1f5
@@ -19508,7 +19508,7 @@ h4,
 h5,
 h6 {
     margin-bottom: .5rem;
-    font-family: Poppins, sans-serif;
+    font-family: "Vazir", sans-serif;
     font-weight: 300;
     line-height: 1.2;
     color: inherit
@@ -24977,7 +24977,7 @@ a.close.disabled {
 
 .popover,
 .tooltip {
-    font-family: Poppins, sans-serif;
+    font-family: "Vazir", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
