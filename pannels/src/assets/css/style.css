@@ -44008,7 +44008,8 @@ ul.list-style-none li a:hover {
 }
 
 .scroll-sidebar {
-    height: calc(100% - 27px)
+    height: calc(100% - 27px);
+    overflow-y: scroll;
 }
 
 .scroll-sidebar.ps .ps__scrollbar-y-rail {
@@ -47312,11 +47313,11 @@ body {
 }
 
 .text-right {
-    text-align: left !important
+    text-align: right !important
 }
 
 .text-left {
-    text-align: right !important
+    text-align: left !important
 }
 
 html body .bootstrap-select.btn-group .dropdown-toggle .filter-option,
@@ -47670,4 +47671,8 @@ html body .dd3-item>button {
     margin-left: 0;
     margin-right: 30px;
     float: right
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; 
 }
