@@ -1,12 +1,16 @@
 import React from "react";
 import Header from "./components/Header";
 import SideNav from "./components/SideNav";
+import BaseLayout from "./components/BaseLayout";
+import { Switch } from "react-router-dom";
+import routes, { renderRoutes } from "./scenes/routes";
 
 const App = () => {
   return (
     <>
-      <Header />
-      <SideNav />
+      <BaseLayout>
+        <Switch>{renderRoutes(routes)}</Switch>
+      </BaseLayout>
     </>
   );
 };
