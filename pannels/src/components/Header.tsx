@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import img1 from "../assets/images/logo-icon.png";
+import img1 from "../assets/images/logo5.png";
 import img2 from "../assets/images/logo-light-icon.png";
-import img3 from "../assets/images/logo-text.png";
+import img3 from "../assets/images/logo3.png";
 import img4 from "../assets/images/logo-light-text.png";
 import img5 from "../assets/images/users/1.jpg";
 import img6 from "../assets/images/big/img1.jpg";
@@ -34,7 +34,7 @@ const Header = () => {
 
   const handleResizeSidebar = () => {
     document.body.classList.toggle("mini-sidebar");
-     setLogoTitle(!logoTitle);
+    setLogoTitle(!logoTitle);
   };
 
   return (
@@ -47,7 +47,12 @@ const Header = () => {
             <b>
               {/* <!--You can put here icon as well // <i className="wi wi-sunset"></i> //--> */}
               {/* <!-- Dark Logo icon --> */}
-              <img src={img1} alt="homepage" className="dark-logo" />
+              <img
+                src={img1}
+                alt="homepage"
+                className="dark-logo"
+                style={{ width: "40px", height: "28px" }}
+              />
               {/* <!-- Light Logo icon --> */}
               <img src={img2} alt="homepage" className="light-logo" />
             </b>
@@ -57,7 +62,12 @@ const Header = () => {
               {logoTitle && (
                 <>
                   {/* <!-- dark Logo text --> */}
-                  <img src={img3} alt="homepage" className="dark-logo" />
+                  <img
+                    src={img3}
+                    alt="homepage"
+                    className="dark-logo"
+                    style={{ width: "108px", height: "21px" }}
+                  />
                   {/* <!-- Light Logo text -->     */}
                   <img src={img4} className="light-logo" alt="homepage" />
                 </>
@@ -99,7 +109,7 @@ const Header = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Search & enter"
+                  placeholder="جستجو ..."
                 />
               </form>
             </li>

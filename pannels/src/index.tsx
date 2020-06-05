@@ -1,4 +1,5 @@
 /** start importin styles */
+import "./assets/css/font.css"
 import "./assets/css/style.css";
 
 import React from "react";
