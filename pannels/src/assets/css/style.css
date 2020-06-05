@@ -43876,7 +43876,28 @@ ul.list-style-none li a:hover {
         opacity: 0
     }
 }
-
+@keyframes heartbit {
+        0% {
+            -webkit-transform: scale(0);
+            opacity: 0
+        }
+        25% {
+            -webkit-transform: scale(.1);
+            opacity: .1
+        }
+        50% {
+            -webkit-transform: scale(.5);
+            opacity: .3
+        }
+        75% {
+            -webkit-transform: scale(.8);
+            opacity: .5
+        }
+        100% {
+            -webkit-transform: scale(1);
+            opacity: 0
+        }
+}
 @-webkit-keyframes heartbit {
     0% {
         -webkit-transform: scale(0);

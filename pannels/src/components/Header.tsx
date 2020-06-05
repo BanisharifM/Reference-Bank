@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import img1 from "../assets/images/logo-icon.png";
 import img2 from "../assets/images/logo-light-icon.png";
 import img3 from "../assets/images/logo-text.png";
@@ -7,6 +7,36 @@ import img5 from "../assets/images/users/1.jpg";
 import img6 from "../assets/images/big/img1.jpg";
 
 const Header = () => {
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [logoTitle, setLogoTitle] = useState(
+    window.innerWidth > 1170 ? true : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        // document.body.classList.remove("show-sidebar"); its not important
+        setLogoTitle(false);
+      }
+      if (window.innerWidth > 1170) setLogoTitle(true);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const handleOpenSideBar = () => {
+    console.log("here");
+    document.body.classList.toggle("show-sidebar");
+    setShowSidebar(!showSidebar);
+  };
+
+  const handleResizeSidebar = () => {
+    document.body.classList.toggle("mini-sidebar");
+     setLogoTitle(!logoTitle);
+  };
+
   return (
     <header className="topbar">
       <nav className="navbar top-navbar navbar-expand-md navbar-dark">
@@ -24,10 +54,14 @@ const Header = () => {
             {/* <!--End Logo icon --> */}
             {/* <!-- Logo text --> */}
             <span>
-              {/* <!-- dark Logo text --> */}
-              <img src={img3} alt="homepage" className="dark-logo" />
-              {/* <!-- Light Logo text -->     */}
-              <img src={img4} className="light-logo" alt="homepage" />
+              {logoTitle && (
+                <>
+                  {/* <!-- dark Logo text --> */}
+                  <img src={img3} alt="homepage" className="dark-logo" />
+                  {/* <!-- Light Logo text -->     */}
+                  <img src={img4} className="light-logo" alt="homepage" />
+                </>
+              )}
             </span>{" "}
           </a>
         </div>
@@ -40,16 +74,16 @@ const Header = () => {
                 <!-- ============================================================== --> */}
           <ul className="navbar-nav mr-auto">
             {/* <!-- This is  --> */}
-            <li className="nav-item">
+            <li className="nav-item" onClick={handleOpenSideBar}>
               {" "}
               <a
                 className="nav-link nav-toggler d-block d-md-none waves-effect waves-dark"
                 href="javascript:void(0)"
               >
-                <i className="ti-menu"></i>
+                <i className={`${showSidebar ? "ti-close" : "ti-menu"}`}></i>
               </a>{" "}
             </li>
-            <li className="nav-item">
+            <li className="nav-item" onClick={handleResizeSidebar}>
               <a
                 className="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"
                 href="javascript:void(0)"

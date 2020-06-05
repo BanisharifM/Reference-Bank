@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import img2 from "../assets/images/users/2.jpg";
 
-const sideNav = () => {
+const SideNav = () => {
+  if (window.innerWidth > 1170) document.body.classList.remove("mini-sidebar");
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        document.body.classList.add("mini-sidebar");
+      }
+      if (window.innerWidth > 1170)
+        document.body.classList.remove("mini-sidebar");
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <aside className="left-sidebar">
       {/* <!-- Sidebar scroll--> */}
@@ -728,4 +743,4 @@ const sideNav = () => {
   );
 };
 
-export default sideNav;
+export default SideNav;
