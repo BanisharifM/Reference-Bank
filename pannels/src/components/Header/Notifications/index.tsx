@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
 import NotifItem from "./NotifItem";
 import NotifHeader from "./NotifHeader";
 import Notifs from "./Notifs";
 import NotifFooter from "./NotifFooter";
+import { useOutsideClicker } from "../../../services/hooks/useOutsideClicker";
 
-const index = () => {
+interface IProps {
+  isShow: boolean;
+}
+const Index: React.FC<IProps> = ({ isShow }) => {
   return (
-    <div className="dropdown-menu dropdown-menu-right mailbox animated bounceInDown">
+    <div
+      className={`dropdown-menu dropdown-menu-right mailbox animated bounceInDown ${
+        isShow && "show"
+      }`}
+    >
       <ul>
         <NotifHeader />
         <Notifs />
@@ -16,4 +24,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

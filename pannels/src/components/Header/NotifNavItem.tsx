@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import Notifications from "./Notifications";
+import { useOutsideClicker } from "../../services/hooks/useOutsideClicker";
 
 const NotifNavItem = () => {
+  const [notifShow, setNotifShow] = useState(false);
+  const notifRef = useRef<HTMLLIElement>(null);
+  const handleToggleNotif = () => {
+    setNotifShow(!notifShow);
+  };
+  const handleCloseNotif = () => {
+    setNotifShow(false);
+  };
+  useOutsideClicker(notifRef, handleCloseNotif);
+
   return (
-    <li className="nav-item dropdown">
-      <a className="nav-link dropdown-toggle waves-effect waves-dark" href="">
+    <li
+      ref={notifShow ? notifRef : null}
+      className={`nav-item dropdown ${notifShow && "show"}`}
+      onClick={handleToggleNotif}
+    >
+      <div className="nav-link dropdown-toggle waves-effect waves-dark">
         {" "}
         <i className="ti-email"></i>
         <div className="notify">
           {" "}
           <span className="heartbit"></span> <span className="point"></span>{" "}
         </div>
-      </a>
-      <Notifications />
+      </div>
+      <Notifications isShow={notifShow} />
     </li>
   );
 };
