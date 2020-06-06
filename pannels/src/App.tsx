@@ -1,16 +1,19 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Header from "./components/Header";
 import SideNav from "./components/SideNav";
 import BaseLayout from "./components/BaseLayout";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import routes, { renderRoutes } from "./scenes/routes";
+import Loading from "./components/Loading";
+import Dashboard from "./scenes/Dashboard";
+import CompanyLogin from "./scenes/CompanyLogin";
 
 const App = () => {
   return (
     <>
-      <BaseLayout>
+      <Suspense fallback={<Loading />}>
         <Switch>{renderRoutes(routes)}</Switch>
-      </BaseLayout>
+      </Suspense>
     </>
   );
 };

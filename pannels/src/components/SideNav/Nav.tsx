@@ -1,19 +1,28 @@
 import React from "react";
 import HeaderItem from "./SideNavItems/HeaderItem";
-import SubHeaderItem from "./SideNavItems/SubHeaderItem";
+import SubHeaderItem from "./SideNavItems/SubHeaderNavItem";
 import Menu from "./SideNavItems/Menu";
 import { dashboardItems } from "./SideNavItems/items";
+import SubHeaderNav from "./SideNavItems/SubHeaderNav";
 
 const Nav = () => {
   return (
-    <ul id="sidebarnav">
-      <HeaderItem title={"--- شخصی"} />
-      <li>
-        {" "}
-        <SubHeaderItem title="داشبورد" news={4} icon="icon-speedometer" />
-        <Menu items={dashboardItems} />
-      </li>
-    </ul>
+    <nav className="sidebar-nav">
+      <ul id="sidebarnav">
+        <HeaderItem title={"--- شخصی"} />
+        <SubHeaderNav
+          title="داشبورد"
+          news={4}
+          items={dashboardItems}
+          icon="icon-speedometer"
+        />
+        <SubHeaderNav
+          title="اپ ها"
+          items={dashboardItems}
+          icon="ti-layout-grid2"
+        />
+      </ul>
+    </nav>
   );
 };
 

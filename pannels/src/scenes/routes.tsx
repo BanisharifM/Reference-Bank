@@ -3,6 +3,8 @@ import { Route } from "react-router-dom";
 import React from "react";
 
 import PrivateRoute from "../components/PrivateRoute";
+import BaseLayout from "../components/BaseLayout";
+import { dashboardRoutes } from "./Dashboard/Scenes/routes";
 
 // const Home = lazy(() => import("./Home"));
 // const AboutUs = lazy(() => import("./AboutUs"));
@@ -19,6 +21,10 @@ import PrivateRoute from "../components/PrivateRoute";
 // const Order = lazy(() => import("./Order"));
 // const Callback = lazy(() => import("../components/Payment"));
 // const NotFound = lazy(() => import("./NotFound"));
+const CompanySignUp = lazy(() => import("./CompanySignUp"));
+const Dashboard = lazy(() => import("./Dashboard"));
+const CompanyLogin = lazy(() => import("./CompanyLogin"));
+const Redirect = lazy(() => import("./Redirect"));
 
 export interface IRoute {
   path?: string | string[];
@@ -26,18 +32,29 @@ export interface IRoute {
   exact?: boolean;
   routes?: IRoute[];
   private?: boolean;
+  notHaveBaseLayout?: boolean;
 }
 
 const routes: IRoute[] = [
-  //   {
-  //     exact: true,
-  //     path: "/",
-  //     component: Home,
-  //   },
-  //   {
-  //     path: "/about-us",
-  //     component: AboutUs,
-  //   },
+  {
+    exact: true,
+    path: "/",
+    component: Redirect,
+  },
+  {
+    path: "/dashboard",
+    component: Dashboard,
+    routes: dashboardRoutes,
+  },
+  {
+    path: "/company-signup",
+    component: CompanySignUp,
+  },
+  {
+    path: "/company-login",
+    component: CompanyLogin,
+  },
+
   //   {
   //     path: "/login",
   //     component: LogIn,
@@ -113,13 +130,15 @@ export const renderRoutes = (routes: IRoute[]) => {
           {...route}
           component={undefined}
           render={(props) => {
-            if (false) {
+            if (route.notHaveBaseLayout) {
               return (
                 <route.component {...props} routes={route.routes} key={key} />
               );
             } else {
               return (
+                // <BaseLayout>
                 <route.component {...props} routes={route.routes} key={key} />
+                // </BaseLayout>
               );
             }
           }}

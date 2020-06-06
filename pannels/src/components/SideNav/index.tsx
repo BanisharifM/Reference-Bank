@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import ProfileItem from "./ProfileItem";
 import Nav from "./Nav";
+import SideNavCollapseProvider from "../../services/contexts/SideNavContext/Providers/SideNavCollapseProvider";
 
 const SideNav = () => {
   if (window.innerWidth > 1170) document.body.classList.remove("mini-sidebar");
@@ -20,17 +21,12 @@ const SideNav = () => {
   }, []);
   return (
     <aside className="left-sidebar">
-      {/* <!-- Sidebar scroll--> */}
       <div className="scroll-sidebar">
-        {/* <!-- User Profile--> */}
         <ProfileItem />
-        {/* <!-- Sidebar navigation--> */}
-        <nav className="sidebar-nav">
+        <SideNavCollapseProvider collapse={true}>
           <Nav />
-        </nav>
-        {/* <!-- End Sidebar navigation --> */}
+        </SideNavCollapseProvider>
       </div>
-      {/* <!-- End Sidebar scroll--> */}
     </aside>
   );
 };

@@ -4,10 +4,14 @@ import MenuItem from "./MenuItem";
 
 interface IProps {
   items: IMenuItem[];
+  active: boolean;
 }
-const Menu: React.FC<IProps> = ({ items }) => {
+const Menu: React.FC<IProps> = ({ items, active }) => {
   return (
-    <ul aria-expanded="false" className="collapse">
+    <ul
+      aria-expanded="false"
+      className={`${active ? "collapse in" : "collapse"}`}
+    >
       {items.map((item) => (
         <MenuItem {...item} />
       ))}
