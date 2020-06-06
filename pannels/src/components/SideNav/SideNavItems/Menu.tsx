@@ -12,8 +12,8 @@ const Menu: React.FC<IProps> = ({ items, active }) => {
       aria-expanded="false"
       className={`${active ? "collapse in" : "collapse"}`}
     >
-      {items.map((item) => (
-        <MenuItem {...item} />
+      {items.map((item, index) => (
+        <MenuItem {...item} key={index} />
       ))}
     </ul>
   );

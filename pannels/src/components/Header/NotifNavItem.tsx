@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import Notifications from "./Notifications";
 import { useOutsideClicker } from "../../services/hooks/useOutsideClicker";
 
@@ -8,9 +8,9 @@ const NotifNavItem = () => {
   const handleToggleNotif = () => {
     setNotifShow(!notifShow);
   };
-  const handleCloseNotif = () => {
+  const handleCloseNotif = useCallback(() => {
     setNotifShow(false);
-  };
+  }, []);
   useOutsideClicker(notifRef, handleCloseNotif);
 
   return (

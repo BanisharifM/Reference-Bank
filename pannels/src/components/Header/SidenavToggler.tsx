@@ -14,20 +14,19 @@ const SidenavToggler: React.FC<IProps> = ({
     <>
       <li className="nav-item" onClick={handleOpenSideBar}>
         {" "}
-        <a
+        <div
           className="nav-link nav-toggler d-block d-md-none waves-effect waves-dark"
-          href="javascript:void(0)"
+          
         >
           <i className={`${showSidebar ? "ti-close" : "ti-menu"}`}></i>
-        </a>{" "}
+        </div>{" "}
       </li>
       <li className="nav-item" onClick={handleResizeSidebar}>
-        <a
+        <div
           className="nav-link sidebartoggler d-none d-lg-block d-md-block waves-effect waves-dark"
-          href="javascript:void(0)"
         >
           <i className="icon-menu"></i>
-        </a>{" "}
+        </div>{" "}
       </li>
     </>
   );

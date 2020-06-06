@@ -2,7 +2,7 @@ import React from "react";
 
 const NotifItem = () => {
   return (
-    <a href="javascript:void(0)">
+    <div>
       <div className="btn btn-danger btn-circle">
         <i className="fa fa-link"></i>
       </div>
@@ -11,7 +11,7 @@ const NotifItem = () => {
         <span className="mail-desc">Just see the my new admin!</span>{" "}
         <span className="time">9:30 AM</span>{" "}
       </div>
-    </a>
+    </div>
   );
 };
 

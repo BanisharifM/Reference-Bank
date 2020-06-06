@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import Messages from "./Messages";
 import { useOutsideClicker } from "../../services/hooks/useOutsideClicker";
 
@@ -8,9 +8,9 @@ const MessageNavItem = () => {
   const handleToggleMessages = () => {
     setMessageShow(!messageShow);
   };
-  const handleCloseMessages = () => {
+  const handleCloseMessages = useCallback(() => {
     setMessageShow(false);
-  };
+  }, []);
   useOutsideClicker(messageRef, handleCloseMessages);
   return (
     <li
@@ -18,7 +18,7 @@ const MessageNavItem = () => {
       className={`nav-item dropdown ${messageShow && "show"}`}
       onClick={handleToggleMessages}
     >
-      <div className="nav-link dropdown-toggle waves-effect waves-dark" >
+      <div className="nav-link dropdown-toggle waves-effect waves-dark">
         <i className="icon-note"></i>
         <div className="notify">
           {" "}

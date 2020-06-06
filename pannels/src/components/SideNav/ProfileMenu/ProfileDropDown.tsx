@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import ProfileName from "./ProfileName";
 import ProfileMenuItem from "./ProfileMenuItem";
 import ProfileDropDownDevider from "./ProfileDropDownDevider";
@@ -10,9 +10,9 @@ const ProfileDropDown = () => {
   const handleToggleProfileMenu = () => {
     setShowProfileMenu(!showProfileMenu);
   };
-  const handleCloseProfileMenu = () => {
+  const handleCloseProfileMenu = useCallback(() => {
     setShowProfileMenu(false);
-  };
+  }, []);
   useOutsideClicker(profileRef, handleCloseProfileMenu);
 
   return (

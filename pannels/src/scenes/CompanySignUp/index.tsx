@@ -61,7 +61,7 @@ const index = () => {
                       className="custom-control-label"
                       htmlFor="customCheck1"
                     >
-                      I agree to all <a href="javascript:void(0)">Terms</a>
+                      I agree to all <span>Terms</span>
                     </label>
                   </div>
                 </div>
