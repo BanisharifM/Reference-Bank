@@ -1,6 +1,7 @@
 /** start importin styles */
 import "./assets/css/font.css";
 import "./assets/css/style.css";
+import "./assets/css/login-register.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
