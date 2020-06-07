@@ -8,7 +8,7 @@ const BaseLayout: React.FC = ({ children }) => {
       <Header />
       <SideNav />
       <div className="page-wrapper" style={{ minHeight: "672px" }}>
-        <div className="container-fluid">{children}</div>
+        <div className="container-fluid mt-3">{children}</div>
       </div>
     </>
   );

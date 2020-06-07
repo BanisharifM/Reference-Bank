@@ -6,7 +6,6 @@ import { Switch, Route } from "react-router-dom";
 import routes, { renderRoutes } from "./routes";
 import Loading from "../components/Loading";
 import Dashboard from "./Dashboard";
-import CompanyLogin from "./CompanyLogin";
 
 const App = () => {
   return (

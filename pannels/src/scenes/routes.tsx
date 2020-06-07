@@ -5,25 +5,7 @@ import React from "react";
 import PrivateRoute from "../components/PrivateRoute";
 import BaseLayout from "../components/BaseLayout";
 import { dashboardRoutes } from "./Dashboard/Scenes/routes";
-
-// const Home = lazy(() => import("./Home"));
-// const AboutUs = lazy(() => import("./AboutUs"));
-// const LogIn = lazy(() => import("./Login"));
-// const SignUp = lazy(() => import("./SignUp"));
-// const OTPActivation = lazy(() => import("./OTPActivation"));
-// const Product = lazy(() => import("./Product"));
-// const Help = lazy(() => import("./Help"));
-// const Checkout = lazy(() => import("./Checkout"));
-// const Profile = lazy(() => import("./Profile"));
-// const EditProfile = lazy(() => import("./Profile/scenes/EditProfile"));
-// const AddAddress = lazy(() => import("./Profile/scenes/AddAddress"));
-// const EditAddress = lazy(() => import("./Profile/scenes/EditAddress"));
-// const Order = lazy(() => import("./Order"));
-// const Callback = lazy(() => import("../components/Payment"));
-// const NotFound = lazy(() => import("./NotFound"));
-const CompanySignUp = lazy(() => import("./CompanySignUp"));
 const Dashboard = lazy(() => import("./Dashboard"));
-const CompanyLogin = lazy(() => import("./CompanyLogin"));
 const Redirect = lazy(() => import("./Redirect"));
 
 export interface IRoute {
@@ -46,15 +28,6 @@ const routes: IRoute[] = [
     component: Dashboard,
     routes: dashboardRoutes,
   },
-  {
-    path: "/company-signup",
-    component: CompanySignUp,
-  },
-  {
-    path: "/company-login",
-    component: CompanyLogin,
-  },
-
   //   {
   //     path: "/login",
   //     component: LogIn,
