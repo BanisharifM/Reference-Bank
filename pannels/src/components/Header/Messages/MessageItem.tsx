@@ -3,7 +3,7 @@ import img5 from "../../../assets/images/users/1.jpg";
 
 const MessageItem = () => {
   return (
-    <div>
+    <a>
       <div className="user-img">
         {" "}
         <img src={img5} alt="user" className="img-circle" />{" "}
@@ -14,7 +14,7 @@ const MessageItem = () => {
         <span className="mail-desc">Just see the my admin!</span>{" "}
         <span className="time">9:30 AM</span>{" "}
       </div>
-    </div>
+    </a>
   );
 };
 
