@@ -1,9 +1,12 @@
 import React from "react";
 import { IMenuItem } from "../types";
+import { NavLink } from "react-router-dom";
 const MenuItem: React.FC<IMenuItem> = ({ path, title }) => {
   return (
     <li>
-      <a href="index4.html">{title}</a>
+      <NavLink to={path} activeClassName={"active"}>
+        {title}
+      </NavLink>
     </li>
   );
 };

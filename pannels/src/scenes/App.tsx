@@ -1,12 +1,12 @@
 import React, { Suspense } from "react";
-import Header from "./components/Header";
-import SideNav from "./components/SideNav";
-import BaseLayout from "./components/BaseLayout";
+import Header from "../components/Header";
+import SideNav from "../components/SideNav";
+import BaseLayout from "../components/BaseLayout";
 import { Switch, Route } from "react-router-dom";
-import routes, { renderRoutes } from "./scenes/routes";
-import Loading from "./components/Loading";
-import Dashboard from "./scenes/Dashboard";
-import CompanyLogin from "./scenes/CompanyLogin";
+import routes, { renderRoutes } from "./routes";
+import Loading from "../components/Loading";
+import Dashboard from "./Dashboard";
+import CompanyLogin from "./CompanyLogin";
 
 const App = () => {
   return (

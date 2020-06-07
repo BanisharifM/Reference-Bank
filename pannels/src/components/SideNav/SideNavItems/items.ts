@@ -2,16 +2,16 @@ import { IMenuItem } from "../types";
 
 const dashboardItems: IMenuItem[] = [
   {
-    path: "/",
-    title: "Minimal",
+    path: "/dashboard/create-company",
+    title: "ثبت شرکت",
   },
-  { path: "/", title: "Analytical" },
+  { path: "/felan", title: "Analytical" },
   {
-    path: "/",
+    path: "/bisar",
     title: "Demographical",
   },
   {
-    path: "/",
+    path: "/felanbisar",
     title: "Modern",
   },
 ];

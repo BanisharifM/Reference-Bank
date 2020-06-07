@@ -5,7 +5,7 @@ import "./assets/css/login-register.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
+import App from "./scenes/App";
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux";
 import { Router, Route, BrowserRouter } from "react-router-dom";
