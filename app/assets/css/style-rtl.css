@@ -5809,7 +5809,8 @@ footer .widget_title {
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-pack: justify;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content:center;
     width: 100%;
 }
 
