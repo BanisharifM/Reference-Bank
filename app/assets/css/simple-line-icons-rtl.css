@@ -2,8 +2,7 @@
 
 @font-face {
     font-family: 'Simple-Line-Icons';
-    src: url('../fonts/Simple-Line-Icons.eot');
-    src: url('../fonts/Simple-Line-Icons.eot?#iefix') format('embedded-opentype'), url('../fonts/Simple-Line-Icons.woff2') format('woff2'), url('../fonts/Simple-Line-Icons.woff') format('woff'), url('../fonts/Simple-Line-Icons.ttf') format('truetype'), url('../fonts/Simple-Line-Icons.svg#Simple-Line-Icons') format('svg');
+    src: url('../fonts/Simple-Line-Icons.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -11,7 +10,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     @font-face {
         font-family: 'Simple-Line-Icons';
-        src: url('../fonts/Simple-Line-Icons.svg#Simple-Line-Icons') format('svg');
+        /*src: url('../fonts/Simple-Line-Icons.svg#Simple-Line-Icons') format('svg');*/
     }
 }
 
