@@ -1,4 +1,5 @@
 import React from "react";
+import Search from "./Search";
 
 const Navbar = () => {
   return (
@@ -415,15 +416,7 @@ const Navbar = () => {
         </div>
         <ul className="navbar-nav attr-nav align-items-center">
           <li>
-            <a href="#" className="nav-link">
-              <i className="linearicons-user"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link">
-              <i className="linearicons-heart"></i>
-              <span className="wishlist_count">0</span>
-            </a>
+           <Search/>
           </li>
           <li className="dropdown cart_dropdown">
             <a
@@ -498,6 +491,11 @@ const Navbar = () => {
                 </p>
               </div>
             </div>
+          </li>
+          <li>
+            <a href="#" className="nav-link">
+              <i className="linearicons-user"></i>
+            </a>
           </li>
         </ul>
         <div className="pr_search_icon">
