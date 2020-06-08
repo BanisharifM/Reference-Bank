@@ -1,8 +1,8 @@
 import React from "react";
 import Head from "next/head";
-import { HeaderNav } from "../components/HeaderNav";
-import MainContent from "../components/MainContent";
-import Footer from "../components/Footer";
+import { HeaderNav } from "../components/MainPage/HeaderNav";
+import MainContent from "../components/MainPage/MainContent";
+import Footer from "../components/MainPage/Footer";
 
 export const index = () => {
   return (
