@@ -2720,7 +2720,7 @@ header.light_skin.nav-fixed .social_icons li a:hover {
     z-index: 9999;
     top: 0;
     transition: all 0.5s ease-in-out;
-    /* cursor: url("../../public/images/close.png"), pointer; */
+    /* cursor: url("../images/close.png"), pointer; */
 }
 
 body.active {
@@ -3488,7 +3488,7 @@ input.text {
 }
 
 .wave_shape_bottom::before {
-    /* background-image: url("../../public/images/wave_shape.png"); */
+    /* background-image: url("../images/wave_shape.png"); */
     display: block;
     height: 100%;
     content: "";
@@ -3833,7 +3833,7 @@ input.text {
 }
 
 .about_bg {
-    /* background-image: url(../../public/images/shape12.png); */
+    /* background-image: url(../images/shape12.png); */
     background-position: top center;
     background-size: cover;
     z-index: 0;
@@ -4969,7 +4969,7 @@ footer .widget_title {
 }
 
 .footer_bg {
-    /* background-image: url(../../public/images/footer_shape.png); */
+    /* background-image: url(../images/footer_shape.png); */
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top center;
@@ -4983,7 +4983,7 @@ footer .widget_title {
 }
 
 .pattern_bg {
-    /* background-image: url(../../public/images/pattern_bg2.png); */
+    /* background-image: url(../images/pattern_bg2.png); */
     background-position: top center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7430,7 +7430,7 @@ label.label_info {
 }
 
 .loading {
-    /* background: url('../../public/images/loading.gif') center center no-repeat; */
+    /* background: url('../images/loading.gif') center center no-repeat; */
     font-size: 0 !important;
     background-color: #000 !important;
     border: 0;
@@ -7707,7 +7707,7 @@ select option {
     right: 50%;
     width: 24px;
     height: 24px;
-    /* background: url("../../public/images/loading.gif") center center no-repeat; */
+    /* background: url("../images/loading.gif") center center no-repeat; */
     text-align: center;
     margin-top: -12px;
     margin-right: -12px;
