@@ -5,11 +5,11 @@ import { AppProps } from "next/app";
 import "../assets/css/animate-rtl.css"
 import "../assets/bootstrap/css/bootstrap-rtl.min.css"
 import "../assets/css/all-rtl.min.css";
-// import "../assets/css/ionicons-rtl.min.css";
-// import "../assets/css/themify-icons-rtl.css";
-// import "../assets/css/linearicons-rtl.css";
-// import "../assets/css/flaticon-rtl.css";
-// import "../assets/css/simple-line-icons-rtl.css";
+import "../assets/css/ionicons-rtl.min.css";
+import "../assets/css/themify-icons-rtl.css";
+import "../assets/css/linearicons-rtl.css";
+import "../assets/css/flaticon-rtl.css";
+import "../assets/css/simple-line-icons-rtl.css";
 import "../assets/css/magnific-popup-rtl.css";
 import "../assets/css/slick-rtl.css";
 // import "../assets/css/slick-theme-rtl.css";
