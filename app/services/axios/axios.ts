@@ -13,5 +13,5 @@ export const axiosInstanceServer = axios.create({
   baseURL: "https://api.restino.ir/accounts/api/v1",
 });
 
-axiosInterceptor(axiosInstance);
+// axiosInterceptor(axiosInstance , req);
 axiosServerInterceptor(axiosInstanceServer);

@@ -709,46 +709,7 @@ export const HeaderNav = () => {
                         <i className="flaticon-ball"></i> <span>ورزشی</span>
                       </a>
                     </li>
-                    <li>
-                      <ul className="more_slide_open">
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="login.html"
-                          >
-                            <i className="flaticon-pijamas"></i>{" "}
-                            <span>Sleepwear</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="register.html"
-                          >
-                            <i className="flaticon-scarf"></i>{" "}
-                            <span>Seasonal Wear</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="404.html"
-                          >
-                            <i className="flaticon-vintage"></i>{" "}
-                            <span>Ethinic Wear</span>
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="coming-soon.html"
-                          >
-                            <i className="flaticon-pregnant"></i>{" "}
-                            <span>Baby Clothing</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
+                    
                   </ul>
                   <div className="more_categories">دسته بندی بیشتر</div>
                 </div>

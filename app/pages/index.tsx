@@ -1,8 +1,10 @@
 import React from "react";
 import Head from "next/head";
-import { HeaderNav } from "../components/MainPage/HeaderNav";
+import { HeaderNav } from "../components/MainPage/Header/HeaderNav";
 import MainContent from "../components/MainPage/MainContent";
-import Footer from "../components/MainPage/Footer";
+import Footer from "../components/MainPage/Footer/Footer";
+import { axiosInterceptor } from "../services/axios/axiosInterceptor";
+import { axiosInstance } from "../services/axios/axios";
 
 export const index = () => {
   return (
@@ -68,8 +70,14 @@ export default index;
 // export const getServerSideProps = wrapper.getServerSideProps(
 //   async ({ store, preview, req }) => {
 //     const cookie = ParsCookies(req);
-//     // console.log("2. Page.getStaticProps uses the store to dispatch things");
-//     // const data = await api.login.loginUser("09213198172", "@1378Alisajad");
-//     // const { data } = await axiosInstance.get("/profile/");
+//     console.log(req)
+//     req.hea
+
+    
+
+
+//     console.log("2. Page.getStaticProps uses the store to dispatch things");
+//     const data = await api.login.loginUser("09213198172", "@1378Alisajad");
+//     const { data } = await axiosInstance.get("/profile/");
 //   }
 // );
