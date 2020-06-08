@@ -17,6 +17,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/redux-persist": "^4.3.1",
     "axios": "^0.19.2",
+    "formik": "^2.1.4",
     "history": "^4.10.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -30,7 +31,8 @@
     "redux-thunk": "^2.3.0",
     "swr": "^0.2.2",
     "thunk": "^0.0.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.7.2",
+    "yup": "^0.29.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -52,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/yup": "^0.29.2"
   }
 }

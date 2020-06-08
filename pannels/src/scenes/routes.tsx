@@ -3,22 +3,10 @@ import { Route } from "react-router-dom";
 import React from "react";
 
 import PrivateRoute from "../components/PrivateRoute";
-
-// const Home = lazy(() => import("./Home"));
-// const AboutUs = lazy(() => import("./AboutUs"));
-// const LogIn = lazy(() => import("./Login"));
-// const SignUp = lazy(() => import("./SignUp"));
-// const OTPActivation = lazy(() => import("./OTPActivation"));
-// const Product = lazy(() => import("./Product"));
-// const Help = lazy(() => import("./Help"));
-// const Checkout = lazy(() => import("./Checkout"));
-// const Profile = lazy(() => import("./Profile"));
-// const EditProfile = lazy(() => import("./Profile/scenes/EditProfile"));
-// const AddAddress = lazy(() => import("./Profile/scenes/AddAddress"));
-// const EditAddress = lazy(() => import("./Profile/scenes/EditAddress"));
-// const Order = lazy(() => import("./Order"));
-// const Callback = lazy(() => import("../components/Payment"));
-// const NotFound = lazy(() => import("./NotFound"));
+import BaseLayout from "../components/BaseLayout";
+import { dashboardRoutes } from "./Dashboard/Scenes/routes";
+const Dashboard = lazy(() => import("./Dashboard"));
+const Redirect = lazy(() => import("./Redirect"));
 
 export interface IRoute {
   path?: string | string[];
@@ -26,18 +14,20 @@ export interface IRoute {
   exact?: boolean;
   routes?: IRoute[];
   private?: boolean;
+  notHaveBaseLayout?: boolean;
 }
 
 const routes: IRoute[] = [
-  //   {
-  //     exact: true,
-  //     path: "/",
-  //     component: Home,
-  //   },
-  //   {
-  //     path: "/about-us",
-  //     component: AboutUs,
-  //   },
+  {
+    exact: true,
+    path: "/",
+    component: Redirect,
+  },
+  {
+    path: "/dashboard",
+    component: Dashboard,
+    routes: dashboardRoutes,
+  },
   //   {
   //     path: "/login",
   //     component: LogIn,
@@ -113,13 +103,15 @@ export const renderRoutes = (routes: IRoute[]) => {
           {...route}
           component={undefined}
           render={(props) => {
-            if (false) {
+            if (route.notHaveBaseLayout) {
               return (
                 <route.component {...props} routes={route.routes} key={key} />
               );
             } else {
               return (
+                // <BaseLayout>
                 <route.component {...props} routes={route.routes} key={key} />
+                // </BaseLayout>
               );
             }
           }}
