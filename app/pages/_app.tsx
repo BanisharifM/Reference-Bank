@@ -12,6 +12,11 @@ import "../assets/css/flaticon-rtl.css";
 import "../assets/css/simple-line-icons-rtl.css";
 import "../assets/css/magnific-popup-rtl.css";
 import "../assets/css/slick-rtl.css";
+
+import "../assets/owlcarousel/css/owl.carousel.min.css"
+import "../assets/owlcarousel/css/owl.theme.css"
+import "../assets/owlcarousel/css/owl.theme.default.min.css"
+
 // import "../assets/css/slick-theme-rtl.css";
 // import "../assets/css/simple-line-icons-rtl.css";
 // import "../assets/css/simple-line-icons-rtl.css";
