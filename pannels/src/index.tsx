@@ -2,6 +2,7 @@
 import "./assets/css/font.css";
 import "./assets/css/style.css";
 import "./assets/css/login-register.css";
+import "./assets/css/user-card.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -18,17 +19,19 @@ import ModalRoot from "./components/ModalRoot";
 import ModalProvider from "./services/contexts/ModalContext/ModalProvider";
 ReactDOM.render(
   <ModalProvider>
-      <Router history={browserHistory}>
-        {/* <BrowserRouter basename='/dashboard'> */}
-        <ModalRoot />
-        <App />
-        {/* </BrowserRouter> */}
-      </Router>
+    <Router history={browserHistory}>
+      {/* <BrowserRouter basename='/dashboard'> */}
+      <ModalRoot />
+      <App />
+      {/* </BrowserRouter> */}
+    </Router>
   </ModalProvider>,
   document.querySelector("#main-wrapper")
 );
 
-  // <Provider store={store}>
-  //   <PersistGate loading={null} persistor={persistor}>
-    {/* </PersistGate>
-  </Provider>, */}
+// <Provider store={store}>
+//   <PersistGate loading={null} persistor={persistor}>
+{
+  /* </PersistGate>
+  </Provider>, */
+}

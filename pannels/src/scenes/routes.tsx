@@ -5,7 +5,7 @@ import React from "react";
 import PrivateRoute from "../components/PrivateRoute";
 import BaseLayout from "../components/BaseLayout";
 import { dashboardRoutes } from "./Dashboard/Scenes/routes";
-import { siteMangaerRoutes } from "./siteManager/scenes/routes";
+import { siteManagerRoutes } from "./siteManager/scenes/routes";
 const Dashboard = lazy(() => import("./Dashboard"));
 const Redirect = lazy(() => import("./Redirect"));
 const SiteManager = lazy(() => import("./siteManager"));
@@ -33,7 +33,7 @@ const routes: IRoute[] = [
   {
     path: "/site-manager",
     component: SiteManager,
-    routes: siteMangaerRoutes,
+    routes: siteManagerRoutes,
   },
   //   {
   //     path: "/login",

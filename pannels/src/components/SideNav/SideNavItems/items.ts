@@ -16,4 +16,11 @@ const dashboardItems: IMenuItem[] = [
   },
 ];
 
-export { dashboardItems };
+const siteManagementItems: IMenuItem[] = [
+  {
+    path: "/site-manager/slider",
+    title: "اسلاید اصلی",
+  },
+];
+
+export { dashboardItems, siteManagementItems };

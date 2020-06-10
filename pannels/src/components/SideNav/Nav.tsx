@@ -2,7 +2,7 @@ import React from "react";
 import HeaderItem from "./SideNavItems/HeaderItem";
 import SubHeaderItem from "./SideNavItems/SubHeaderNavItem";
 import Menu from "./SideNavItems/Menu";
-import { dashboardItems } from "./SideNavItems/items";
+import { dashboardItems, siteManagementItems } from "./SideNavItems/items";
 import SubHeaderNav from "./SideNavItems/SubHeaderNav";
 
 const Nav = () => {
@@ -17,8 +17,8 @@ const Nav = () => {
           icon="icon-speedometer"
         />
         <SubHeaderNav
-          title="اپ ها"
-          items={dashboardItems}
+          title="مدیریت سایت اصلی"
+          items={siteManagementItems}
           icon="ti-layout-grid2"
         />
       </ul>
