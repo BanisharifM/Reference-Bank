@@ -11,5 +11,7 @@ export const userReducer: React.Reducer<IUserState, AppActions> = (
       return { ...userState, isAuth: true, ...action.payload };
     case EUserActionTypes.LOGOUT:
       return { isAuth: false } as IUserState;
+    default:
+      return { ...userState };
   }
 };

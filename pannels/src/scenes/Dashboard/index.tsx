@@ -11,7 +11,7 @@ const index: React.FC<IProps> = ({ routes }) => {
   return (
     <>
       {/* <BaseLayout> */}
-        <Switch>{renderRoutes(routes)}</Switch>
+      <Switch>{renderRoutes(routes)}</Switch>
       {/* </BaseLayout> */}
     </>
   );
