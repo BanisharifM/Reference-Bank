@@ -41,8 +41,12 @@ const EditCategoryModal: React.FC<IProps> = ({
   return (
     <>
       <div className="modal-backdrop show"></div>
-      <div id="myModal" className="modal show" style={{ display: "block" }}>
-        <div className="modal-dialog">
+      <div
+        id="myModal"
+        className="modal show long-modal"
+        style={{ display: "block" }}
+      >
+        <div className="modal-dialog modal-lg">
           <div className="modal-content" ref={modalContentRef}>
             <div className="modal-header">
               <h4 className="modal-title" id="myModalLabel">
@@ -66,6 +70,7 @@ const EditCategoryModal: React.FC<IProps> = ({
             />
             <div className="modal-footer">
               <CloseModalButton handleCloseModal={handleCloseModal} />
+              
             </div>
           </div>
         </div>

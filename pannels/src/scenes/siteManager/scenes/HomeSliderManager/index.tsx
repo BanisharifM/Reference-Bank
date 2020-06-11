@@ -3,8 +3,8 @@ import Img1 from "../../../../assets/images/users/1.jpg";
 import Img2 from "../../../../assets/images/users/2.jpg";
 import Img3 from "../../../../assets/images/users/3.jpg";
 import Img4 from "../../../../assets/images/users/4.jpg";
-import SliderCards from "./components/SliderCards";
-import AddImage from "./components/AddImage";
+import SliderCards from "../../components/SliderCards";
+import AddImage from "../../components/AddImage";
 
 interface ISliderImage {
   image: string;
@@ -44,7 +44,7 @@ const Index = () => {
             {items.map((item, index) => (
               <SliderCards {...item} onDelete={handleDeleteItem} />
             ))}
-            <AddImage />
+            <AddImage url="/" />
           </div>
         </div>
       </div>

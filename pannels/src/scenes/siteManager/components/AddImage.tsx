@@ -4,7 +4,10 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
 
-function Basic() {
+interface IProps {
+  url: string;
+}
+const AddImage: React.FC<IProps> = ({ url }) => {
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: "image/jpeg, image/png",
   });
@@ -21,8 +24,8 @@ function Basic() {
         <div {...getRootProps({ className: "dropzone" })}>
           <input {...getInputProps()} />
           <p>
-            تصویر مورد نظر خود را انتخاب کنید یا در این محل بکشید. فرمتهای jpeg و
-            png پشتیبانی میشود
+            تصویر مورد نظر خود را انتخاب کنید یا در این محل بکشید. فرمتهای jpeg
+            و png پشتیبانی میشود
           </p>
           <span className="fa fa-plus"></span>
         </div>
@@ -33,8 +36,8 @@ function Basic() {
       </section>
     </div>
   );
-}
-export default Basic;
+};
+export default AddImage;
 
 // const AddImage = () => {
 //   return (
