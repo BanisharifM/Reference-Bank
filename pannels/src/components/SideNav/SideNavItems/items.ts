@@ -21,6 +21,10 @@ const siteManagementItems: IMenuItem[] = [
     path: "/site-manager/slider",
     title: "اسلایدر اصلی",
   },
+  {
+    path: "/site-manager/category-manager",
+    title: "دسته بندی‌ها",
+  },
 ];
 
 export { dashboardItems, siteManagementItems };
