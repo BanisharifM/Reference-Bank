@@ -47019,9 +47019,22 @@ html body .navbar-dark .mailbox .message-center a .mail-contnet .time {
     padding: 15px 20px;
     color: #212529
 }
+.customtab li div.nav-link,
+.profile-tab li div.nav-link {
+    border: 0;
+    padding: 15px 20px;
+    color: #212529;
+    cursor: pointer;
+    
+}
 
 .customtab li a.nav-link.active,
 .profile-tab li a.nav-link.active {
+    border-bottom: 2px solid #fb9678;
+    color: #fb9678
+}
+.customtab li div.nav-link.active,
+.profile-tab li div.nav-link.active {
     border-bottom: 2px solid #fb9678;
     color: #fb9678
 }
