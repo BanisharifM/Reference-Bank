@@ -1,20 +1,24 @@
-import React, { useState } from "react";
-import {category, column, features, pageAction} from "./model";
+import React, { useState, PropsWithChildren } from "react";
+import { category, column, features, pageAction } from "./model";
 
-interface IProps {
-  data:category[],
-  columns:column[],
-  startPage:number,
-  pageAction:pageAction,
-  setPageAction:any,
-  features:features,
-  onEdit:any,
-  onSave:any,
-  onDelete:any,
-  onCancel:any,
-  inputErrors:any
+interface IDefaultItem {
+  id: string;
+  [K: string]: string | string[];
 }
-const TBody:React.FC<IProps> = ({
+interface IProps<T extends IDefaultItem> {
+  data: T[];
+  columns: column[];
+  startPage: number;
+  pageAction: pageAction<T>;
+  setPageAction: any;
+  features: features;
+  onEdit: any;
+  onSave: any;
+  onDelete: any;
+  onCancel: any;
+  inputErrors: any;
+}
+const TBody = <T extends IDefaultItem>({
   data,
   columns,
   startPage,
@@ -26,29 +30,34 @@ const TBody:React.FC<IProps> = ({
   onDelete,
   onCancel,
   inputErrors,
-}) => {
-  const handleChange = (e:React.FormEvent<HTMLInputElement>, item:category, column:column) => {
+}: PropsWithChildren<IProps<T>>) => {
+  const handleChange = (
+    e: React.FormEvent<HTMLInputElement>,
+    item: T,
+    column: column
+  ) => {
     const editedItem = { ...item, [column.path]: e.currentTarget.value };
     setPageAction({ status: pageAction.status, element: editedItem });
   };
+
   console.log(inputErrors);
   return (
     <tbody>
-      {data.map((item, index) => (
+      {(data as any)!.map((item: T, index: number) => (
         <tr key={item.id}>
           <th key={index + 1} scope="row">
             {startPage + index + 1}
           </th>
           {columns.map((column) => (
             <td key={`r${item.id}d${column.path}`}>
-              {pageAction.status && pageAction.element.id === item.id ? (
+              {pageAction.status && (pageAction.element as T).id === item.id ? (
                 <input
                   className={
                     inputErrors[column.path]
                       ? "form-control border-danger"
                       : "form-control"
                   }
-                  value={pageAction.element[column.path]}
+                  value={(pageAction.element as T)[column.path]}
                   onChange={(e) => handleChange(e, item, column)}
                   type={column.type}
                 />
@@ -61,14 +70,16 @@ const TBody:React.FC<IProps> = ({
             <td key={`r${item.id}dACTION`}>
               {(features.editable || features.addable) &&
                 pageAction.status &&
-                pageAction.element.id === item.id && (
+                (pageAction.element as T).id === item.id && (
                   <i
                     className="icon-checkmark3 text-primary"
                     onClick={() => onSave(item)}
                   />
                 )}
               {features.editable &&
-                !(pageAction.status && pageAction.element.id === item.id) && (
+                !(
+                  pageAction.status && (pageAction.element as T).id === item.id
+                ) && (
                   <i
                     className="icon-pencil5 text-primary"
                     aria-hidden="true"
@@ -77,14 +88,16 @@ const TBody:React.FC<IProps> = ({
                 )}
               {(features.editable || features.addable) &&
                 pageAction.status &&
-                pageAction.element.id === item.id && (
+                (pageAction.element as T).id === item.id && (
                   <i
                     className="icon-cross2 text-danger"
                     onClick={() => onCancel(item)}
                   />
                 )}
               {features.deletable &&
-                !(pageAction.status && pageAction.element.id === item.id) && (
+                !(
+                  pageAction.status && (pageAction.element as T).id === item.id
+                ) && (
                   <i
                     className="icon-bin text-danger"
                     aria-hidden="true"

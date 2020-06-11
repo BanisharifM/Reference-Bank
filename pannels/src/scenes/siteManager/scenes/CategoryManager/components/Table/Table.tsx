@@ -1,23 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+  ReactNode,
+  PropsWithChildren,
+} from "react";
 import { paginateData } from "./Pagination";
 import TableFooter from "./TableFooter";
 import TableHeader from "./TableHeader";
 import debounce from "debounce";
 import TableBody from "./TableBody";
 import { category, column, features, pageAction } from "./model";
-import {FormikConfig, FormikValues} from "formik/dist/types";
+import { FormikConfig, FormikValues } from "formik/dist/types";
 
-interface IProps {
-  entryData: any;
+interface IDefaultItem {
+  id: string;
+  [k: string]: string | string[];
+}
+interface IProps<T extends IDefaultItem> {
+  entryData: T[];
   columns: column[];
   features: features;
 }
-declare function Table<Values extends FormikValues = FormikValues, ExtraProps = {}>(props: FormikConfig<Values> & ExtraProps): JSX.Element;
-const Table: React.FC<IProps> = ({ entryData, columns, features }) => {
-  const [data, setData] = useState<category[] | []>([]);
-  const [pageData, setPageDate] = useState([]);
+// declare function Table<Values extends FormikValues = FormikValues, ExtraProps = {}>(props: FormikConfig<Values> & ExtraProps): JSX.Element;
+const Table = <T extends IDefaultItem>({
+  entryData,
+  columns,
+  features,
+}: PropsWithChildren<IProps<T>>) => {
+  const [data, setData] = useState<T[] | []>([]);
+  const [pageData, setPageDate] = useState<T[] | []>([]);
   const [pageMode, setPageMode] = useState("DEFAULT");
-  const [pageAction, setPageAction] = useState<pageAction>({
+  const [pageAction, setPageAction] = useState<pageAction<T>>({
     status: false,
     element: {},
   });
@@ -130,7 +143,7 @@ const Table: React.FC<IProps> = ({ entryData, columns, features }) => {
           filtering={features.filtering}
           tableSizing={features.tableSizing}
         />
-        <TableBody
+        <TableBody<T>
           pageData={pageData}
           columns={columns}
           features={features}

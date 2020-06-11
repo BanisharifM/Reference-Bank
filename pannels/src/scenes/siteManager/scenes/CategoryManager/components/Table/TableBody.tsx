@@ -1,10 +1,14 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import THead from "./THead";
 import TBody from "./TBody";
 import { category, column, features, pageAction } from "./model";
 
-interface IProps {
-  pageData: category[];
+interface IDefaultItem {
+  id: string;
+  [k: string]: string | string [];
+}
+interface IProps<T extends IDefaultItem> {
+  pageData: Array<T>;
   columns: column[];
   features: features;
   onAdd: any;
@@ -14,11 +18,11 @@ interface IProps {
   onCancel: any;
   currentPage: number;
   pageSize: number;
-  pageAction: pageAction;
+  pageAction: pageAction<T>;
   setPageAction: any;
   inputErrors: any;
 }
-const TableBody: React.FC<IProps> = ({
+const TableBody = <T extends IDefaultItem>({
   pageData,
   columns,
   features,
@@ -32,7 +36,7 @@ const TableBody: React.FC<IProps> = ({
   pageAction,
   setPageAction,
   inputErrors,
-}) => {
+}: PropsWithChildren<IProps<T>>) => {
   return (
     <div className="row">
       <div
@@ -46,7 +50,7 @@ const TableBody: React.FC<IProps> = ({
             addable={features.addable}
             onAdd={onAdd}
           />
-          <TBody
+          <TBody<T>
             columns={columns}
             data={pageData}
             features={features}
