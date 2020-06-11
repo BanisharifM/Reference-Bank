@@ -5,12 +5,14 @@ import TableHeader from "./TableHeader";
 import debounce from "debounce";
 import TableBody from "./TableBody";
 import { category, column, features, pageAction } from "./model";
+import {FormikConfig, FormikValues} from "formik/dist/types";
 
 interface IProps {
   entryData: any;
   columns: column[];
   features: features;
 }
+declare function Table<Values extends FormikValues = FormikValues, ExtraProps = {}>(props: FormikConfig<Values> & ExtraProps): JSX.Element;
 const Table: React.FC<IProps> = ({ entryData, columns, features }) => {
   const [data, setData] = useState<category[] | []>([]);
   const [pageData, setPageDate] = useState([]);

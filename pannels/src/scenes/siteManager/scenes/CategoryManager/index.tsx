@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "./components/Table/Table";
 import { getCategories } from "./testCategory";
+import {Formik} from "formik";
 
 const index = () => {
   return (
@@ -9,6 +10,8 @@ const index = () => {
         <div className="card-body">
           <h4 className="card-title">Row grouping </h4>
           <h6 className="card-subtitle">Data table example</h6>
+          <Formik initialValues={} onSubmit={}
+
           <Table
             entryData={getCategories()}
             columns={[
