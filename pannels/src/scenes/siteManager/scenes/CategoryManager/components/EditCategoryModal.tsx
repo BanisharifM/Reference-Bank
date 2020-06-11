@@ -7,7 +7,8 @@ import CloseModalButton from "../../../../../components/CloseModalButton";
 import EditChangeName from "./EditChangeName";
 import NavTabs from "./NavTabs";
 import ImageEditSection from "./ImageEditSection";
-
+import SubmitModalButton from "../../../../../components/SubmitModalButton";
+//-----------------------------------------------------------------
 interface ICategory {
   id: number;
   name: string;
@@ -28,15 +29,16 @@ const EditCategoryModal: React.FC<IProps> = ({
   };
   const modalContentRef = useRef<HTMLDivElement>(null);
   useOutsideClicker(modalContentRef, handleCloseModal);
-
-  const [categoryName, setCategoryName] = useState(name);
-  const handleEditCategoryName = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setCategoryName(e.currentTarget.value);
-
   const [activeItem, setActiveItem] = useState("تصویر دسته بندی");
   const handleCahngeActiveItem = (item: string) => {
     setActiveItem(item);
   };
+  //----------------form states----------------------//
+  const [categoryName, setCategoryName] = useState(name);
+  const handleEditCategoryName = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setCategoryName(e.currentTarget.value);
+
+  const handleSubmit = () => {};
 
   return (
     <>
@@ -69,8 +71,8 @@ const EditCategoryModal: React.FC<IProps> = ({
               onChangeActiveItem={handleCahngeActiveItem}
             />
             <div className="modal-footer">
+              <SubmitModalButton handleSubmitModal={handleSubmit} />
               <CloseModalButton handleCloseModal={handleCloseModal} />
-              
             </div>
           </div>
         </div>
