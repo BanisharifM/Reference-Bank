@@ -19,7 +19,7 @@ const dashboardItems: IMenuItem[] = [
 const siteManagementItems: IMenuItem[] = [
   {
     path: "/site-manager/slider",
-    title: "اسلاید اصلی",
+    title: "اسلایدر اصلی",
   },
 ];
 

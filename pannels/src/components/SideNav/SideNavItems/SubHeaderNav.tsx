@@ -23,17 +23,6 @@ const SubHeaderNav: React.FC<IProps & RouteComponentProps> = ({
   const handleToggleubMenu = () => {
     setIsCollapse(!isCollapse);
   };
-  // const [isActiveMenuItem, setIsActiveMenuItem] = useState(false);
-  // const history = useHistory();
-  // console.log(history)
-
-  // useEffect(() => {
-  //   console.log("history location changes", history.location.pathname);
-  //   const location = history.location.pathname;
-  //   const mapedMenuItem = mapMenuItemToE[title];
-  //   if (location.includes(mapedMenuItem)) setIsActiveMenuItem(true);
-  //   else setIsActiveMenuItem(false);
-  // }, [history.location.pathname]);
 
   const location = history.location.pathname;
   const mapedMenuItem = mapMenuItemToE[title];

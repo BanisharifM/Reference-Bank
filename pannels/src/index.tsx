@@ -3,6 +3,9 @@ import "./assets/css/font.css";
 import "./assets/css/style.css";
 import "./assets/css/login-register.css";
 import "./assets/css/user-card.css";
+import "./assets/css/dropify.min.css"
+import 'react-image-crop/dist/ReactCrop.css';
+
 
 import React from "react";
 import ReactDOM from "react-dom";
