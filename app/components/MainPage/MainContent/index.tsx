@@ -1,10 +1,13 @@
 import React from "react";
 import SingleBanner from "./SingleBanner";
+import ExclusiveProductsSlider from "./ExclusiveProductsSlider";
 
 const MainContent = () => {
   return (
     <div className="main_content">
       <div className="section pb_20 small_pt">
+        <ExclusiveProductsSlider />
+
         <div className="container">
           <div className="row">
             <div className="col-md-6">

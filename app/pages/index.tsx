@@ -5,11 +5,13 @@ import MainContent from "../components/MainPage/MainContent";
 import Footer from "../components/MainPage/Footer/Footer";
 import { axiosInterceptor } from "../services/axios/axiosInterceptor";
 import { axiosInstance } from "../services/axios/axios";
+import MainSlider from "../components/MainPage/MainSlider/MainSlider";
 
 export const index = () => {
   return (
     <>
       <HeaderNav />
+      <MainSlider />
       <MainContent />
       <Footer />
     </>
@@ -72,9 +74,6 @@ export default index;
 //     const cookie = ParsCookies(req);
 //     console.log(req)
 //     req.hea
-
-    
-
 
 //     console.log("2. Page.getStaticProps uses the store to dispatch things");
 //     const data = await api.login.loginUser("09213198172", "@1378Alisajad");

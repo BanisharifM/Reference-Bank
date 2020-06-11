@@ -10,9 +10,9 @@ interface IProps {
 const index: React.FC<IProps> = ({ routes }) => {
   return (
     <>
-      <BaseLayout>
-        <Switch>{renderRoutes(routes)}</Switch>
-      </BaseLayout>
+      {/* <BaseLayout> */}
+      <Switch>{renderRoutes(routes)}</Switch>
+      {/* </BaseLayout> */}
     </>
   );
 };

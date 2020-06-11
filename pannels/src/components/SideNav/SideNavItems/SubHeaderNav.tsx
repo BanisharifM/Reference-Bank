@@ -3,7 +3,7 @@ import SubHeaderNavItem from "./SubHeaderNavItem";
 import { IMenuItem } from "../types";
 import Menu from "./Menu";
 import { useSidebarCollapse } from "../../../services/contexts/SideNavContext/SidenavCollapseContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, withRouter, RouteComponentProps } from "react-router-dom";
 import { mapMenuItemToE } from "../../../services/constants/mapPItemsToE";
 
 interface IProps {
@@ -12,21 +12,22 @@ interface IProps {
   icon: string;
   items: IMenuItem[];
 }
-const SubHeaderNav: React.FC<IProps> = ({ title, news, icon, items }) => {
+const SubHeaderNav: React.FC<IProps & RouteComponentProps> = ({
+  title,
+  news,
+  icon,
+  items,
+  history,
+}) => {
   const [isCollapse, setIsCollapse] = useState(true);
   const handleToggleubMenu = () => {
     setIsCollapse(!isCollapse);
   };
-  const [isActiveMenuItem, setIsActiveMenuItem] = useState(false);
-  const history = useHistory();
-  useEffect(() => {
-    const location = history.location.pathname;
-    const mapedMenuItem = mapMenuItemToE[title];
-    if (location.includes(mapedMenuItem)) setIsActiveMenuItem(true);
-  }, [history.location.pathname, title]);
 
+  const location = history.location.pathname;
+  const mapedMenuItem = mapMenuItemToE[title];
   return (
-    <li className={isActiveMenuItem ? "active" : ""}>
+    <li className={location.includes(mapedMenuItem) ? "active" : ""}>
       <SubHeaderNavItem
         title={title}
         news={news}
@@ -39,4 +40,5 @@ const SubHeaderNav: React.FC<IProps> = ({ title, news, icon, items }) => {
   );
 };
 
-export default SubHeaderNav;
+// <li className={isActiveMenuItem ? "active" : ""}></li>
+export default withRouter(SubHeaderNav);

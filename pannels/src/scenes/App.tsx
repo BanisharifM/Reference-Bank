@@ -11,7 +11,9 @@ const App = () => {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <Switch>{renderRoutes(routes)}</Switch>
+        <BaseLayout>
+          <Switch>{renderRoutes(routes)}</Switch>
+        </BaseLayout>
       </Suspense>
     </>
   );

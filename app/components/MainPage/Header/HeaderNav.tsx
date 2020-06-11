@@ -16,7 +16,11 @@ export const HeaderNav = () => {
   return (
     <header className="header_wrap">
       <div className="bottom_header light_skin main_menu_uppercase bg_dark mb-4">
+<<<<<<< HEAD
         <div className="" style={{ margin: "0px 0px", width:"100%",paddingLeft:"15px",paddingRight:"0px"}}>
+=======
+        <div className="container" >
+>>>>>>> 1fdca53d6483809b2c4372c51576681bd4773f26
           <div className="row">
             <div className="col-lg-3 col-md-4 col-sm-6 col-3">
               <div
