@@ -16,7 +16,7 @@ const PicCart: React.FC<IProps> = ({ image }) => {
   };
 
   return (
-    <div className="col-lg-3 col-md-6">
+    <>
       <div className="card">
         <div className="el-card-item">
           <div className="el-card-avatar el-overlay-1">
@@ -36,7 +36,7 @@ const PicCart: React.FC<IProps> = ({ image }) => {
           </div> */}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

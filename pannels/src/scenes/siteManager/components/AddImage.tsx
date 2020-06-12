@@ -1,38 +1,66 @@
 // import React from "react";
 // import Img1 from "../../../../../assets/images/add.png";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
+import PicCart from "../scenes/CategoryManager/components/PicCart";
 
 interface IProps {
   url: string;
 }
+interface IFileWithPreview extends File {
+  preview: any;
+}
 const AddImage: React.FC<IProps> = ({ url }) => {
+  const [files, setFiles] = useState<File[]>([]);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: "image/jpeg, image/png",
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
   });
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.name}>
-      {file.name} - {file.size} bytes
-    </li>
+  const thumbs = (acceptedFiles as Array<IFileWithPreview>).map((file) => (
+    <PicCart image={file.preview} key={file.size} />
   ));
+  useEffect(
+    () => () => {
+      // Make sure to revoke the data uris to avoid memory leaks
+      (files as Array<IFileWithPreview>).forEach((file) =>
+        URL.revokeObjectURL(file.preview)
+      );
+    },
+    [files]
+  );
 
   return (
-    <div className="col-lg-3 col-md-6">
+    <div className="col-lg-6">
       <section className="container">
-        <div {...getRootProps({ className: "dropzone" })}>
-          <input {...getInputProps()} />
-          <p>
-            تصویر مورد نظر خود را انتخاب کنید یا در این محل بکشید. فرمتهای jpeg
-            و png پشتیبانی میشود
-          </p>
-          <span className="fa fa-plus"></span>
+        <div className="row">
+          <div className="col-md-6">
+            <div {...getRootProps({ className: "dropzone" })}>
+              <input {...getInputProps()} />
+              <p>
+                تصویر مورد نظر خود را انتخاب کنید یا در این محل بکشید. فرمتهای
+                jpeg و png پشتیبانی میشود
+              </p>
+              <span className="fa fa-plus"></span>
+            </div>
+          </div>
+          <div className="col-md-6">
+            {thumbs}
+            {/* <aside> */}
+            {/* <h4>Files</h4> */}
+            {/* <ul>{thumbs}</ul> */}
+            {/* </aside> */}
+          </div>
         </div>
-        <aside>
-          {/* <h4>Files</h4> */}
-          <ul>{files}</ul>
-        </aside>
       </section>
     </div>
   );

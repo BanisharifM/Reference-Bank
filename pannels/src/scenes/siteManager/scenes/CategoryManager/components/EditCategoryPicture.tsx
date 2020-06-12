@@ -8,7 +8,9 @@ const EditCategoryPicture = () => {
     <div className="tab-pane active">
       <div className="p-20 container">
         <div className="row el-element-overlay">
-          <PicCart image={Img1} />
+          <div className="col-lg-3 col-md-6">
+            <PicCart image={Img1} />
+          </div>
           <AddImage url="/" />
         </div>
       </div>
