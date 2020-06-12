@@ -4,7 +4,7 @@ import React, { createContext, useContext, Dispatch } from "react";
 
 const initialModalState: IModalState = {
   component: [],
-  props: {},
+  props: [],
 };
 
 export const modalContext = createContext<IModalState>(initialModalState);

@@ -1,9 +1,20 @@
 import React from "react";
+import { useModalDispatch } from "../../../../../services/contexts/ModalContext/ModalContext";
+import { EModalActionTypes } from "../../../../../services/contexts/ModalContext/models";
+import PictureOverlayPreview from "../../../../../components/PictureOverlayPreview";
 
 interface IProps {
   image: string;
 }
 const PicCart: React.FC<IProps> = ({ image }) => {
+  const dispatch = useModalDispatch();
+  const handleOpenPreview = () => {
+    dispatch({
+      type: EModalActionTypes.SHOW_MODAL,
+      payload: { component: PictureOverlayPreview, props: { image } },
+    });
+  };
+
   return (
     <div className="col-lg-3 col-md-6">
       <div className="card">
@@ -12,7 +23,7 @@ const PicCart: React.FC<IProps> = ({ image }) => {
             <img src={image} alt="user" />
             <div className="el-overlay">
               <ul className="el-info">
-                <li>
+                <li onClick={handleOpenPreview}>
                   <a className="btn default btn-outline image-popup-vertical-fit">
                     <i className="icon-magnifier"></i>
                   </a>

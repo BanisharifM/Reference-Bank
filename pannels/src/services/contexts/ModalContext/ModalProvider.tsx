@@ -4,7 +4,7 @@ import { modalContext, modalDispatchContext } from "./ModalContext";
 import { IModalState } from "./models";
 const initialModalState: IModalState = {
   component: [],
-  props: {},
+  props: [],
 };
 
 const ModalProvider: React.FC<{}> = (props) => {

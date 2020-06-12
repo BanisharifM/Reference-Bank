@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useModalDispatch } from "../../../services/contexts/ModalContext/ModalContext";
+import { EModalActionTypes } from "../../../services/contexts/ModalContext/models";
+import PictureOverlayPreview from "../../../components/PictureOverlayPreview";
 
 interface IProps {
   image: string;
@@ -18,6 +21,13 @@ const SliderCards: React.FC<IProps> = ({ index, image, onDelete }) => {
     onDelete(index);
     setSureDelete(false);
   };
+  const dispatch = useModalDispatch();
+  const handleOpenPreview = () => {
+    dispatch({
+      type: EModalActionTypes.SHOW_MODAL,
+      payload: { component: PictureOverlayPreview, props: { image } },
+    });
+  };
   return (
     <div className="col-lg-3 col-md-6">
       <div className="card">
@@ -29,7 +39,8 @@ const SliderCards: React.FC<IProps> = ({ index, image, onDelete }) => {
                 <li>
                   <a
                     className="btn default btn-outline image-popup-vertical-fit"
-                    href="../assets/images/users/1.jpg"
+                    // href="../assets/images/users/1.jpg"
+                    onClick={handleOpenPreview}
                   >
                     <i className="icon-magnifier"></i>
                   </a>
