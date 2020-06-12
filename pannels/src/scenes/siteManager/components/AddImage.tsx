@@ -43,6 +43,7 @@ const AddImage: React.FC<IProps> = ({ url }) => {
     <div className="col-lg-6">
       <section className="container">
         <div className="row">
+          {!!thumbs.length && <div className="col-md-6">{thumbs}</div>}{" "}
           <div className="col-md-6">
             <div {...getRootProps({ className: "dropzone" })}>
               <input {...getInputProps()} />
@@ -52,13 +53,6 @@ const AddImage: React.FC<IProps> = ({ url }) => {
               </p>
               <span className="fa fa-plus"></span>
             </div>
-          </div>
-          <div className="col-md-6">
-            {thumbs}
-            {/* <aside> */}
-            {/* <h4>Files</h4> */}
-            {/* <ul>{thumbs}</ul> */}
-            {/* </aside> */}
           </div>
         </div>
       </section>

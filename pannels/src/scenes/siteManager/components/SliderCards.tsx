@@ -53,7 +53,7 @@ const SliderCards: React.FC<IProps> = ({ index, image, onDelete }) => {
             {!sureDelete ? (
               <button
                 type="button"
-                className="btn waves-effect waves-light btn-rounded btn-danger"
+                className="btn waves-effect waves-light btn-danger"
                 onClick={handleSetSure}
               >
                 حذف
@@ -61,19 +61,18 @@ const SliderCards: React.FC<IProps> = ({ index, image, onDelete }) => {
             ) : (
               <>
                 <button
+                    type="button"
+                    onClick={handleDelete}
+                    className="btn waves-effect waves-light btn-success m-r-10"
+                >
+                  بله
+                </button>
+                <button
                   type="button"
-                  className="btn waves-effect waves-light btn-rounded btn-warning"
+                  className="btn waves-effect waves-light btn-warning "
                   onClick={handleDiscaredDelete}
                 >
                   خیر
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleDelete}
-                  className="btn waves-effect waves-light btn-rounded btn-success"
-                >
-                  بله
                 </button>
               </>
             )}

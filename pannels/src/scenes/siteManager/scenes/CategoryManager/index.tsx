@@ -2,6 +2,10 @@ import React from "react";
 import { useModalDispatch } from "../../../../services/contexts/ModalContext/ModalContext";
 import { EModalActionTypes } from "../../../../services/contexts/ModalContext/models";
 import EditCategoryModal from "./components/EditCategoryModal";
+import Table from "./components/Table/Table";
+import { getCategories } from "./testCategory";
+import {Formik} from "formik";
+import { category } from "./components/Table/model";
 
 interface ICategory {
   id: number;
@@ -30,6 +34,30 @@ const Index = () => {
   return (
     <div>
       <button onClick={openModal}>click</button>
+      <div className="card">
+        <div className="card-body">
+          <h4 className="card-title">Row grouping </h4>
+          <h6 className="card-subtitle">Data table example</h6>
+
+          <Table<category>
+            entryData={getCategories()}
+            columns={[
+              { path: "id", label: "شناسه", type: "number" },
+              { path: "name", label: "مشخصات", type: "text" },
+            ]}
+            features={{
+              paginating: true,
+              defaultPageSize: 3,
+              filtering: true,
+              tableSizing: true,
+              hasAction: true,
+              addable: true,
+              editable: true,
+              deletable: true,
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };

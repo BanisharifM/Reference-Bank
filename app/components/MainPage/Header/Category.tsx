@@ -569,7 +569,7 @@ const Category: React.FC<IProps> = ({ isShow }) => {
             <li>
               <a className="dropdown-item nav-link nav_item" href="login.html">
                 <i className="flaticon-pijamas"></i>
-                <span>Sleepwear</span>
+                <span>لباس خواب</span>
               </a>
             </li>
             <li>
@@ -578,13 +578,13 @@ const Category: React.FC<IProps> = ({ isShow }) => {
                 href="register.html"
               >
                 <i className="flaticon-scarf"></i>
-                <span>Seasonal Wear</span>
+                <span>لباس فصلی</span>
               </a>
             </li>
             <li>
               <a className="dropdown-item nav-link nav_item" href="404.html">
                 <i className="flaticon-vintage"></i>
-                <span>Ethinic Wear</span>
+                <span>لباس مجلسی</span>
               </a>
             </li>
             <li>
@@ -593,7 +593,7 @@ const Category: React.FC<IProps> = ({ isShow }) => {
                 href="coming-soon.html"
               >
                 <i className="flaticon-pregnant"></i>
-                <span>Baby Clothing</span>
+                <span>لیاس کودک</span>
               </a>
             </li>
           </ul>
