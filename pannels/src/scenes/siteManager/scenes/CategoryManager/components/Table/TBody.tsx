@@ -1,10 +1,6 @@
 import React, { useState, PropsWithChildren } from "react";
-import { category, column, features, pageAction } from "./model";
+import { ICategory, IDefaultItem, column, features, pageAction } from "./model";
 
-interface IDefaultItem {
-  id: string;
-  [K: string]: string | string[];
-}
 interface IProps<T extends IDefaultItem> {
   data: T[];
   columns: column[];
@@ -40,7 +36,6 @@ const TBody = <T extends IDefaultItem>({
     setPageAction({ status: pageAction.status, element: editedItem });
   };
 
-  console.log(data);
   return (
     <tbody>
       {data.map((item, index) => (
@@ -57,7 +52,7 @@ const TBody = <T extends IDefaultItem>({
                       ? "form-control border-danger"
                       : "form-control"
                   }
-                  value={(pageAction.element as T)[column.path]}
+                  value={(pageAction.element as T)[column.path] as string}
                   onChange={(e) => handleChange(e, item, column)}
                   type={column.type}
                 />
@@ -72,7 +67,7 @@ const TBody = <T extends IDefaultItem>({
                 pageAction.status &&
                 (pageAction.element as T).id === item.id && (
                   <i
-                    className="icon-checkmark3 text-primary"
+                    className="icon-check text-success"
                     onClick={() => onSave(item)}
                   />
                 )}
@@ -81,7 +76,7 @@ const TBody = <T extends IDefaultItem>({
                   pageAction.status && (pageAction.element as T).id === item.id
                 ) && (
                   <i
-                    className="icon-pencil5 text-primary"
+                    className="  icon-pencil text-info"
                     aria-hidden="true"
                     onClick={() => onEdit(item)}
                   />
@@ -99,7 +94,7 @@ const TBody = <T extends IDefaultItem>({
                   pageAction.status && (pageAction.element as T).id === item.id
                 ) && (
                   <i
-                    className="icon-bin text-danger"
+                    className="icon-trash text-danger"
                     aria-hidden="true"
                     onClick={() => onDelete(item)}
                   />

@@ -1,12 +1,8 @@
 import React, { PropsWithChildren } from "react";
 import THead from "./THead";
 import TBody from "./TBody";
-import { category, column, features, pageAction } from "./model";
+import { ICategory, column, features, pageAction ,IDefaultItem} from "./model";
 
-interface IDefaultItem {
-  id: string;
-  [k: string]: string | string [];
-}
 interface IProps<T extends IDefaultItem> {
   pageData: Array<T>;
   columns: column[];

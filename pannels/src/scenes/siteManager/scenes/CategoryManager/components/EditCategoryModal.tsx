@@ -8,21 +8,18 @@ import EditChangeName from "./EditChangeName";
 import NavTabs from "./NavTabs";
 import ImageEditSection from "./ImageEditSection";
 import SubmitModalButton from "../../../../../components/SubmitModalButton";
+import { ISliderImage, ICategory } from "./Table/model";
 //-----------------------------------------------------------------
-interface ICategory {
-  id: number;
-  name: string;
-  picture: string;
-  slider: string[];
-}
 interface IProps {
   modalDispatcher: (actions: AppActions) => void;
-  category: ICategory;
 }
 
-const EditCategoryModal: React.FC<IProps> = ({
+const EditCategoryModal: React.FC<IProps & ICategory> = ({
   modalDispatcher,
-  category: { id, name, picture, slider },
+  id,
+  name,
+  image,
+  slider,
 }) => {
   const handleCloseModal = () => {
     modalDispatcher({ type: EModalActionTypes.HIDE_MODAL });
@@ -67,6 +64,8 @@ const EditCategoryModal: React.FC<IProps> = ({
               onChangeActiveItem={handleCahngeActiveItem}
             />
             <ImageEditSection
+              picture={image}
+              slider={slider}
               activeItem={activeItem}
               onChangeActiveItem={handleCahngeActiveItem}
             />
@@ -82,3 +81,18 @@ const EditCategoryModal: React.FC<IProps> = ({
 };
 
 export default EditCategoryModal;
+
+
+
+
+
+
+
+
+
+
+// user{
+
+// }
+
+// category:create category:delete

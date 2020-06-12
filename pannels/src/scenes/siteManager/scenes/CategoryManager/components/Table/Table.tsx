@@ -9,23 +9,24 @@ import TableFooter from "./TableFooter";
 import TableHeader from "./TableHeader";
 import debounce from "debounce";
 import TableBody from "./TableBody";
-import { category, column, features, pageAction } from "./model";
+import { column, features, pageAction  ,ISliderImage, IDefaultItem} from "./model";
 import { FormikConfig, FormikValues } from "formik/dist/types";
+import { EModalActionTypes } from "../../../../../../services/contexts/ModalContext/models";
+import { useModalDispatch } from "../../../../../../services/contexts/ModalContext/ModalContext";
 
-interface IDefaultItem {
-  id: string;
-  [k: string]: string | string[];
-}
+
 interface IProps<T extends IDefaultItem> {
   entryData: T[];
   columns: column[];
   features: features;
+  toBeRenderedModal: any;
 }
 // declare function Table<Values extends FormikValues = FormikValues, ExtraProps = {}>(props: FormikConfig<Values> & ExtraProps): JSX.Element;
 const Table = <T extends IDefaultItem>({
   entryData,
   columns,
   features,
+  toBeRenderedModal,
 }: PropsWithChildren<IProps<T>>) => {
   const [data, setData] = useState<T[] | []>([]);
   const [pageData, setPageDate] = useState<T[] | []>([]);
@@ -38,18 +39,36 @@ const Table = <T extends IDefaultItem>({
   const [currentPage, setCurrentPage] = useState(1);
   const [query, setQuery] = useState("");
   const [inputErrors, setInputErrors] = useState({});
+
+  const modalDispatch = useModalDispatch();
+  const openModal = (modalProps: T) => {
+    modalDispatch({
+      type: EModalActionTypes.SHOW_MODAL,
+      payload: {
+        component: toBeRenderedModal,
+        props: {
+          ...modalProps,
+          // id: 1,
+          // name: "فلان",
+          // picture: "bla",
+          // slider: ["khar", "olaq"],
+        },
+      },
+    });
+  };
+
   useEffect(() => {
-    const data = { ...entryData };
+    const data = [...entryData];
     setData(data);
   }, [entryData]);
   useEffect(() => {
     //request get data
-    const data = { ...entryData };
+    const data = [...entryData];
     setPageDate(data);
   }, [currentPage, data, pageSize]);
   useEffect(() => {
     const search = () => {
-      // const newData = entryData.filter((item:category) => {
+      // const newData = entryData.filter((item:T) => {
       //   const founded = columns.map((col) =>
       //     item[col.path].includes(query) ? item : ""
       //   );
@@ -70,15 +89,17 @@ const Table = <T extends IDefaultItem>({
       //open modal
     }
   };
-  const onEdit = (editedData: category) => {
+  const onEdit = (editedData: T) => {
     if (pageMode === "DEFAULT") {
-      setPageMode("EDIT");
-      setPageAction({ status: true, element: editedData });
+      // setPageMode("EDIT");
+
+      // setPageAction({ status: true, element: editedData });
 
       //open modal
+      openModal(editedData);
     }
   };
-  const onDelete = (deletedData: category) => {
+  const onDelete = (deletedData: T) => {
     if (pageMode === "DEFAULT") {
       // eslint-disable-next-line no-restricted-globals
       if (!confirm("آیا مطمئن  هستید حذف شود؟")) return;
@@ -86,7 +107,7 @@ const Table = <T extends IDefaultItem>({
       setData(newData);
     }
   };
-  const onSave = (savedData: category) => {
+  const onSave = (savedData: T) => {
     //input validation
     // const newErrors = {};
     // columns.map((column) => (newErrors[column.path] = false));
@@ -128,7 +149,6 @@ const Table = <T extends IDefaultItem>({
     }
   };
 
-  console.log(entryData === data, "use effect");
   return (
     <div className="table-responsive m-t-40">
       <div
