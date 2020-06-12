@@ -40,10 +40,10 @@ const TBody = <T extends IDefaultItem>({
     setPageAction({ status: pageAction.status, element: editedItem });
   };
 
-  console.log(inputErrors);
+  console.log(data);
   return (
     <tbody>
-      {(data as any)!.map((item: T, index: number) => (
+      {data.map((item, index) => (
         <tr key={item.id}>
           <th key={index + 1} scope="row">
             {startPage + index + 1}
