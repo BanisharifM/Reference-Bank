@@ -39,3 +39,5 @@ const categories:category[] = [
 export function getCategories() {
     return categories;
 }
+
+

@@ -15,9 +15,9 @@ const FormSignUpCompany = () => (
         password: "",
       }}
       validationSchema={Yup.object({
-        campany_name: Yup.string()
+        company_name: Yup.string()
           .typeError("نام شرکت نمیتواند عدد باشد")
-          .required(""),
+          .required("نام شرکت را وارد کنید"),
 
         username: Yup.number()
           .typeError("شماره موبایل نمیتواند حروف باشد")
