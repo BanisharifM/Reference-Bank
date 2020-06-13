@@ -2,8 +2,9 @@ import { AppActions } from "./../AppActions";
 import { createContext, Dispatch, useContext } from "react";
 import { IUserState } from "./models";
 const initial: IUserState = {
-  username: "",
-  isAuth: false,
+  username: "ali",
+  isAuth: true,
+  rule: "admin",
 };
 
 export const userContext = createContext<IUserState>(initial);

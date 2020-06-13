@@ -6,6 +6,7 @@ import PrivateRoute from "../components/PrivateRoute";
 import BaseLayout from "../components/BaseLayout";
 import { dashboardRoutes } from "./Dashboard/Scenes/routes";
 import { siteManagerRoutes } from "./siteManager/scenes/routes";
+import { TPermissions } from "../services/constants/models";
 const Dashboard = lazy(() => import("./Dashboard"));
 const Redirect = lazy(() => import("./Redirect"));
 const SiteManager = lazy(() => import("./siteManager"));
@@ -17,6 +18,7 @@ export interface IRoute {
   routes?: IRoute[];
   private?: boolean;
   notHaveBaseLayout?: boolean;
+  toHavePermissions?: TPermissions[];
 }
 
 const routes: IRoute[] = [
@@ -34,69 +36,9 @@ const routes: IRoute[] = [
     path: "/site-manager",
     component: SiteManager,
     routes: siteManagerRoutes,
+    private: true,
+    toHavePermissions: ["main-site:edit"],
   },
-  //   {
-  //     path: "/login",
-  //     component: LogIn,
-  //   },
-  //   {
-  //     path: "/sign-up",
-  //     component: SignUp,
-  //   },
-  //   {
-  //     path: "/activate",
-  //     component: OTPActivation,
-  //   },
-  //   {
-  //     path: "/product/:id",
-  //     component: Product,
-  //   },
-  //   {
-  //     path: "/checkout",
-  //     component: Checkout,
-  //     private: true,
-  //   },
-  //   {
-  //     path: "/profile",
-  //     component: Profile,
-  //     exact: true,
-  //     private: true,
-  //   },
-  //   {
-  //     path: "/profile/edit",
-  //     component: EditProfile,
-  //     exact: true,
-  //     private: true,
-  //   },
-  //   {
-  //     path: "/profile/address/edit",
-  //     component: EditAddress,
-  //     exact: true,
-  //     private: true,
-  //   },
-  //   {
-  //     path: "/profile/address/add",
-  //     component: AddAddress,
-  //     exact: true,
-  //     private: true,
-  //   },
-  //   {
-  //     path: "/order",
-  //     component: Order,
-  //     private: true,
-  //   },
-  //   {
-  //     path: "/payment",
-  //     private: true,
-  //     component: Callback,
-  //   },
-  //   {
-  //     path: "/help/order",
-  //     component: Help,
-  //   },
-  //   {
-  //     component: NotFound,
-  //   },
 ];
 
 export const renderRoutes = (routes: IRoute[]) => {

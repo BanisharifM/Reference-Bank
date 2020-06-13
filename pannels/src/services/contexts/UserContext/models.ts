@@ -1,6 +1,7 @@
 export interface IUserState {
   username: string;
   isAuth: boolean;
+  rule: "user" | "company" | "admin" | "";
 }
 //-----------user acitions------------------
 export enum EUserActionTypes {

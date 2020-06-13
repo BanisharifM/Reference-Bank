@@ -1,5 +1,5 @@
-import { ITokens } from "./../../LocalStorage/localStorage";
-import { axiosInstance, axiosInstanceNoAuth } from "./../../axios/axios";
+import { ITokens } from "../../../LocalStorage/localStorage";
+import { axiosInstance, axiosInstanceNoAuth } from "../../../axios/axios";
 
 export const authenticateUser = async (
   url: string,

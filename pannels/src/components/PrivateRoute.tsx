@@ -2,22 +2,30 @@ import React from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IStore } from "../redux/models/IStore";
+import { useUserState } from "../services/contexts/UserContext/UserContext";
+import routes, { IRoute } from "../scenes/routes";
+import rules from "../services/constants/roles";
 
-const PrivateRoute: React.FC<RouteProps & { component: any }> = ({
+const PrivateRoute: React.FC<RouteProps & { component: any } & IRoute> = ({
   component: Component,
   ...rest
 }) => {
-  //it should be update
-  const user = useSelector((store: IStore) => store.user);
-  console.log(user, " in private route");
+  const { toHavePermissions } = rest;
+  const user = useUserState();
+  const userPermissions = rules[user.rule].static;
+  // console.log(userPermissions);
+
+  const canRender = toHavePermissions?.some((item) => {
+    return userPermissions.some((perm) => item === perm);
+  });
   return (
     <Route
       {...rest}
       render={(props) => {
         return (
           <>
-            {user.isAuth ? (
-              <Component {...props} />
+            {user.isAuth && canRender? (
+              <Component routes={rest.routes} {...props} />
             ) : (
               <>
                 {/* {toast.error("برای ادامه وارد شوید")} */}

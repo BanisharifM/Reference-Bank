@@ -6,8 +6,10 @@ import { Switch, Route } from "react-router-dom";
 import routes, { renderRoutes } from "./routes";
 import Loading from "../components/Loading";
 import Dashboard from "./Dashboard";
+import { useUserState } from "../services/contexts/UserContext/UserContext";
 
 const App = () => {
+  const user = useUserState();
   return (
     <>
       <Suspense fallback={<Loading />}>

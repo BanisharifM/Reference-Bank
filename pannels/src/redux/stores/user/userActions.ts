@@ -7,7 +7,7 @@ import { EUserActionTypes } from "./userActionTypes";
 import axios from "axios";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
-import api from "../../../services/api";
+import api from "../../../services/utils/api";
 
 export type UUserActions = IUserState | IError;
 

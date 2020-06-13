@@ -1,7 +1,7 @@
-interface IRulePermissionTypes {
+export interface IRulePermissionTypes {
   static: TPermissions[];
 }
-interface IRules {
+export interface IRules {
   user: IRulePermissionTypes;
   company: IRulePermissionTypes;
   admin: IRulePermissionTypes;
@@ -11,7 +11,7 @@ interface IUserRules {}
 interface ICompanyRules {}
 interface IAdminRules {}
 
-type TPermissions =
+export type TPermissions =
   | "company:signup"
   | "main-site:edit"
   | "company:create"
@@ -19,4 +19,3 @@ type TPermissions =
   | "category:update"
   | "category:delete"
   | "category:create";
-export { IRulePermissionTypes, IRules, TPermissions };

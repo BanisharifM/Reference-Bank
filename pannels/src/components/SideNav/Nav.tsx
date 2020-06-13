@@ -4,6 +4,7 @@ import SubHeaderItem from "./SideNavItems/SubHeaderNavItem";
 import Menu from "./SideNavItems/Menu";
 import { dashboardItems, siteManagementItems } from "./SideNavItems/items";
 import SubHeaderNav from "./SideNavItems/SubHeaderNav";
+import Can from "../Can";
 
 const Nav = () => {
   return (
@@ -16,10 +17,15 @@ const Nav = () => {
           items={dashboardItems}
           icon="icon-speedometer"
         />
-        <SubHeaderNav
-          title="مدیریت سایت اصلی"
-          items={siteManagementItems}
-          icon="ti-layout-grid2"
+        <Can
+          perform="main-site:edit"
+          yes={() => (
+            <SubHeaderNav
+              title="مدیریت سایت اصلی"
+              items={siteManagementItems}
+              icon="ti-layout-grid2"
+            />
+          )}
         />
       </ul>
     </nav>

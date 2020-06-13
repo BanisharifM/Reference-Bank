@@ -42,7 +42,11 @@ const Index = () => {
           {/* <div id="image-popups" className="row"> */}
           <div className="row el-element-overlay">
             {items.map((item, index) => (
-              <SliderCards {...item} onDelete={handleDeleteItem} />
+              <SliderCards
+                key={item.index}
+                {...item}
+                onDelete={handleDeleteItem}
+              />
             ))}
             <AddImage url="/" />
           </div>
