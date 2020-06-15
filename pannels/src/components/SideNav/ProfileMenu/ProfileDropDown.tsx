@@ -29,13 +29,38 @@ const ProfileDropDown = () => {
           showProfileMenu && "show"
         }`}
       >
-        <ProfileMenuItem title="پروفایل" icon="ti-user" path="/" />
-        <ProfileMenuItem title="تراکنش ها" icon="ti-wallet" path="/" />
-        <ProfileMenuItem title="صندوق پیام ها" icon="ti-email" path="/" />
+        <ProfileMenuItem
+          title="پروفایل"
+          icon="ti-user"
+          path="/"
+          toHavePermissions={[]}
+        />
+        <ProfileMenuItem
+          title="تراکنش ها"
+          icon="ti-wallet"
+          path="/"
+          toHavePermissions={[]}
+        />
+        <ProfileMenuItem
+          title="صندوق پیام ها"
+          icon="ti-email"
+          path="/"
+          toHavePermissions={[]}
+        />
         <ProfileDropDownDevider />
-        <ProfileMenuItem title="تنظیمات حساب" icon="ti-setting" path="/" />
+        <ProfileMenuItem
+          title="تنظیمات حساب"
+          icon="ti-setting"
+          path="/"
+          toHavePermissions={[]}
+        />
         <ProfileDropDownDevider />
-        <ProfileMenuItem title="خروج" icon="fa fa-power-off" path="/" />
+        <ProfileMenuItem
+          title="خروج"
+          icon="fa fa-power-off"
+          path="/"
+          toHavePermissions={[]}
+        />
       </div>
     </div>
   );

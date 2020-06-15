@@ -18,7 +18,7 @@ declare function fromType<T extends boolean>(
   ? IAdminCreateCompanyFormikState
   : ICompanyCreateCompanyFormikState;
 
-const adminDefault: IAdminCreateCompanyFormikState = {
+const defaultValues: IAdminCreateCompanyFormikState = {
   name: "",
   phone_number: "",
   company_number: "",
@@ -26,23 +26,11 @@ const adminDefault: IAdminCreateCompanyFormikState = {
   start_date: "",
   end_date: "",
 };
-const companyDefault: ICompanyCreateCompanyFormikState = {
-  name: "",
-  phone_number: "",
-  company_number: "",
-  zip_code: "",
-};
 const CreaetCompanyForm = () => {
-  const isAdmin = useCanPerform("company:create");
   return (
     <div>
-      <Formik<
-        typeof isAdmin extends true
-          ? IAdminCreateCompanyFormikState
-          : ICompanyCreateCompanyFormikState,
-        {}
-      >
-        initialValues={isAdmin ? adminDefault : companyDefault}
+      <Formik<IAdminCreateCompanyFormikState, {}>
+        initialValues={defaultValues}
         validationSchema={Yup.object({
           name: Yup.string().required("لطفا نام شرکت را وارد کنید"),
           phone_number: Yup.number()
@@ -106,28 +94,25 @@ const CreaetCompanyForm = () => {
               name="zip_code"
               component={CustomInputComponent}
             />
-            {isAdmin && (
-              <div className="row">
-                <div className="col-md-5">
-                  <Field
-                    label="تاریخ شروع فعالیت:"
-                    type="text"
-                    name="start_date"
-                    component={CustomeCalanderComponent}
-                  />
-                  <Field
-                    label="تاریخ پایان فعالیت:"
-                    type="text"
-                    name="end_date"
-                    component={CustomeCalanderComponent}
-                  />
-                </div>
+            <div className="row">
+              <div className="col-md-5">
+                <Field
+                  label="تاریخ شروع فعالیت:"
+                  type="text"
+                  name="start_date"
+                  component={CustomeCalanderComponent}
+                />
+                <Field
+                  label="تاریخ پایان فعالیت:"
+                  type="text"
+                  name="end_date"
+                  component={CustomeCalanderComponent}
+                />
               </div>
-            )}
+            </div>
 
             <button type="submit" className="btn btn-success">
-              <i className="fa fa-check"></i>
-              {!isAdmin ? "ارسال درخواست ثبت شرکت" : "ثبت شرکت"}
+              <i className="fa fa-check"></i> ارسال درخواست ثبت شرکت
             </button>
 
             {JSON.stringify(values, null, 2)}

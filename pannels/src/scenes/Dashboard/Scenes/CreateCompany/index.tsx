@@ -3,7 +3,6 @@ import CreateCompanyForm from "./components/CreateCompanyForm";
 import { useCanPerform } from "../../../../services/hooks/useCanPerform";
 
 const Index = () => {
-  const canCreateCompany = useCanPerform("company:create");
   return (
     <div className="row">
       <div className="col-sm-12">

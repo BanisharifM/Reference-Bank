@@ -1,18 +1,25 @@
 import { IMenuItem } from "../types";
 
-const dashboardItems: IMenuItem[] = [
+const adminDashboardItems: IMenuItem[] = [
   {
     path: "/dashboard/create-company",
     title: "ثبت شرکت",
+    toHavePermissions: ["company:create", "company:signup"],
   },
-  { path: "/felan", title: "Analytical" },
+  {
+    path: "/felan",
+    title: "Analytical",
+    toHavePermissions: [],
+  },
   {
     path: "/bisar",
     title: "Demographical",
+    toHavePermissions: [],
   },
   {
     path: "/felanbisar",
     title: "Modern",
+    toHavePermissions: [],
   },
 ];
 
@@ -20,11 +27,13 @@ const siteManagementItems: IMenuItem[] = [
   {
     path: "/site-manager/slider",
     title: "اسلایدر اصلی",
+    toHavePermissions: ["main-site:edit"],
   },
   {
     path: "/site-manager/category-manager",
     title: "دسته بندی‌ها",
+    toHavePermissions: ["main-site:edit"],
   },
 ];
 
-export { dashboardItems, siteManagementItems };
+export { adminDashboardItems, siteManagementItems };

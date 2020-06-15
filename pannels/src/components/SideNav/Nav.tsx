@@ -2,36 +2,41 @@ import React from "react";
 import HeaderItem from "./SideNavItems/HeaderItem";
 import SubHeaderItem from "./SideNavItems/SubHeaderNavItem";
 import Menu from "./SideNavItems/Menu";
-import { dashboardItems, siteManagementItems } from "./SideNavItems/items";
+import {
+  adminDashboardItems,
+  siteManagementItems,
+} from "./SideNavItems/subItems";
 import SubHeaderNav from "./SideNavItems/SubHeaderNav";
 import Can from "../Can";
-
+import { useUserState } from "../../services/contexts/UserContext/UserContext";
+import { menuItems } from "./SideNavItems/mainItem";
 const Nav = () => {
   return (
     <nav className="sidebar-nav">
       <ul id="sidebarnav">
-        <HeaderItem title={"--- شخصی"} />
-        <SubHeaderNav
-          title="داشبورد"
-          news={4}
-          items={dashboardItems}
-          icon="icon-speedometer"
-        />
-        <Can
-          perform="main-site:edit"
-          yes={() => (
-            <SubHeaderNav
-              title="مدیریت سایت اصلی"
-              items={siteManagementItems}
-              icon="ti-layout-grid2"
-            />
-          )}
-        />
+        {menuItems.map((item) => (
+          <Can
+            perform={item.toHavePermissions}
+            yes={() => (
+              <SubHeaderNav
+                title={item.title}
+                news={item.news ? item.news : undefined}
+                items={item.items}
+                icon={item.icon} 
+              />
+            )}
+          />
+        ))}
       </ul>
     </nav>
   );
 };
 
+// <SubHeaderNav
+//   title="مدیریت سایت اصلی"
+//   items={siteManagementItems}
+//   icon="ti-layout-grid2"
+// />
 export default Nav;
 
 {

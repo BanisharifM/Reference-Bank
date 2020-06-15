@@ -7,9 +7,12 @@ export const dashboardRoutes: IRoute[] = [
   {
     path: "/dashboard/apps",
     component: Apps,
+    
   },
   {
     path: "/dashboard/create-company",
     component: CreateCompany,
+    private: true,
+    toHavePermissions: ["company:create"],
   },
 ];

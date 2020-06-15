@@ -3,9 +3,10 @@ import { TPermissions } from "../services/constants/models";
 import { useUserState } from "../services/contexts/UserContext/UserContext";
 import rules from "../services/constants/roles";
 import { check } from "../services/utils/check";
+import { isArray } from "lodash";
 
 interface IProps {
-  perform: TPermissions;
+  perform: TPermissions[] | undefined;
   yes: () => null | ReactElement<any, any>;
   no?: () => null | ReactElement<any, any>;
 }

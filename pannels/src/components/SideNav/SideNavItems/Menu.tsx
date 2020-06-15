@@ -1,6 +1,7 @@
 import React from "react";
 import { IMenuItem } from "../types";
 import MenuItem from "./MenuItem";
+import Can from "../../Can";
 
 interface IProps {
   items: IMenuItem[];
@@ -13,7 +14,10 @@ const Menu: React.FC<IProps> = ({ items, active }) => {
       className={`${active ? "collapse in" : "collapse"}`}
     >
       {items.map((item, index) => (
-        <MenuItem {...item} key={index} />
+        <Can
+          perform={item.toHavePermissions}
+          yes={() => <MenuItem {...item} key={index} />}
+        />
       ))}
     </ul>
   );
