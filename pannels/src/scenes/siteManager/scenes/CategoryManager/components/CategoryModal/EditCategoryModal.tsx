@@ -1,14 +1,14 @@
 import React, { useRef, useState } from "react";
-import { EModalActionTypes } from "../../../../../services/contexts/ModalContext/models";
-import { useOutsideClicker } from "../../../../../services/hooks/useOutsideClicker";
-import { AppActions } from "../../../../../services/contexts/AppActions";
-import CloseModalIcon from "../../../../../components/CloseModalIcon";
-import CloseModalButton from "../../../../../components/CloseModalButton";
+import { EModalActionTypes } from "../../../../../../services/contexts/ModalContext/models";
+import { useOutsideClicker } from "../../../../../../services/hooks/useOutsideClicker";
+import { AppActions } from "../../../../../../services/contexts/AppActions";
+import CloseModalIcon from "../../../../../../components/CloseModalIcon";
+import CloseModalButton from "../../../../../../components/CloseModalButton";
 import EditChangeName from "./EditChangeName";
 import NavTabs from "./NavTabs";
 import ImageEditSection from "./ImageEditSection";
-import SubmitModalButton from "../../../../../components/SubmitModalButton";
-import { ISliderImage, ICategory } from "./Table/model";
+import SubmitModalButton from "../../../../../../components/SubmitModalButton";
+import { ISliderImage, ICategory } from "../Table/model";
 //-----------------------------------------------------------------
 interface IProps {
   modalDispatcher: (actions: AppActions) => void;

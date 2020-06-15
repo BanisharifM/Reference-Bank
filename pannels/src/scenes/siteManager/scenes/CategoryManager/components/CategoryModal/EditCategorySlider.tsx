@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import Img1 from "../../../../../assets/images/users/1.jpg";
-import Img2 from "../../../../../assets/images/users/2.jpg";
-import Img3 from "../../../../../assets/images/users/3.jpg";
-import Img4 from "../../../../../assets/images/users/4.jpg";
-import SliderCards from "../../../components/SliderCards";
-import AddImage from "../../../components/AddImage";
-import { ISliderImage } from "./Table/model";
+import Img1 from "../../../../../../assets/images/users/1.jpg";
+import Img2 from "../../../../../../assets/images/users/2.jpg";
+import Img3 from "../../../../../../assets/images/users/3.jpg";
+import Img4 from "../../../../../../assets/images/users/4.jpg";
+import SliderCards from "../../../../components/SliderCards";
+import AddImage from "../../../../components/AddImage";
+import { ISliderImage } from "../Table/model";
 
 // interface ISliderImage {
 //   image: string;

@@ -1,7 +1,7 @@
 import React from "react";
 import PicCart from "./PicCart";
-import Img1 from "../../../../../assets/images/users/1.jpg";
-import AddImage from "../../../components/AddImage";
+import Img1 from "../../../../../../assets/images/users/1.jpg";
+import AddImage from "../../../../components/AddImage";
 
 interface IProps {
  image :string

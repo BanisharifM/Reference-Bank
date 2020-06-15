@@ -62,7 +62,7 @@ const TBody = <T extends IDefaultItem>({
             </td>
           ))}
           {features.hasAction && (
-            <td key={`r${item.id}dACTION`}>
+            <td className="text-center" key={`r${item.id}dACTION`}>
               {(features.editable || features.addable) &&
                 pageAction.status &&
                 (pageAction.element as T).id === item.id && (
@@ -71,16 +71,7 @@ const TBody = <T extends IDefaultItem>({
                     onClick={() => onSave(item)}
                   />
                 )}
-              {features.editable &&
-                !(
-                  pageAction.status && (pageAction.element as T).id === item.id
-                ) && (
-                  <i
-                    className="  icon-pencil text-info"
-                    aria-hidden="true"
-                    onClick={() => onEdit(item)}
-                  />
-                )}
+
               {(features.editable || features.addable) &&
                 pageAction.status &&
                 (pageAction.element as T).id === item.id && (
@@ -95,8 +86,19 @@ const TBody = <T extends IDefaultItem>({
                 ) && (
                   <i
                     className="icon-trash text-danger"
+                    style={{marginRight:"10px"}}
                     aria-hidden="true"
                     onClick={() => onDelete(item)}
+                  />
+                )}
+              {features.editable &&
+                !(
+                  pageAction.status && (pageAction.element as T).id === item.id
+                ) && (
+                  <i
+                    className="  icon-pencil text-info"
+                    aria-hidden="true"
+                    onClick={() => onEdit(item)}
                   />
                 )}
             </td>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useModalDispatch } from "../../../../services/contexts/ModalContext/ModalContext";
 import { EModalActionTypes } from "../../../../services/contexts/ModalContext/models";
-import EditCategoryModal from "./components/EditCategoryModal";
+import EditCategoryModal from "./components/CategoryModal/EditCategoryModal";
 import Table from "./components/Table/Table";
 import { getCategories } from "./testCategory";
 import { Formik } from "formik";

@@ -1,7 +1,7 @@
 import React from "react";
-import { useModalDispatch } from "../../../../../services/contexts/ModalContext/ModalContext";
-import { EModalActionTypes } from "../../../../../services/contexts/ModalContext/models";
-import PictureOverlayPreview from "../../../../../components/PictureOverlayPreview";
+import { useModalDispatch } from "../../../../../../services/contexts/ModalContext/ModalContext";
+import { EModalActionTypes } from "../../../../../../services/contexts/ModalContext/models";
+import PictureOverlayPreview from "../../../../../../components/PictureOverlayPreview";
 
 interface IProps {
   image: string;

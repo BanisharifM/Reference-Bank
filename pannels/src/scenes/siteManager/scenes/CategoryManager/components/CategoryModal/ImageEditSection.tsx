@@ -1,7 +1,7 @@
 import React from "react";
 import EditCategoryPicture from "./EditCategoryPicture";
 import EditCategorySlider from "./EditCategorySlider";
-import { ISliderImage } from "./Table/model";
+import { ISliderImage } from "../Table/model";
 
 const picCategory = "تصویر دسته بندی";
 const sliderCategory = "اسلایدر دسته بندی";
