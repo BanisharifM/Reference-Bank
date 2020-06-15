@@ -6,6 +6,8 @@ import "./assets/css/user-card.css";
 import "./assets/css/dropify.min.css";
 import "react-image-crop/dist/ReactCrop.css";
 import "./assets/css/magnific-popup.css";
+import 'react-modern-calendar-datepicker/lib/DatePicker.css';
+
 
 import React from "react";
 import ReactDOM from "react-dom";

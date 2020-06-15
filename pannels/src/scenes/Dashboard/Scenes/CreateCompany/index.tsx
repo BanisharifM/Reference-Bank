@@ -1,5 +1,5 @@
 import React from "react";
-import CreateForm from "./components/CreateForm";
+import CreateForm from "./components/CreateCompanyForm";
 
 const index = () => {
   return (
