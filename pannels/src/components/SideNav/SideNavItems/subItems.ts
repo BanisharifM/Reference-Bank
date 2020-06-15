@@ -4,7 +4,7 @@ const adminDashboardItems: IMenuItem[] = [
   {
     path: "/dashboard/create-company",
     title: "ثبت شرکت",
-    toHavePermissions: ["company:create", "company:signup"],
+    toHavePermissions: ["company:create"],
   },
   {
     path: "/felan",

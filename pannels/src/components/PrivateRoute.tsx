@@ -5,6 +5,7 @@ import { IStore } from "../redux/models/IStore";
 import { useUserState } from "../services/contexts/UserContext/UserContext";
 import routes, { IRoute } from "../scenes/routes";
 import rules from "../services/constants/roles";
+import { check } from "../services/utils/check";
 
 const PrivateRoute: React.FC<RouteProps & { component: any } & IRoute> = ({
   component: Component,
@@ -12,19 +13,20 @@ const PrivateRoute: React.FC<RouteProps & { component: any } & IRoute> = ({
 }) => {
   const { toHavePermissions } = rest;
   const user = useUserState();
-  const userPermissions = rules[user.rule].static;
+  // const userPermissions = rules[user.rule].static;
   // console.log(userPermissions);
 
-  const canRender = toHavePermissions?.some((item) => {
-    return userPermissions.some((perm) => item === perm);
-  });
+  // const canRender = toHavePermissions?.some((item) => {
+  //   return userPermissions.some((perm) => item === perm);
+  // });
+  const canRender = check(user , toHavePermissions)
   return (
     <Route
       {...rest}
       render={(props) => {
         return (
           <>
-            {user.isAuth && canRender? (
+            {user.isAuth && canRender ? (
               <Component routes={rest.routes} {...props} />
             ) : (
               <>
