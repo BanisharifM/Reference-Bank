@@ -16,3 +16,5 @@ export interface ISideNavItems {
   icon: string;
   toHavePermissions: TPermissions[];
 }
+
+

@@ -1,16 +1,16 @@
-import { ICategoryApi } from './models';
-import axios from "axios";
+import { axiosInstance } from "./../../../axios/axios";
+import { ICategoryApi } from "./models";
 
 const baseCategoryUrl = "/category";
 
 export const apiCategory: ICategoryApi = {
   createCategory: (obj) => {
-    return axios.post(baseCategoryUrl, obj);
+    return axiosInstance.post(baseCategoryUrl, obj);
   },
   deleteCategory: (id) => {
-    return axios.delete(`${baseCategoryUrl}/${id}`);
+    return axiosInstance.delete(`${baseCategoryUrl}/${id}`);
   },
   updateCategory: (obj) => {
-    return axios.put(`${baseCategoryUrl}/${obj.id}`, obj);
+    return axiosInstance.put(`${baseCategoryUrl}/${obj.id}`, obj);
   },
 };

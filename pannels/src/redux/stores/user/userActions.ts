@@ -16,16 +16,16 @@ export const loginUser = (): ThunkAction<
   IStore,
   {},
   AnyAction
-> => (dispatch, getState: () => IStore) => {
+> => (dispatch, getState: () => IStore) :any => {
   dispatch(loginPending());
-  return api
-    .loginUser()
-    .then((res) => {
-      dispatch(loginUserSuccess(res.data));
-    })
-    .catch((err) => {
-      dispatch(loginUserFail(err.data));
-    });
+  // return api
+  //   .loginUser()
+  //   .then((res) => {
+  //     dispatch(loginUserSuccess(res.data));
+  //   })
+  //   .catch((err) => {
+  //     dispatch(loginUserFail(err.data));
+  //   });
 };
 
 export const loginPending = (): IAction<any> => ({

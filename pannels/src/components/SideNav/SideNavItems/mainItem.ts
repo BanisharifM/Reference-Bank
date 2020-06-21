@@ -14,6 +14,15 @@ const calcOrChildPermission = (childIitem: IMenuItem[]): TPermissions[] => {
    *
    * */
 
+
+   /**
+    * map over childpermarray to get to havepermission items it makes an array like [[categore : create] , [] , []]
+    * and then check if there is an empty array in the list above, we should return [] else we should flattern 
+    * that array to check the permission in check function , 
+    * if returned value was [] , it means that any user can see that item !
+    * 
+    */
+
   const childPermArray = childIitem
     .map((item) => item.toHavePermissions)
     .filter((item) => item !== undefined);

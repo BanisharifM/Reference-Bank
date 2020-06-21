@@ -13,6 +13,8 @@ const PrivateRoute: React.FC<RouteProps & { component: any } & IRoute> = ({
 }) => {
   const { toHavePermissions } = rest;
   const user = useUserState();
+
+
   // const userPermissions = rules[user.rule].static;
   // console.log(userPermissions);
 

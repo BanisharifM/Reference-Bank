@@ -10,6 +10,7 @@ import { useUserState } from "../services/contexts/UserContext/UserContext";
 import { SWRConfig } from "swr";
 import axios from "axios";
 
+
 const App = () => {
   const user = useUserState();
   return (

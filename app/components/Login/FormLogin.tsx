@@ -6,28 +6,32 @@ import CustomeInputComponent from "../CustomeInputComponent";
 import GotoForgotPassword from "./GotoForgotPassword";
 import * as Yup from "yup";
 import CustomeButton from "../CustomeButton";
+import * as api from "../../services/api";
 
 const FormLogin = () => (
   <div>
     <Formik<IFormikLoginState>
-      initialValues={{ username: "", password: "" }}
+      initialValues={{ username: "", password: "", email: "" }}
       validationSchema={Yup.object({
-        username: Yup.number()
-          .typeError("شماره موبایل نمیتواند حروف باشد")
-          .required("لطفا شماره موبایل خود را وارد کنید"),
+        username: Yup.string().required(),
+        // username: Yup.number()
+        //   .typeError("شماره موبایل نمیتواند حروف باشد")
+        //   .required("لطفا شماره موبایل خود را وارد کنید"),
         password: Yup.string().required("لطفا رمز عبور خود را وارد کنید"),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
+      onSubmit={async (values, { setSubmitting }) => {
+        try {
+          const { data } = await api.authApi.loginUser({ ...values });
+          console.log(data);
+        } catch (e) {
+          window.location.href = "http://localhost:3000";
+        }
       }}
     >
       {({ isSubmitting }) => (
         <Form>
           <Field
-            type="email"
+            type="text"
             name="username"
             placeholder="شماره موبایل"
             component={CustomeInputComponent}
@@ -36,6 +40,12 @@ const FormLogin = () => (
             type="password"
             name="password"
             placeholder="رمز عبور"
+            component={CustomeInputComponent}
+          />
+          <Field
+            type="email"
+            name="email"
+            placeholder="ایمیل"
             component={CustomeInputComponent}
           />
           <GotoForgotPassword />
