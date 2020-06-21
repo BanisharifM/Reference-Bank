@@ -7,15 +7,23 @@ import routes, { renderRoutes } from "./routes";
 import Loading from "../components/Loading";
 import Dashboard from "./Dashboard";
 import { useUserState } from "../services/contexts/UserContext/UserContext";
+import { SWRConfig } from "swr";
+import axios from "axios";
 
 const App = () => {
   const user = useUserState();
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <BaseLayout>
-          <Switch>{renderRoutes(routes)}</Switch>
-        </BaseLayout>
+        <SWRConfig
+          value={{
+            fetcher: (...args) => axios.get(args).then((r) => r.data),
+          }}
+        >
+          <BaseLayout>
+            <Switch>{renderRoutes(routes)}</Switch>
+          </BaseLayout>
+        </SWRConfig>
       </Suspense>
     </>
   );

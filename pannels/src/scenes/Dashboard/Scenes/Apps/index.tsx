@@ -1,23 +1,19 @@
 import React from "react";
-import {
-  useModalDispatch,
-} from "../../../../services/contexts/ModalContext/ModalContext";
-import { EModalActionTypes } from "../../../../services/contexts/ModalContext/models";
-import SampleModal from "../../../../components/SampleModal";
+import useSWR from "swr";
+import { axiosInstance } from "../../../../services/axios/axios";
+import axios from "axios";
+import Post from "./Post";
 
 const Index = () => {
-  const modalDispatch = useModalDispatch();
+  const { data, isValidating } = useSWR(
+    "https://jsonplaceholder.typicode.com/users"
+  );
 
-  const handleOpenModal = () => {
-    modalDispatch({
-      type: EModalActionTypes.SHOW_MODAL,
-      payload: { component: SampleModal, props: {} },
-    });
-  };
   return (
     <div>
-      <button onClick={handleOpenModal}>click Me</button>
-      this is apps in dashboard page
+      {!data && <p>Loading ... </p>}
+      <pre>{JSON.stringify(data, null, 4)}</pre>
+      <Post />
     </div>
   );
 };
