@@ -4,7 +4,7 @@ import { IUserState } from "./models";
 const initial: IUserState = {
   username: "ali",
   isAuth: true,
-  rule: "company",
+  rule: "admin",
 };
 
 export const userContext = createContext<IUserState>(initial);
