@@ -15,7 +15,7 @@ const THead:React.FC<IProps> = ({ columns, hasAction, addable,onAdd }) => {
         {columns.map(column => (
           <th key={column.path}>{column.label}</th>
         ))}
-        {hasAction && <th onClick={onAdd}>{addable &&<i className="icon-plus3 text-success" /> }</th>}
+        {hasAction && <th className="text-center" onClick={onAdd}>{addable &&<i className="mdi mdi-plus text-success" /> }</th>}
       </tr>
     </thead>
   );

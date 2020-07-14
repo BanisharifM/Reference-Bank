@@ -18,28 +18,11 @@ const TableHeader: React.FC<IProps> = ({
 }) => {
   return (
     <div className="row">
-      {filtering && (
-        <div className="col-sm-12 col-md-6">
-          <div className="dataTables_filter">
-            <label>
-              جستجو:
-              <input
-                type="search"
-                className="form-control form-control-sm"
-                aria-controls="myTable"
-                placeholder="جستجو..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </label>
-          </div>
-        </div>
-      )}
+
       {tableSizing && (
         <div className="col-sm-12 col-md-6">
           <div className="dataTables_length" id="example_length">
             <label>
-              نمایش
               <select
                 name="example_length"
                 aria-controls="example"
@@ -55,6 +38,22 @@ const TableHeader: React.FC<IProps> = ({
             </label>
           </div>
         </div>
+      )}
+      {filtering && (
+          <div className="col-sm-12 col-md-6">
+            <div className="dataTables_filter">
+              <label>
+                <input
+                    type="search"
+                    className="form-control"
+                    aria-controls="myTable"
+                    placeholder="جستجو..."
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                />
+              </label>
+            </div>
+          </div>
       )}
     </div>
   );

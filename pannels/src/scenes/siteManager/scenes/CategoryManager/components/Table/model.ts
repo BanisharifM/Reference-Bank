@@ -3,6 +3,14 @@ export interface column {
   label: string;
   type: string;
 }
+export interface ISliderImage {
+  image: string;
+  index: number;
+}
+export interface IDefaultItem {
+  id: string;
+  [k: string]: string | ISliderImage[];
+}
 export interface features {
   paginating: boolean;
   defaultPageSize: number;
@@ -14,12 +22,12 @@ export interface features {
   deletable: boolean;
 }
 
-export interface category {
+export interface ICategory {
   id: string;
   name: string;
   image: string;
-  slider: string[];
-  [k: string]: string | string[];
+  slider: ISliderImage[];
+  [k: string]: string | ISliderImage[];
 }
 
 export interface pageAction<T> {
