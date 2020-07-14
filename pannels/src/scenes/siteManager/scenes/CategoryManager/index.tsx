@@ -36,8 +36,8 @@ const Index = () => {
       {/* <button onClick={openModal}>click</button> */}
       <div className="card">
         <div className="card-body">
-          <h4 className="card-title">Row grouping </h4>
-          <h6 className="card-subtitle">Data table example</h6>
+          {/*<h4 className="card-title">لیست دسته بندی شرکت ها</h4>*/}
+          {/*<h6 className="card-subtitle">Data table example</h6>*/}
 
           <Table<ICategory>
             entryData={getCategories()}

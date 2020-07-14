@@ -5,8 +5,8 @@ const NotifFooter = () => {
     <li>
       <div className="nav-link text-center link" >
         {" "}
-        <strong>Check all notifications</strong>{" "}
-        <i className="fa fa-angle-right"></i>{" "}
+        <strong>دیدن همه اعلان ها</strong>{" "}
+        <i className="fa fa-angle-left"/>
       </div>
     </li>
   );

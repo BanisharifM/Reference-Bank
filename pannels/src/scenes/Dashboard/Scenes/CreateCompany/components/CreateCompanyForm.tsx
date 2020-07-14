@@ -102,6 +102,8 @@ const CreaetCompanyForm = () => {
                   name="start_date"
                   component={CustomeCalanderComponent}
                 />
+              </div>
+              <div className="col-md-5">
                 <Field
                   label="تاریخ پایان فعالیت:"
                   type="text"
@@ -112,10 +114,10 @@ const CreaetCompanyForm = () => {
             </div>
 
             <button type="submit" className="btn btn-success">
-              <i className="fa fa-check"></i> ارسال درخواست ثبت شرکت
+              <i className="fa fa-check"/> ارسال درخواست ثبت شرکت
             </button>
 
-            {JSON.stringify(values, null, 2)}
+            {/*{JSON.stringify(values, null, 2)}*/}
           </Form>
         )}
       </Formik>

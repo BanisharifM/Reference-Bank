@@ -10,8 +10,8 @@ const MessageItem = () => {
         <span className="profile-status online pull-right"></span>{" "}
       </div>
       <div className="mail-contnet">
-        <h5>Pavan kumar</h5>{" "}
-        <span className="mail-desc">Just see the my admin!</span>{" "}
+        <h5>مهدی حسینی</h5>{" "}
+        <span className="mail-desc">اطلاعات واریزی حساب</span>{" "}
         <span className="time">9:30 AM</span>{" "}
       </div>
     </a>

@@ -6,8 +6,8 @@ const MessageFooter = () => {
       <div className="nav-link text-center link" >
         {" "}
         <strong>
-          See all e-Mails
-        </strong> <i className="fa fa-angle-right"></i>{" "}
+         مشاهده همه پیام ها
+        </strong> <i className="fa fa-angle-left"/>
       </div>
     </li>
   );

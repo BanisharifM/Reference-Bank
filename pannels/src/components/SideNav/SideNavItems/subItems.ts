@@ -6,21 +6,21 @@ const adminDashboardItems: IMenuItem[] = [
     title: "ثبت شرکت",
     toHavePermissions: ["company:create"],
   },
-  {
-    path: "/felan",
-    title: "Analytical",
-    toHavePermissions: [],
-  },
-  {
-    path: "/bisar",
-    title: "Demographical",
-    toHavePermissions: [],
-  },
-  {
-    path: "/felanbisar",
-    title: "Modern",
-    toHavePermissions: [],
-  },
+  // {
+  //   path: "/felan",
+  //   title: "Analytical",
+  //   toHavePermissions: [],
+  // },
+  // {
+  //   path: "/bisar",
+  //   title: "Demographical",
+  //   toHavePermissions: [],
+  // },
+  // {
+  //   path: "/felanbisar",
+  //   title: "Modern",
+  //   toHavePermissions: [],
+  // },
 ];
 
 const siteManagementItems: IMenuItem[] = [

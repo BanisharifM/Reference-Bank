@@ -21,7 +21,7 @@ const ProfileDropDown = () => {
       ref={showProfileMenu ? profileRef : null}
     >
       <ProfileName
-        name="حسین اشرفی"
+        name="مدیریت سایت"
         handleToggleProfileMenu={handleToggleProfileMenu}
       />
       <div

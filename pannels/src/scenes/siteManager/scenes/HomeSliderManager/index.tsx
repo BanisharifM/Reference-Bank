@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Img1 from "../../../../assets/images/users/1.jpg";
-import Img2 from "../../../../assets/images/users/2.jpg";
-import Img3 from "../../../../assets/images/users/3.jpg";
-import Img4 from "../../../../assets/images/users/4.jpg";
+import Img1 from "../../../../assets/images/Slider/1.jpg";
+import Img2 from "../../../../assets/images/Slider/2.jpg";
+import Img3 from "../../../../assets/images/Slider/3.jpg";
+import Img4 from "../../../../assets/images/Slider/4.jpg";
 import SliderCards from "../../components/SliderCards";
 import AddImage from "../../components/AddImage";
 
@@ -13,19 +13,19 @@ interface ISliderImage {
 const sliders: ISliderImage[] = [
   {
     image: Img1,
-    index: Math.random(),
+    index: 1,
   },
   {
     image: Img2,
-    index: Math.random(),
+    index: 2,
   },
   {
     image: Img3,
-    index: Math.random(),
+    index: 3,
   },
   {
     image: Img4,
-    index: Math.random(),
+    index: 4,
   },
 ];
 const Index = () => {
