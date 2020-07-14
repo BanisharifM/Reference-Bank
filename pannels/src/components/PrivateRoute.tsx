@@ -1,10 +1,7 @@
 import React from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { IStore } from "../redux/models/IStore";
 import { useUserState } from "../services/contexts/UserContext/UserContext";
-import routes, { IRoute } from "../scenes/routes";
-import rules from "../services/constants/roles";
+import  { IRoute } from "../scenes/routes";
 import { check } from "../services/utils/check";
 
 const PrivateRoute: React.FC<RouteProps & { component: any } & IRoute> = ({

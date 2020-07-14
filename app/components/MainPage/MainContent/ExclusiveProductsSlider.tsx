@@ -7,8 +7,7 @@ const ExclusiveProductsSlider = () => {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 4,
-    initialSlide: 0,
-    autoplay: true,
+    initialSlide: 0, autoplay: true,
     speed: 4000,
     autoplaySpeed: 3000,
     cssEase: "ease-out",
@@ -46,7 +45,7 @@ const ExclusiveProductsSlider = () => {
           <div className="col-12">
             <div className="heading_tab_header">
               <div className="heading_s2">
-                <h2>محصولات انحصاری</h2>
+                <h2>محصولات </h2>
               </div>
             </div>
           </div>
@@ -55,28 +54,28 @@ const ExclusiveProductsSlider = () => {
           <div className="col-12">
             <Slider {...settings}>
               <div>
-                <SliderItems image="/images/product_img1.jpg" />
+                <SliderItems price={8.000}  name ='شیرنارگیل عالیس' image="/images/product_img1.png" />
               </div>
               <div>
-                <SliderItems image="/images/product_img2.jpg" />
+                <SliderItems price={22.000} name='پرسیل' image="/images/product_img2.png" />
               </div>
               <div>
-                <SliderItems image="/images/product_img3.jpg" />
+                <SliderItems price={5.000}  name ='شیر کم چرب'image="/images/product_img3.png" />
               </div>
               <div>
-                <SliderItems image="/images/product_img4.jpg" />
+                <SliderItems price={25.000} name='تخم مرغ ۶ تایی' image="/images/product_img4.png" />
               </div>
               <div>
-                <SliderItems image="/images/product_img5.jpg" />
+                <SliderItems price={30.000} name ='کرم بیسکوییت' image="/images/product_img5.png" />
               </div>
               <div>
-                <SliderItems image="/images/product_img6.jpg" />
+                <SliderItems price={5.000}  name ='شیر کم چرب'image="/images/product_img3.png" />
               </div>
               <div>
-                <SliderItems image="/images/product_img7.jpg" />
+                <SliderItems price={8.000}  name ='شیرنارگیل عالیس' image="/images/product_img1.png" />
               </div>
               <div>
-                <SliderItems image="/images/product_img8.jpg" />
+                <SliderItems price={25.000} name='تخم مرغ ۶ تایی' image="/images/product_img4.png" />
               </div>
             </Slider>
           </div>

@@ -6,8 +6,7 @@ import "./assets/css/user-card.css";
 import "./assets/css/dropify.min.css";
 import "react-image-crop/dist/ReactCrop.css";
 import "./assets/css/magnific-popup.css";
-import 'react-modern-calendar-datepicker/lib/DatePicker.css';
-
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -22,21 +21,23 @@ import { PersistGate } from "redux-persist/integration/react";
 import SampleModal from "./components/SampleModal";
 import ModalRoot from "./components/ModalRoot";
 import ModalProvider from "./services/contexts/ModalContext/ModalProvider";
+
 ReactDOM.render(
-  <ModalProvider>
-    <Router history={browserHistory}>
-      {/* <BrowserRouter basename='/dashboard'> */}
-      <ModalRoot />
-      <App />
-      {/* </BrowserRouter> */}
-    </Router>
-  </ModalProvider>,
-  document.querySelector("#main-wrapper")
+	<ModalProvider>
+		<Router history={browserHistory}>
+			{/* <BrowserRouter basename='/dashboard'> */}
+			<ModalRoot />
+
+			<App />
+			{/* </BrowserRouter> */}
+		</Router>
+	</ModalProvider>,
+	document.querySelector("#main-wrapper")
 );
 
 // <Provider store={store}>
 //   <PersistGate loading={null} persistor={persistor}>
 {
-  /* </PersistGate>
+	/* </PersistGate>
   </Provider>, */
 }

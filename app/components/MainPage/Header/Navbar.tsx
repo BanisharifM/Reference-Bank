@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"; 
 import Search from "./Search";
 
 const Navbar = () => {
@@ -416,7 +416,7 @@ const Navbar = () => {
         </div>
         <ul className="navbar-nav attr-nav align-items-center">
           <li>
-           <Search/>
+            <Search />
           </li>
           <li className="dropdown cart_dropdown">
             <a
@@ -435,7 +435,7 @@ const Navbar = () => {
                   </a>
                   <a href="#">
                     <img
-                      src="../public/images/cart_thamb1.jpg"
+                      src="images/product_img2.png"
                       alt="cart_thumb1"
                     />
                     Variable product 001
@@ -456,7 +456,7 @@ const Navbar = () => {
                   </a>
                   <a href="#">
                     <img
-                      src="../public/images/cart_thamb2.jpg"
+					src="images/product_img1.png"
                       alt="cart_thumb2"
                     />
                     Ornare sed consequat
@@ -474,7 +474,7 @@ const Navbar = () => {
               </ul>
               <div className="cart_footer">
                 <p className="cart_total">
-                  <strong>Subtotal:</strong>{" "}
+                  <strong>جمع کل:</strong>{" "}
                   <span className="cart_price">
                     {" "}
                     <span className="price_symbole">$</span>
@@ -483,23 +483,24 @@ const Navbar = () => {
                 </p>
                 <p className="cart_buttons">
                   <a href="#" className="btn btn-fill-line view-cart">
-                    View Cart
+					  سبد خرید
                   </a>
                   <a href="#" className="btn btn-fill-out checkout">
-                    Checkout
+					  تکمیل سفارش
                   </a>
+				  
                 </p>
               </div>
             </div>
           </li>
           <li>
-            <a href="#" className="nav-link">
+            <a className="nav-link">
               <i className="linearicons-user"></i>
             </a>
           </li>
         </ul>
         <div className="pr_search_icon">
-          <a href="javascript:void(0);" className="nav-link pr_search_trigger">
+          <a className="nav-link pr_search_trigger">
             <i className="linearicons-magnifier"></i>
           </a>
         </div>

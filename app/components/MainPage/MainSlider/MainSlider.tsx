@@ -9,6 +9,7 @@ const MainSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
   return (
     <div
       className="banner_section slide_medium shop_banner_slider staggered-animation-wrap"
@@ -16,14 +17,15 @@ const MainSlider = () => {
     >
       <div className="container">
         <div className="row">
-          <div className="col-lg-9 offset-lg-3">
+          <div className="col offset-lg-2">
             <Slider {...settings}>
               <div>
                 <div
                   style={{
                     background: "url('images/banner4.jpg')",
-                    // border: "10px solid black",
-                    // height: "400px",
+					backgroundSize : "cover",
+					backgroundRepeat : "no-repeat"
+
                   }}
                   className="carousel-item active background_bg"
                 ></div>

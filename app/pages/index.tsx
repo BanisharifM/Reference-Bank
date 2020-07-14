@@ -1,22 +1,17 @@
-import React from "react";
-import Head from "next/head";
-import { HeaderNav } from "../components/MainPage/Header/HeaderNav";
-import MainContent from "../components/MainPage/MainContent";
-import Footer from "../components/MainPage/Footer/Footer";
-import { axiosInterceptor } from "../services/axios/axiosInterceptor";
-import { axiosInstance } from "../services/axios/axios";
-import MainSlider from "../components/MainPage/MainSlider/MainSlider";
+import React from 'react';
+import { HeaderNav } from '../components/MainPage/Header/HeaderNav';
+import MainContent from '../components/MainPage/MainContent';
+import Footer from '../components/MainPage/Footer/Footer';
+import MainSlider from '../components/MainPage/MainSlider/MainSlider';
 
-export const index = () => {
-  return (
-    <>
-      <HeaderNav />
-      <MainSlider />
-      <MainContent />
-      <Footer />
-    </>
-  );
-};
+export const index = () => (
+  <>
+    <HeaderNav />
+    <MainSlider />
+    <MainContent />
+    <Footer />
+  </>
+);
 export default index;
 
 // import Head from "next/head";

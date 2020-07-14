@@ -22,5 +22,5 @@ const Can: React.FC<IProps> = ({ perform, yes, no }) => {
 
   return canRender ? yes() : no ? no() : null;
 };
-
 export default Can;
+

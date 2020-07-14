@@ -1,14 +1,14 @@
 import React from "react";
 
 interface IProps {
+	name :string
     image : string
+	price :number 
+
+
 }
-const SliderItems:React.FC<IProps> = ({image }) => {
+const SliderItems:React.FC<IProps> = ({image,name ,price }) => {
   return (
-    // <div
-    //   className="owl-item active"
-    //   style={{ width: "245px" }}
-    // >
       <div className="item mx-2" >
         <div className="product">
           <div className="product_img">
@@ -19,7 +19,7 @@ const SliderItems:React.FC<IProps> = ({image }) => {
               <ul className="list_none pr_action_btn">
                 <li className="add-to-cart">
                   <a href="#">
-                    <i className="icon-basket-loaded"></i> Add To Cart
+                    <i className="icon-basket-loaded"></i> افزودن به سبد خرید
                   </a>
                 </li>
                 <li>
@@ -48,13 +48,13 @@ const SliderItems:React.FC<IProps> = ({image }) => {
           </div>
           <div className="product_info">
             <h6 className="product_title">
-              <a href="shop-product-detail.html">light blue Shirt</a>
+              <a href="shop-product-detail.html">{name}</a>
             </h6>
             <div className="product_price">
-              <span className="price">$69.00</span>
-              <del>$89.00</del>
+				<span className="price">${(4*price/5).toFixed(3)}</span>
+              <del>${price.toFixed(3)}</del>
               <div className="on_sale">
-                <span>20% Off</span>
+                <span>20% تخفیف</span>
               </div>
             </div>
             <div className="rating_wrap">
