@@ -13,10 +13,10 @@ const FormLogin = () => (
     <Formik<IFormikLoginState>
       initialValues={{ username: "", password: "", email: "" }}
       validationSchema={Yup.object({
-        username: Yup.string().required(),
-        // username: Yup.number()
-        //   .typeError("شماره موبایل نمیتواند حروف باشد")
-        //   .required("لطفا شماره موبایل خود را وارد کنید"),
+        // username: Yup.number().required(),
+		username: Yup.number()
+		  .typeError("شماره موبایل نمیتواند حروف باشد")
+		  .required("لطفا شماره موبایل خود را وارد کنید"),
         password: Yup.string().required("لطفا رمز عبور خود را وارد کنید"),
       })}
       onSubmit={async (values, { setSubmitting }) => {

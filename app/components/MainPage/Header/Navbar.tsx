@@ -1,5 +1,10 @@
-import React from "react"; 
+import React from "react";
 import Search from "./Search";
+import Link from "next/link";
+import NavbarLi from "../../shared/Navs/NavbarLi";
+import NavbarDropDown from "../../shared/Navs/DropDownComps/NavbarDropDown";
+import DropDownItem from "../../shared/Navs/DropDownComps/DropDownItem";
+import DropDownLink from "../../shared/Navs/DropDownComps/DropDownLink";
 
 const Navbar = () => {
   return (
@@ -19,209 +24,20 @@ const Navbar = () => {
           id="navbarSidetoggle"
         >
           <ul className="navbar-nav">
-            <li>
-              <a className="nav-link nav_item" href="index-2.html">
-                خانه
-              </a>
-            </li>
+			  <NavbarLi itemName='خانه' />
+			  <NavbarDropDown itemName='بلاگ' reverse >
+				  <DropDownItem itemName="grids">
+					  <DropDownLink itemName="3 column"/>
+					  <DropDownLink itemName="5 column"/>
+					  <DropDownLink itemName="7 column"/>
+				  </DropDownItem>
+				  <DropDownItem itemName="random" >
+					  <DropDownItem itemName="wild babe">
+					  <DropDownLink itemName="random22222"/>
+					  </DropDownItem>
+				  </DropDownItem>
+			  </NavbarDropDown>
 
-            <li className="dropdown">
-              <a
-                className="dropdown-toggle nav-link"
-                href="#"
-                data-toggle="dropdown"
-              >
-                بلاگ
-              </a>
-              <div className="dropdown-menu dropdown-reverse">
-                <ul>
-                  <li>
-                    <a
-                      className="dropdown-item menu-link dropdown-toggler"
-                      href="#"
-                    >
-                      Grids
-                    </a>
-                    <div className="dropdown-menu">
-                      <ul>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-three-columns.html"
-                          >
-                            3 columns
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-four-columns.html"
-                          >
-                            4 columns
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-left-sidebar.html"
-                          >
-                            Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-right-sidebar.html"
-                          >
-                            right Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-standard-left-sidebar.html"
-                          >
-                            Standard Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-standard-right-sidebar.html"
-                          >
-                            Standard right Sidebar
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item menu-link dropdown-toggler"
-                      href="#"
-                    >
-                      Masonry
-                    </a>
-                    <div className="dropdown-menu">
-                      <ul>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-masonry-three-columns.html"
-                          >
-                            3 columns
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-masonry-four-columns.html"
-                          >
-                            4 columns
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-masonry-left-sidebar.html"
-                          >
-                            Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-masonry-right-sidebar.html"
-                          >
-                            right Sidebar
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item menu-link dropdown-toggler"
-                      href="#"
-                    >
-                      Single Post
-                    </a>
-                    <div className="dropdown-menu">
-                      <ul>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single.html"
-                          >
-                            Default
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single-left-sidebar.html"
-                          >
-                            left sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single-slider.html"
-                          >
-                            slider post
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single-video.html"
-                          >
-                            video post
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single-audio.html"
-                          >
-                            audio post
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item menu-link dropdown-toggler"
-                      href="#"
-                    >
-                      List
-                    </a>
-                    <div className="dropdown-menu">
-                      <ul>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-list-left-sidebar.html"
-                          >
-                            left sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-list-right-sidebar.html"
-                          >
-                            right sidebar
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
             <li className="dropdown dropdown-mega-menu">
               <a
                 className="dropdown-toggle nav-link"
@@ -434,10 +250,7 @@ const Navbar = () => {
                     <i className="ion-close"></i>
                   </a>
                   <a href="#">
-                    <img
-                      src="images/product_img2.png"
-                      alt="cart_thumb1"
-                    />
+                    <img src="images/product_img2.png" alt="cart_thumb1" />
                     Variable product 001
                   </a>
                   <span className="cart_quantity">
@@ -455,10 +268,7 @@ const Navbar = () => {
                     <i className="ion-close"></i>
                   </a>
                   <a href="#">
-                    <img
-					src="images/product_img1.png"
-                      alt="cart_thumb2"
-                    />
+                    <img src="images/product_img1.png" alt="cart_thumb2" />
                     Ornare sed consequat
                   </a>
                   <span className="cart_quantity">
@@ -483,20 +293,21 @@ const Navbar = () => {
                 </p>
                 <p className="cart_buttons">
                   <a href="#" className="btn btn-fill-line view-cart">
-					  سبد خرید
+                    سبد خرید
                   </a>
                   <a href="#" className="btn btn-fill-out checkout">
-					  تکمیل سفارش
+                    تکمیل سفارش
                   </a>
-				  
                 </p>
               </div>
             </div>
           </li>
           <li>
-            <a className="nav-link">
-              <i className="linearicons-user"></i>
-            </a>
+            <Link href="/login">
+              <a className="nav-link">
+                <i className="linearicons-user"></i>
+              </a>
+            </Link>
           </li>
         </ul>
         <div className="pr_search_icon">
