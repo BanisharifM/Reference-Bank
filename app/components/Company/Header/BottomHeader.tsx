@@ -47,7 +47,7 @@ export const BottomHeader = () => {
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav">
-              <NavbarLi itemName="خانه" />
+              <NavbarLi itemName="خانه" path='/'/>
               <NavbarDropDown itemName="بلاگ" reverse>
                 <DropDownItem itemName="grids">
                   <DropDownLink itemName="3 column" />
@@ -63,22 +63,49 @@ export const BottomHeader = () => {
               <NavbarMegaMenu itemName="فروشگاه">
                 <MegaMenuLi lg={9}>
                   <ul className="d-lg-flex">
-                    <MegaMenuLi lg={4}>
+                    <MegaMenuLi xl={3} md={4}>
                       <ul>
-                        <DropDownHeader itemName="shop page layout" />
-                        <DropDownLink itemName="shop list view" />
+                        <DropDownHeader itemName="لبنیات" />
+                        <DropDownLink itemName="شیر" />
+                        <DropDownLink itemName="ماست" />
                       </ul>
                     </MegaMenuLi>
-                    <MegaMenuLi lg={4}>
+                    <MegaMenuLi xl={3} md={4}>
                       <ul>
-                        <DropDownHeader itemName="shop page layout" />
-                        <DropDownLink itemName="shop list view" />
+                        <DropDownHeader itemName="خشکبار و تنقلات" />
+                        <DropDownLink itemName="پسته" />
+                        <DropDownLink itemName="بادام" />
+                        <DropDownLink itemName="انجیر" />
                       </ul>
                     </MegaMenuLi>
-                    <MegaMenuLi lg={4}>
+                    <MegaMenuLi xl={3} md={4}>
                       <ul>
-                        <DropDownHeader itemName="shop page layout" />
-                        <DropDownLink itemName="shop list view" />
+                        <DropDownHeader itemName="محصولات کنسروی" />
+                        <DropDownLink itemName="کنسرو ماهی" />
+                        <DropDownLink itemName="کنسرو لوبیا" />
+                        <DropDownLink itemName="کنسرو بادمجون" />
+                      </ul>
+                    </MegaMenuLi>
+                    <MegaMenuLi xl={3} md={4}>
+                      <ul>
+                        <DropDownHeader itemName="گوشت و فرآورده‌های پروتئینی" />
+                        <DropDownLink itemName="گوشت" />
+                      </ul>
+                    </MegaMenuLi>
+                    <MegaMenuLi xl={3} md={4}>
+                      <ul>
+                        <DropDownHeader itemName="میوه و سبزیجات" />
+                        <DropDownLink itemName="تره" />
+                        <DropDownLink itemName="ریحون" />
+                        <DropDownLink itemName="پیازچه" />
+                      </ul>
+                    </MegaMenuLi>
+                    <MegaMenuLi xl={3} md={4}>
+                      <ul>
+                        <DropDownHeader itemName="آشامیدنی و نوشیدنی" />
+                        <DropDownLink itemName="آب" />
+                        <DropDownLink itemName="دلستر" />
+                        <DropDownLink itemName="نوشابه" />
                       </ul>
                     </MegaMenuLi>
                   </ul>
@@ -90,16 +117,13 @@ export const BottomHeader = () => {
                         <BannerImage image="/images/product_img1.png" />
                         <div className="shop_bn_content">
                           <h6 className="text-uppercase shop_subtitle">
-                            New Collection
+                            پیشنهاد ویژه
                           </h6>
-                          <h5 className="text-uppercase shop_title">
-                            Sale 30% Off
-                          </h5>
                           <a
                             href="#"
                             className="btn btn-white rounded-0 btn-xs text-uppercase"
                           >
-                            Shop Now
+                            همین حالا بخرید!
                           </a>
                         </div>
                       </div>

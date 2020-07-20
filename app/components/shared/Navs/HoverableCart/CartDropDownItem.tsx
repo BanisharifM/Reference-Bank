@@ -20,14 +20,12 @@ export const CartDropDownItem: React.FC<IProps> = ({
         <img src={image} alt="cart_thumb1" />
         {name}
       </a>
-      <span className="cart_quantity">
-        {" "}
-        {count} x{" "}
-        <span className="cart_amount">
-          {" "}
-          <span className="price_symbole">$</span>
+      <span className="cart_quantity d-flex align-items-center justify-content-between">
+        <span className="cart_amount  ">
+          {price.toFixed(3)}
+          <span className="price_symbole"> تومان</span>
         </span>
-        {price}
+        <span> ×{count}</span>
       </span>
     </li>
   );

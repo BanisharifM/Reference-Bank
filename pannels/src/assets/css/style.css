@@ -47942,3 +47942,9 @@ html body .dd3-item > button {
 .dropzone.disabled {
   opacity: 0.6;
 }
+
+
+
+.leaflet-container{
+	height :300px
+}

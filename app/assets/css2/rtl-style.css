@@ -104,7 +104,7 @@ button:not(:disabled) {
 }
 
 .mega-menu-col {
-  border-left: 1px solid #ddd;
+  /* border-left: 1px solid #ddd; */
   border-right: 0;
 }
 

@@ -20,7 +20,6 @@ export const Company = () => {
   const { query } = useRouter();
   return (
     <>
- 
       <div
         className="header_sticky_bar d-none"
         style={{ height: "120px" }}
@@ -62,7 +61,9 @@ export const Company = () => {
                     </div>
                   </div>
                 </div>
-                <CompanyMap />
+                <div className="mt-4">
+                  <CompanyMap />
+                </div>
               </div>
               <div className="col-xl-3 mt-4 pt-2 mt-xl-0 pt-xl-0">
                 <div className="sidebar">

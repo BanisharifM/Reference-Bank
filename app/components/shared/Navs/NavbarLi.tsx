@@ -1,14 +1,16 @@
 import React from "react";
+import Link from "next/link";
 
 interface IProps {
   itemName: string;
+  path: string;
 }
-export const NavbarLi: React.FC<IProps> = ({ itemName }) => {
+export const NavbarLi: React.FC<IProps> = ({ itemName, path }) => {
   return (
     <li>
-      <a className="nav-link nav_item" href="index-2.html">
-		  {itemName}
-      </a>
+      <Link href="/">
+        <a className="nav-link nav_item">{itemName}</a>
+      </Link>
     </li>
   );
 };
