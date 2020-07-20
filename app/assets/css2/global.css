@@ -9,5 +9,6 @@
 @import "./style.css";
 @import "./responsive.css";
 @import "./rtl-style.css";
-@import "../../node_modules/slick-carousel/slick/slick.css"; 
+@import "../../node_modules/slick-carousel/slick/slick.css";
 @import "../../node_modules/slick-carousel/slick/slick-theme.css";
+@import "../../node_modules/leaflet/dist/leaflet.css";

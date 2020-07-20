@@ -23,9 +23,8 @@ const MainSlider = () => {
                 <div
                   style={{
                     background: "url('images/banner4.jpg')",
-					backgroundSize : "cover",
-					backgroundRepeat : "no-repeat"
-
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
                   }}
                   className="carousel-item active background_bg"
                 ></div>
@@ -34,6 +33,8 @@ const MainSlider = () => {
                 <div
                   style={{
                     background: "url('images/banner5.jpg')",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
                     // border: "10px solid black",
                     // height: "400px",
                   }}

@@ -12,18 +12,18 @@ export const index = () => {
         <CartList>
           <CartDropDownItem
             name="شیر کم چرب"
-            image="images/product_img1.png"
+            image="/images/product_img1.png"
             price={81.0}
             count={2}
           />
           <CartDropDownItem
             name="شیر کم چرب"
-            image="images/product_img1.png"
+            image="/images/product_img1.png"
             price={81.0}
             count={2}
           />
-		  </CartList>
-		  <CartFooter/>
+        </CartList>
+        <CartFooter />
       </CartBoxDropDown>
     </li>
   );
