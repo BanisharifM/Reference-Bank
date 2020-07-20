@@ -8,7 +8,7 @@ import { EUserActionTypes } from "./userActionTypes";
 import axios from "axios";
 import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
-import api from "../../../services/api";
+import {getProfile}from "../../../services/api/login";
 
 export type UUserActions = IUser | IError ;
 
@@ -19,8 +19,7 @@ export const loginUser = (
   getState: () => IStore
 ) => {
   dispatch(loginPending());
-  return api.login
-    .getProfile(access)
+  return  getProfile(access)
     .then((res) => {
       dispatch(loginUserSuccess(res.data));
     })

@@ -11,6 +11,7 @@ import { useCanPerform } from "../../../../../services/hooks/useCanPerform";
 import CustomeCalanderComponent from "./CustomeCalanderComponent";
 import { utils } from "react-modern-calendar-datepicker";
 import { convertStringToDate } from "../../../../../services/utils/convertStringToDate";
+import CompanyMap from "./CompanyMap";
 
 declare function fromType<T extends boolean>(
   x: T
@@ -25,6 +26,8 @@ const defaultValues: IAdminCreateCompanyFormikState = {
   zip_code: "",
   start_date: "",
   end_date: "",
+  location : "",
+  map_location : [0,0]
 };
 const CreaetCompanyForm = () => {
   return (
@@ -33,6 +36,7 @@ const CreaetCompanyForm = () => {
         initialValues={defaultValues}
         validationSchema={Yup.object({
           name: Yup.string().required("لطفا نام شرکت را وارد کنید"),
+          location: Yup.string().required("لطفا آدرس را وارد کنید"),
           phone_number: Yup.number()
             .typeError("شماره موبایل نمیتواند حروف باشد")
             .required("لطفا شماره موبایل خود را وارد کنید"),
@@ -95,7 +99,7 @@ const CreaetCompanyForm = () => {
               component={CustomInputComponent}
             />
             <div className="row">
-              <div className="col-md-5">
+              <div className="col-12 col-md-6 col-xl-4 ">
                 <Field
                   label="تاریخ شروع فعالیت:"
                   type="text"
@@ -103,7 +107,7 @@ const CreaetCompanyForm = () => {
                   component={CustomeCalanderComponent}
                 />
               </div>
-              <div className="col-md-5">
+              <div className=" col-12 col-md-6 col-xl-4">
                 <Field
                   label="تاریخ پایان فعالیت:"
                   type="text"
@@ -111,10 +115,19 @@ const CreaetCompanyForm = () => {
                   component={CustomeCalanderComponent}
                 />
               </div>
+              <div className="col-12 col-xl-4">
+                <Field
+                  name="location"
+                  component={CustomInputComponent}
+                  label="آدرس:"
+                  type="text"
+                />
+                <CompanyMap />
+              </div>
             </div>
 
             <button type="submit" className="btn btn-success">
-              <i className="fa fa-check"/> ارسال درخواست ثبت شرکت
+              <i className="fa fa-check" /> ارسال درخواست ثبت شرکت
             </button>
 
             {/*{JSON.stringify(values, null, 2)}*/}

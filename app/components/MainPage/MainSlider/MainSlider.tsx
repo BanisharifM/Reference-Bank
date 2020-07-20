@@ -16,16 +16,16 @@ const MainSlider = () => {
       style={{ marginBottom: "30px" }}
     >
       <div className="container">
-        <div className="row">
+        <div className="row px-5">
           <div className="col offset-lg-2">
             <Slider {...settings}>
               <div>
                 <div
                   style={{
-                    background: "url('images/banner4.jpg')",
-					backgroundSize : "cover",
-					backgroundRepeat : "no-repeat"
-
+                    background: "url('images/mainslider/5.jpg')",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition :'bottom'
                   }}
                   className="carousel-item active background_bg"
                 ></div>
@@ -33,7 +33,10 @@ const MainSlider = () => {
               <div>
                 <div
                   style={{
-                    background: "url('images/banner5.jpg')",
+                    background: "url('images/mainslider/2.jpg')",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition :'center'
                     // border: "10px solid black",
                     // height: "400px",
                   }}

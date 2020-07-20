@@ -5,6 +5,8 @@ export interface IAdminCreateCompanyFormikState {
   zip_code: string;
   start_date: string;
   end_date: string;
+  location : string
+  map_location :[number , number]
 }
 export interface ICompanyCreateCompanyFormikState {
   name: string;

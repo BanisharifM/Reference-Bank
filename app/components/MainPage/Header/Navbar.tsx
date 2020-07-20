@@ -1,5 +1,17 @@
-import React from "react"; 
+import React from "react";
 import Search from "./Search";
+import NavbarLi from "../../shared/Navs/NavbarLi";
+import NavbarDropDown from "../../shared/Navs/DropDownComps/NavbarDropDown";
+import DropDownItem from "../../shared/Navs/DropDownComps/DropDownItem";
+import DropDownLink from "../../shared/Navs/DropDownComps/DropDownLink";
+import NavbarMegaMenu from "../../shared/Navs/MegaMenuComps/NavbarMegaMenu";
+import MegaMenuLi from "../../shared/Navs/MegaMenuComps/MegaMenuLi";
+import DropDownHeader from "../../shared/Navs/DropDownComps/DropDownHeader";
+import HeaderBanner from "../../shared/Banner/HeaderBanner";
+import HeaderBannerContent from "../../shared/Banner/HeaderBannerContent";
+import BannerImage from "../../shared/Banner/BannerImage";
+import UserStatus from "../../shared/Navs/HoverableCart/UserStatus";
+import HoverableCart from "../../shared/Navs/HoverableCart";
 
 const Navbar = () => {
   return (
@@ -19,491 +31,106 @@ const Navbar = () => {
           id="navbarSidetoggle"
         >
           <ul className="navbar-nav">
-            <li>
-              <a className="nav-link nav_item" href="index-2.html">
-                خانه
-              </a>
-            </li>
-
-            <li className="dropdown">
-              <a
-                className="dropdown-toggle nav-link"
-                href="#"
-                data-toggle="dropdown"
-              >
-                بلاگ
-              </a>
-              <div className="dropdown-menu dropdown-reverse">
-                <ul>
-                  <li>
-                    <a
-                      className="dropdown-item menu-link dropdown-toggler"
-                      href="#"
-                    >
-                      Grids
-                    </a>
-                    <div className="dropdown-menu">
+            <NavbarLi itemName="خانه" />
+            <NavbarDropDown itemName="بلاگ" reverse>
+              <DropDownItem itemName="grids">
+                <DropDownLink itemName="3 column" />
+                <DropDownLink itemName="5 column" />
+                <DropDownLink itemName="7 column" />
+              </DropDownItem>
+              <DropDownItem itemName="random">
+                <DropDownItem itemName="wild babe">
+                  <DropDownLink itemName="random22222" />
+                </DropDownItem>
+              </DropDownItem>
+            </NavbarDropDown>
+            <NavbarMegaMenu itemName="فروشگاه">
+              <MegaMenuLi lg={9}>
+                <ul className="d-lg-flex">
+                    <MegaMenuLi xl={3} md={4}>
                       <ul>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-three-columns.html"
-                          >
-                            3 columns
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-four-columns.html"
-                          >
-                            4 columns
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-left-sidebar.html"
-                          >
-                            Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-right-sidebar.html"
-                          >
-                            right Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-standard-left-sidebar.html"
-                          >
-                            Standard Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-standard-right-sidebar.html"
-                          >
-                            Standard right Sidebar
-                          </a>
-                        </li>
+                        <DropDownHeader itemName="لبنیات" />
+                        <DropDownLink itemName="شیر" />
+                        <DropDownLink itemName="ماست" />
                       </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item menu-link dropdown-toggler"
-                      href="#"
-                    >
-                      Masonry
-                    </a>
-                    <div className="dropdown-menu">
+                    </MegaMenuLi>
+                    <MegaMenuLi xl={3} md={4}>
                       <ul>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-masonry-three-columns.html"
-                          >
-                            3 columns
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-masonry-four-columns.html"
-                          >
-                            4 columns
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-masonry-left-sidebar.html"
-                          >
-                            Left Sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-masonry-right-sidebar.html"
-                          >
-                            right Sidebar
-                          </a>
-                        </li>
+                        <DropDownHeader itemName="خشکبار و تنقلات" />
+                        <DropDownLink itemName="پسته" />
+                        <DropDownLink itemName="بادام" />
+                        <DropDownLink itemName="انجیر" />
                       </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item menu-link dropdown-toggler"
-                      href="#"
-                    >
-                      Single Post
-                    </a>
-                    <div className="dropdown-menu">
+                    </MegaMenuLi>
+                    <MegaMenuLi xl={3} md={4}>
                       <ul>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single.html"
-                          >
-                            Default
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single-left-sidebar.html"
-                          >
-                            left sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single-slider.html"
-                          >
-                            slider post
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single-video.html"
-                          >
-                            video post
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-single-audio.html"
-                          >
-                            audio post
-                          </a>
-                        </li>
+                        <DropDownHeader itemName="محصولات کنسروی" />
+                        <DropDownLink itemName="کنسرو ماهی" />
+                        <DropDownLink itemName="کنسرو لوبیا" />
+                        <DropDownLink itemName="کنسرو بادمجون" />
                       </ul>
-                    </div>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item menu-link dropdown-toggler"
-                      href="#"
-                    >
-                      List
-                    </a>
-                    <div className="dropdown-menu">
+                    </MegaMenuLi>
+                    <MegaMenuLi xl={3} md={4}>
                       <ul>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-list-left-sidebar.html"
-                          >
-                            left sidebar
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            className="dropdown-item nav-link nav_item"
-                            href="blog-list-right-sidebar.html"
-                          >
-                            right sidebar
-                          </a>
-                        </li>
+                        <DropDownHeader itemName="گوشت و فرآورده‌های پروتئینی" />
+                        <DropDownLink itemName="گوشت" />
                       </ul>
-                    </div>
-                  </li>
+                    </MegaMenuLi>
+                    <MegaMenuLi xl={3} md={4} >
+                      <ul>
+                        <DropDownHeader itemName="میوه و سبزیجات" />
+                        <DropDownLink itemName="تره" />
+                        <DropDownLink itemName="ریحون" />
+                        <DropDownLink itemName="پیازچه" />
+                      </ul>
+                    </MegaMenuLi>
+                    <MegaMenuLi xl={3} md={4}>
+                      <ul>
+                        <DropDownHeader itemName="آشامیدنی و نوشیدنی" />
+                        <DropDownLink itemName="آب" />
+                        <DropDownLink itemName="دلستر" />
+                        <DropDownLink itemName="نوشابه" />
+                      </ul>
+                    </MegaMenuLi>
                 </ul>
-              </div>
-            </li>
-            <li className="dropdown dropdown-mega-menu">
-              <a
-                className="dropdown-toggle nav-link"
-                href="#"
-                data-toggle="dropdown"
-              >
-                فروشگاه
-              </a>
-              <div className="dropdown-menu">
-                <ul className="mega-menu d-lg-flex">
-                  <li className="mega-menu-col col-lg-9">
-                    <ul className="d-lg-flex">
-                      <li className="mega-menu-col col-lg-4">
-                        <ul>
-                          <li className="dropdown-header">Shop Page Layout</li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-list.html"
-                            >
-                              shop List view
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-list-left-sidebar.html"
-                            >
-                              shop List Left Sidebar
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-list-right-sidebar.html"
-                            >
-                              shop List Right Sidebar
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-left-sidebar.html"
-                            >
-                              Left Sidebar
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-right-sidebar.html"
-                            >
-                              Right Sidebar
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-load-more.html"
-                            >
-                              Shop Load More
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className="mega-menu-col col-lg-4">
-                        <ul>
-                          <li className="dropdown-header">Other Pages</li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-cart.html"
-                            >
-                              Cart
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="checkout.html"
-                            >
-                              Checkout
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="wishlist.html"
-                            >
-                              Wishlist
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="compare.html"
-                            >
-                              compare
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="order-completed.html"
-                            >
-                              Order Completed
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li className="mega-menu-col col-lg-4">
-                        <ul>
-                          <li className="dropdown-header">Product Pages</li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-product-detail.html"
-                            >
-                              Default
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-product-detail-left-sidebar.html"
-                            >
-                              Left Sidebar
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-product-detail-right-sidebar.html"
-                            >
-                              Right Sidebar
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              className="dropdown-item nav-link nav_item"
-                              href="shop-product-detail-thumbnails-left.html"
-                            >
-                              Thumbnails Left
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li className="mega-menu-col col-lg-3">
-                    <div className="header_banner">
-                      <div className="header_banner_content">
-                        <div className="shop_banner">
-                          <div className="banner_img overlay_bg_40">
-                            <img
-                              src="assets/images/shop_banner2.jpg"
-                              alt="shop_banner2"
-                            />
-                          </div>
-                          <div className="shop_bn_content">
-                            <h6 className="text-uppercase shop_subtitle">
-                              New Collection
-                            </h6>
-                            <h5 className="text-uppercase shop_title">
-                              Sale 30% Off
-                            </h5>
-                            <a
-                              href="#"
-                              className="btn btn-white rounded-0 btn-xs text-uppercase"
-                            >
-                              Shop Now
-                            </a>
-                          </div>
-                        </div>
+              </MegaMenuLi>
+              <MegaMenuLi lg={3}>
+                <HeaderBanner>
+                  <HeaderBannerContent>
+                    <div className="shop_banner">
+                      <BannerImage image="images/product_img1.png" />
+                      <div className="shop_bn_content">
+                        <h6 className="text-uppercase shop_subtitle">
+                          پیشنهاد ویژه
+                        </h6>
+                        <a
+                          href="#"
+                          className="btn btn-white rounded-0 btn-xs text-uppercase"
+                        >
+                          همین حالا بخرید!
+                        </a>
                       </div>
                     </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li>
-              <a className="nav-link nav_item" href="contact.html">
-                تماس با ما
-              </a>
-            </li>
-            <li>
-              <a className="nav-link nav_item" href="about.html">
-                درباره ما
-              </a>
-            </li>
+                  </HeaderBannerContent>
+                </HeaderBanner>
+              </MegaMenuLi>
+            </NavbarMegaMenu>
+
+            <NavbarLi itemName="تماس با ما" />
+            <NavbarLi itemName="درباره ما" />
           </ul>
         </div>
         <ul className="navbar-nav attr-nav align-items-center">
-          <li>
-            <Search />
-          </li>
-          <li className="dropdown cart_dropdown">
-            <a
-              className="nav-link cart_trigger"
-              href="#"
-              data-toggle="dropdown"
-            >
-              <i className="linearicons-cart"></i>
-              <span className="cart_count">2</span>
-            </a>
-            <div className="cart_box dropdown-menu dropdown-menu-right">
-              <ul className="cart_list">
-                <li>
-                  <a href="#" className="item_remove">
-                    <i className="ion-close"></i>
-                  </a>
-                  <a href="#">
-                    <img
-                      src="images/product_img2.png"
-                      alt="cart_thumb1"
-                    />
-                    Variable product 001
-                  </a>
-                  <span className="cart_quantity">
-                    {" "}
-                    1 x{" "}
-                    <span className="cart_amount">
-                      {" "}
-                      <span className="price_symbole">$</span>
-                    </span>
-                    78.00
-                  </span>
-                </li>
-                <li>
-                  <a href="#" className="item_remove">
-                    <i className="ion-close"></i>
-                  </a>
-                  <a href="#">
-                    <img
-					src="images/product_img1.png"
-                      alt="cart_thumb2"
-                    />
-                    Ornare sed consequat
-                  </a>
-                  <span className="cart_quantity">
-                    {" "}
-                    1 x{" "}
-                    <span className="cart_amount">
-                      {" "}
-                      <span className="price_symbole">$</span>
-                    </span>
-                    81.00
-                  </span>
-                </li>
-              </ul>
-              <div className="cart_footer">
-                <p className="cart_total">
-                  <strong>جمع کل:</strong>{" "}
-                  <span className="cart_price">
-                    {" "}
-                    <span className="price_symbole">$</span>
-                  </span>
-                  159.00
-                </p>
-                <p className="cart_buttons">
-                  <a href="#" className="btn btn-fill-line view-cart">
-					  سبد خرید
-                  </a>
-                  <a href="#" className="btn btn-fill-out checkout">
-					  تکمیل سفارش
-                  </a>
-				  
-                </p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <a className="nav-link">
-              <i className="linearicons-user"></i>
-            </a>
-          </li>
+          <Search />
+
+          <HoverableCart />
+          <UserStatus />
         </ul>
-        <div className="pr_search_icon">
+        {/* <div className="pr_search_icon">
           <a className="nav-link pr_search_trigger">
             <i className="linearicons-magnifier"></i>
           </a>
-        </div>
+        </div> */}
       </nav>
     </div>
   );
