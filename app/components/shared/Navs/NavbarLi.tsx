@@ -7,7 +7,7 @@ export const NavbarLi: React.FC<IProps> = ({ itemName }) => {
   return (
     <li>
       <a className="nav-link nav_item" href="index-2.html">
-        خانه
+		  {itemName}
       </a>
     </li>
   );

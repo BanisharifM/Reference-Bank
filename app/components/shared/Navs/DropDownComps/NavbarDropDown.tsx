@@ -1,5 +1,6 @@
 import React from "react";
 import DropDownMenu from "./DropDownMenu";
+import DropDownMainTitle from "./DropDownMainTitle";
 
 interface IProps {
   itemName: string;
@@ -14,23 +15,9 @@ const NavbarDropDown: React.FC<IProps> = ({
   return (
     <>
       <li className="dropdown">
-        <a className="dropdown-toggle nav-link" href="#">
-          بلاگ
-        </a>
-
+        <DropDownMainTitle itemName={itemName} />
         <DropDownMenu reverse={reverse}>{children}</DropDownMenu>
       </li>
-      {/*
-  <NavbarDropDown item='blog' reverse>
-	  <DropDownItem item='grids'>
-		  <DropDownLink></DropDownLink>
-
-	  </DropDownItem>
-
-  </NavbarDropDown>
-
-
-  */}
     </>
   );
 };
