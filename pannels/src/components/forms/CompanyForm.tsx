@@ -1,16 +1,13 @@
 // Render Prop
+import {Field, Form, Formik} from "formik";
 import React from "react";
-import { Formik, Form, Field } from "formik";
-import CustomInputComponent from "../CustomeInputComponent";
-import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
-import * as Yup from "yup";
-import CustomeCalanderComponent from "../../scenes/Dashboard/Scenes/CreateCompany/components/CustomeCalanderComponent";
-import { utils } from "react-modern-calendar-datepicker";
-import { convertStringToDate } from "../../services/utils/convertStringToDate";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
-import { ICompanyEditFormikState } from "../../scenes/UserServices/scenes/Profile/models";
-import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
-import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Profile/constants";
+import CustomeCalanderComponent from "../../scenes/Dashboard/Scenes/CreateCompany/components/CustomeCalanderComponent";
+import {adminCreatevalidationSchema} from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
+import {IAdminCreateCompanyFormikState} from "../../scenes/Dashboard/Scenes/CreateCompany/models";
+import {companyEditValitionSchema} from "../../scenes/UserServices/scenes/Profile/constants";
+import {ICompanyEditFormikState} from "../../scenes/UserServices/scenes/Profile/models";
+import CustomInputComponent from "../CustomeInputComponent";
 
 // declare function fromType<T extends boolean>(
 //   x: T
