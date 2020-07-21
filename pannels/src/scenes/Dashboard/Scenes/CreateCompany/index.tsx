@@ -1,6 +1,18 @@
 import React from "react";
-import CreateCompanyForm from "./components/CreateCompanyForm";
-import { useCanPerform } from "../../../../services/hooks/useCanPerform";
+import {IAdminCreateCompanyFormikState} from "./models";
+import CompanyForm from "../../../../components/forms/CompanyForm";
+
+
+const defaultValues: IAdminCreateCompanyFormikState = {
+  name: "",
+  phone_number: "",
+  company_number: "",
+  zip_code: "",
+  start_date: "",
+  end_date: "",
+  location : "",
+  map_location : [0,0]
+};
 
 const Index = () => {
   return (
@@ -9,7 +21,7 @@ const Index = () => {
         <div className="card card-body">
           <h4 className="card-title">ثبت شرکت</h4>
           <h5 className="card-subtitle">برای ثبت شرکت فرم زیر را پر کنید.</h5>
-          <CreateCompanyForm />
+		  <CompanyForm<IAdminCreateCompanyFormikState> status="admin-create" initialValue={defaultValues} />
         </div>
       </div>
     </div>

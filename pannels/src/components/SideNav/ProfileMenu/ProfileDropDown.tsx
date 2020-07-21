@@ -32,33 +32,33 @@ const ProfileDropDown = () => {
         <ProfileMenuItem
           title="پروفایل"
           icon="ti-user"
-          path="/"
+          path="/user-services/profile"
           toHavePermissions={[]}
         />
         <ProfileMenuItem
           title="تراکنش ها"
           icon="ti-wallet"
-          path="/"
+          path="/agaga"
           toHavePermissions={[]}
         />
         <ProfileMenuItem
           title="صندوق پیام ها"
           icon="ti-email"
-          path="/"
+          path="/agagaaa"
           toHavePermissions={[]}
         />
         <ProfileDropDownDevider />
         <ProfileMenuItem
           title="تنظیمات حساب"
           icon="ti-setting"
-          path="/"
+          path="/gg"
           toHavePermissions={[]}
         />
         <ProfileDropDownDevider />
         <ProfileMenuItem
           title="خروج"
           icon="fa fa-power-off"
-          path="/"
+          path="/aaaa"
           toHavePermissions={[]}
         />
       </div>

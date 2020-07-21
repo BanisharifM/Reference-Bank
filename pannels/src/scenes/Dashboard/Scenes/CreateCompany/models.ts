@@ -8,12 +8,12 @@ export interface IAdminCreateCompanyFormikState {
   location : string
   map_location :[number , number]
 }
-export interface ICompanyCreateCompanyFormikState {
-  name: string;
-  phone_number: string;
-  company_number: string;
-  zip_code: string;
-}
+// export interface ICompanyikState {
+//   name: string;
+//   phone_number: string;
+//   company_number: string;
+//   zip_code: string;
+// }
 export interface ICalanderDate {
   year: number;
   month: number;

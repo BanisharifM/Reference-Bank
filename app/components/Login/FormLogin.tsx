@@ -7,6 +7,8 @@ import GotoForgotPassword from "./GotoForgotPassword";
 import * as Yup from "yup";
 import CustomeButton from "../CustomeButton";
 import * as api from "../../services/api";
+import { axiosInstance } from "../../services/axios/axios";
+import axios from "axios";
 
 const FormLogin = () => (
   <div>
@@ -14,18 +16,28 @@ const FormLogin = () => (
       initialValues={{ username: "", password: "", email: "" }}
       validationSchema={Yup.object({
         // username: Yup.number().required(),
-		username: Yup.number()
-		  .typeError("شماره موبایل نمیتواند حروف باشد")
-		  .required("لطفا شماره موبایل خود را وارد کنید"),
+        username: Yup.number()
+          .typeError("شماره موبایل نمیتواند حروف باشد")
+          .required("لطفا شماره موبایل خود را وارد کنید"),
         password: Yup.string().required("لطفا رمز عبور خود را وارد کنید"),
       })}
       onSubmit={async (values, { setSubmitting }) => {
-        try {
-          const { data } = await api.authApi.loginUser({ ...values });
-          console.log(data);
-        } catch (e) {
-          window.location.href = "http://localhost:3000";
-        }
+        axios
+		.post("http://bank.pythonanywhere.com/auth/login/",{
+            username: "admin",
+            password: "admin",
+          }, {withCredentials:true})
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => console.log(err));
+
+        // try {
+        //   const { data } = await api.authApi.loginUser({ ...values });
+        //   console.log(data);
+        // } catch (e) {
+        //   window.location.href = "http://localhost:3000";
+        // }
       }}
     >
       {({ isSubmitting }) => (

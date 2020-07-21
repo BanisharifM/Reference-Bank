@@ -6,7 +6,7 @@ import { userContext, userDispatchContext } from "./UserContext";
 const initial: IUserState = {
   username: "",
   isAuth: false,
-  rule: "",
+  rule: "company",
 };
 const UserProvider: React.FC = ({ children }) => {
   const [user, dispatchUser] = useReducer(userReducer, initial);
