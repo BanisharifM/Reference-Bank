@@ -1,4 +1,3 @@
-import {axiosInstance} from "../../axios/axios";
 
 	export type IReqFunction<U,T=void, Y=void> = (t: T , params:Y) => Promise<{data : U}>;
 	export type NotRequire<T> = {

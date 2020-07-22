@@ -36,14 +36,14 @@ const ProfileDropDown = () => {
           toHavePermissions={[]}
         />
         <ProfileMenuItem
-          title="تراکنش ها"
-          icon="ti-wallet"
+          title="اعلان‌ها"
+          icon="ti-email"
           path="/agaga"
           toHavePermissions={[]}
         />
         <ProfileMenuItem
           title="صندوق پیام ها"
-          icon="ti-email"
+          icon="icon-note"
           path="/agagaaa"
           toHavePermissions={[]}
         />

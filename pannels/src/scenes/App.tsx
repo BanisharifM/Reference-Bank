@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import Header from "../components/Header";
 import SideNav from "../components/SideNav";
 import BaseLayout from "../components/BaseLayout";
@@ -10,8 +10,13 @@ import { useUserState } from "../services/contexts/UserContext/UserContext";
 import { SWRConfig } from "swr";
 import axios from "axios";
 
-
 const App = () => {
+  useEffect(() => {
+    axios
+      .get("/data_bank/admin/companies/")
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  }, []);
   const user = useUserState();
   return (
     <>

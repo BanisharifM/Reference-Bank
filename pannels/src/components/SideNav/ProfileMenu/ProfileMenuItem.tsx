@@ -9,7 +9,7 @@ const ProfileMenuItem: React.FC<IMenuItemIcon> = ({ title, path, icon }) => {
       to={path}
       className="dropdown-item text-right"
     >
-      <i className={icon} />
+      <i className={`ml-2 ${icon}`} />
       {title}
     </NavLink>
   );

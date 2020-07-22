@@ -6,6 +6,11 @@ const adminDashboardItems: IMenuItem[] = [
     title: "ثبت شرکت",
     toHavePermissions: ["company:create"],
   },
+  {
+	  path:"/dashboard/companies-list",
+	  title : 'لیست شرکت‌ها',
+	  toHavePermissions :[]
+  }
   // {
   //   path: "/felan",
   //   title: "Analytical",
