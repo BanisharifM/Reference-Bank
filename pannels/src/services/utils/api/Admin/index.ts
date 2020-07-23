@@ -4,7 +4,7 @@ import { axiosInstance } from "../../../axios/axios";
 const baseAdminUrl = "/bank";
 export const adminApi: IAdminApi = {
   getCompanies: (params) =>
-    axiosInstance.get(`${baseAdminUrl}/companies/`,{params}),
+   axiosInstance.get(`${baseAdminUrl}/companies/`,{params}),
   createCompany: (company) =>
     axiosInstance.post(`${baseAdminUrl}/companies/`, company),
   getCompany: (id) => axiosInstance.get(`${baseAdminUrl}/companies/${id}/`),

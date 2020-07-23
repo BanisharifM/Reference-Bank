@@ -1,9 +1,19 @@
-import {axiosInstance} from "../../axios/axios";
+import {  AxiosRequestConfig } from "axios";
 
-	export type IReqFunction<U,T=void, Y=void> = (t: T , params:Y) => Promise<{data : U}>;
-	export type NotRequire<T> = {
-		[P in keyof T] ?:T[P]
-	}
+export type IReqFunction<U, T = void, Y = void> = (
+  t: T,
+  params: Y
+) => Promise<{
+  data: T;
+  status: number;
+  statusText: string;
+  headers: any;
+  config: AxiosRequestConfig;
+  request?: any;
+}>;
+export type NotRequire<T> = {
+  [P in keyof T]?: T[P];
+};
 
 //     fetch('http://bank.pythonanywhere.com/auth/login/', {
 //     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -19,10 +29,6 @@ import {axiosInstance} from "../../axios/axios";
 //     body: JSON.stringify({username :'admin', password :'admin'}) // body data type must match "Content-Type" header
 // }).then((res)=>res.json())
 
-	// const test : IReqFunction<string> = (a ,b ) => {
-	//     return axiosInstance.get('dagadgadg')
-	// }
-
-
-
-
+// const test : IReqFunction<string> = (a ,b ) => {
+//     return axiosInstance.get('dagadgadg')
+// }

@@ -18,7 +18,7 @@ export interface IAdminApi {
   deleteCompany: IReqFunction<undefined, number>;
 }
 //Start GetCompanies
-interface ICompanyRes {
+export interface ICompanyRes {
   id: number;
   user: number;
   username: string;
@@ -35,9 +35,10 @@ interface ICompanyRes {
   category_title: string;
   description: string;
   status: "s" | "a";
+  [index : string] : string | number|null
 }
 
-interface ICompanyPaginateRes {
+export interface ICompanyPaginateRes {
   num_pages: number;
   count: number;
   next: string | null;

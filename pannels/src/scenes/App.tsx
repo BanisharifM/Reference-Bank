@@ -11,12 +11,12 @@ import { SWRConfig } from "swr";
 import axios from "axios";
 
 const App = () => {
-  useEffect(() => {
-    axios
-      .get("/data_bank/admin/companies/")
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/data_bank/admin/companies/")
+  //     .then((res) => console.log(res.data))
+  //     .catch((err) => console.log(err));
+  // }, []);
   const user = useUserState();
   return (
     <>
