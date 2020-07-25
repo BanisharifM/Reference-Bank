@@ -1,4 +1,6 @@
 import React from "react";
+import Loading from "./Loading";
+import Spinner from "./Spinner";
 interface IProps {
   text?: string;
   type:
@@ -10,15 +12,24 @@ interface IProps {
     | "danger"
     | "light"
     | "dark";
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  loading?: boolean;
 }
-const Button: React.FC<IProps> = ({ text ="NOTEXT", type }) => {
+const Button: React.FC<IProps> = ({
+  loading,
+  onClick,
+  text = "NOTEXT",
+  type,
+}) => {
   return (
     <button
       type="button"
+      onClick={onClick}
       className={`btn waves-effect waves-light btn-${type}`}
+      disabled={loading}
     >
-      {text}
+      {loading ? <Spinner /> : text}
     </button>
   );
 };
-export default Button
+export default Button;

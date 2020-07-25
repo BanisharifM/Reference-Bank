@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import useSWR from "swr";
 import TableContainer from "./components/TableContainer";
 import { ICompanyRes } from "../../../../services/utils/api/Admin/models";
+import api from "../../../../services/utils/api";
 import {
   useTable,
   usePagination,
@@ -18,6 +19,7 @@ import {
 import { ReactTable } from "./components/ReactTable";
 import { TCompanyTableData } from "./components/models";
 import Button from "../../../../components/Button";
+import { baseAdminUrl } from "../../../../services/utils/api/Admin";
 const hooks = [
   useColumnOrder,
   useFilters,
@@ -30,7 +32,36 @@ const hooks = [
   useRowSelect,
 ];
 const Index = () => {
-  const { data } = useSWR("/data_bank/admin/companies/");
+  const { data, revalidate } = useSWR(baseAdminUrl + "/companies");
+  const [loading, setLoading] = useState(false);
+  const [clicked, setClicked] = useState(-1);
+  const handleStatusClick = useCallback(
+    async (original: TCompanyTableData) => {
+      setClicked(original.identifier!);
+      setLoading(true);
+      if (original.status === "s") {
+        if (window.confirm("آیا وضعیت شرکت فعال شود؟")) {
+          await api.adminApi.editCompany({
+            id: original.id!,
+            status: "a",
+          });
+          await revalidate();
+          setLoading(false);
+        }
+      }
+      if (original.status === "a") {
+        if (window.confirm("آیا میخواهید شرکت غیر فعال شود؟")) {
+          await api.adminApi.editCompany({
+            id: original.id!,
+            status: "s",
+          });
+          await revalidate();
+          setLoading(false);
+        }
+      }
+    },
+    [revalidate]
+  );
   const columns = React.useMemo(
     () => [
       {
@@ -56,17 +87,21 @@ const Index = () => {
       {
         Header: "وضعیت",
         accessor: "status",
-        Cell: ({
-          row: { original },
-          ...rest
-        }: CellProps<TCompanyTableData>) => {
+        Cell: ({ row: { original } }: CellProps<TCompanyTableData>) => {
           const buttonText = original.status === "s" ? "معلق" : "فعال";
           const buttonClass = original.status === "s" ? "warning" : "success";
-          return <Button text={buttonText} type={buttonClass} />;
+          return (
+            <Button
+              loading={clicked===original.identifier! && loading}
+              onClick={() => handleStatusClick(original)}
+              text={buttonText}
+              type={buttonClass}
+            />
+          );
         },
       },
     ],
-    []
+    [clicked, handleStatusClick, loading]
   );
   const [companies, setCompanies] = useState<TCompanyTableData[]>([]);
   useEffect(() => {
@@ -89,14 +124,17 @@ const Index = () => {
     {
       columns,
       data: companies,
+      initialState: { pageIndex: 0, pageSize: 5 },
     },
     ...hooks
   );
 
   return (
-    <TableContainer>
-      <ReactTable {...tableInstance} />
-    </TableContainer>
+    <>
+      <TableContainer<TCompanyTableData> {...tableInstance}>
+        <ReactTable<TCompanyTableData> {...tableInstance} />
+      </TableContainer>
+    </>
   );
 };
 export default Index;

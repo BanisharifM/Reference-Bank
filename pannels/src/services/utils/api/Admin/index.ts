@@ -1,7 +1,7 @@
 import { IAdminApi } from "./models";
 import { axiosInstance } from "../../../axios/axios";
 
-const baseAdminUrl = "/bank";
+export const baseAdminUrl = "/data_bank/admin";
 export const adminApi: IAdminApi = {
   getCompanies: (params) =>
    axiosInstance.get(`${baseAdminUrl}/companies/`,{params}),

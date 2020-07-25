@@ -64,7 +64,7 @@ const CompaniesList = () => {
   const tableInstance = useTable<any>({ columns, data });
 
   return (
-    <TableContainer>
+    // <TableContainer>
       <Formik
         initialValues={editing}
         enableReinitialize
@@ -81,7 +81,7 @@ const CompaniesList = () => {
           <ReactTable {...tableInstance} />
         </Form>
       </Formik>
-    </TableContainer>
+    // </TableContainer>
   );
 };
 export default CompaniesList;

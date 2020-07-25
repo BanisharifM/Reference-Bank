@@ -12,7 +12,7 @@ export interface IAdminApi {
   getCompany: IReqFunction<ICompanyRes, number>;
   editCompany: IReqFunction<
     ICompanyRes,
-    { id: number } & NotRequire<ICompanyRes>
+    { id: number } & Partial<ICompanyRes>
   >;
    
   deleteCompany: IReqFunction<undefined, number>;
