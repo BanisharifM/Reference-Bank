@@ -6,7 +6,6 @@ import Img4 from "../../../../assets/images/Slider/4.jpg";
 import SliderCards from "../../components/SliderCards";
 import AddImage from "../../components/AddImage";
 import axios from "axios";
-import Cookie from "js-cookie";
 
 interface ISliderImage {
   image: string;
@@ -36,21 +35,6 @@ const Index = () => {
     const newItems = items.filter((item) => item.index !== id);
     setItems(newItems);
   };
-  const handleClick = () => {
-	// fetch("/auth/login/", {
-	//   method: "POST",
-	//   body: JSON.stringify({ username: "admin", password: "admin" }),
-	//   headers: {
-	//     "Content-Type": "application/json",
-	//   },
-	// }).then((res) => {
-	//   console.log(res.json());
-	// });
-    // console.log("here");
-	axios
-	.post("/auth/login/", { username: "admin", password: "admin" })
-	  .then((res) => console.log(res));
-  };
 
   return (
     <>
@@ -68,7 +52,6 @@ const Index = () => {
             <AddImage url="/" />
           </div>
         </div>
-        <button onClick={handleClick}>adkgfjadgjkakdjgkadjgjkadjgk</button>
       </div>
     </>
   );

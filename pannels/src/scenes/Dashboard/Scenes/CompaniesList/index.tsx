@@ -92,7 +92,7 @@ const Index = () => {
           const buttonClass = original.status === "s" ? "warning" : "success";
           return (
             <Button
-              loading={clicked===original.identifier! && loading}
+              loading={clicked === original.identifier! && loading}
               onClick={() => handleStatusClick(original)}
               text={buttonText}
               type={buttonClass}
@@ -118,7 +118,7 @@ const Index = () => {
       });
       setCompanies(tableData);
     }
-  }, [columns, data]);
+  }, [data]);
 
   const tableInstance = useTable<TCompanyTableData>(
     {

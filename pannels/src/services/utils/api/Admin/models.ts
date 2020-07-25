@@ -14,8 +14,8 @@ export interface IAdminApi {
     ICompanyRes,
     { id: number } & Partial<ICompanyRes>
   >;
-   
   deleteCompany: IReqFunction<undefined, number>;
+  getCategories : IReqFunction<ICategoryRes>
 }
 //Start GetCompanies
 export interface ICompanyRes {
@@ -61,3 +61,13 @@ interface ICompanyCreate {
   manager_name: string;
   phone_number: string;
 }
+//end CreateCompany
+
+//start Category
+interface ICategoryRes {
+	id : number | null,
+	parent :number | null
+	parent_title?: "" 
+	children : ICategoryRes[]| []
+}
+//end Category

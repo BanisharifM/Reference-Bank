@@ -1,7 +1,8 @@
+
 import React from "react";
 import { FieldAttributes } from "formik";
 
-const CustomInputComponent: React.FC<FieldAttributes<any>> = ({
+const CustomeTextAreaComponent: React.FC<FieldAttributes<any>> = ({
   label,
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -10,14 +11,14 @@ const CustomInputComponent: React.FC<FieldAttributes<any>> = ({
   const isError = touched[field.name] && errors[field.name];
   return (
     <div
-      className={`form-group  ${props.className? props.className: ""} ${isError ? "has-danger" : ""}`}
+      className={`form-group ${props.className} ${isError ? "has-danger" : ""}`}
     >
       <label>{label}</label>
-      <input
+      <textarea
         {...field}
         {...props}
         className={`${isError ? "form-control-danger" : ""} form-control`}
-      />
+  ></textarea>
       {}
       {isError && (
         <div role="alert" className="form-control-feedback">
@@ -28,4 +29,4 @@ const CustomInputComponent: React.FC<FieldAttributes<any>> = ({
   );
 };
 
-export default CustomInputComponent;
+export default CustomeTextAreaComponent;

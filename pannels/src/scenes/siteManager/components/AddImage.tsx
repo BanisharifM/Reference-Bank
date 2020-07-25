@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import PicCart from "../scenes/CategoryManager/components/CategoryModal/PicCart";
+import Button from "../../../components/Button";
 
 interface IProps {
   url: string;
@@ -25,9 +26,21 @@ const AddImage: React.FC<IProps> = ({ url }) => {
       );
     },
   });
+  const handleRemove = (index: number) => {
+    const newFiles = files.filter((item, i) => index !== i);
+    setFiles(newFiles);
+  };
+  const handleSend = (file:File) => {
 
-  const thumbs = (acceptedFiles as Array<IFileWithPreview>).map((file) => (
-    <PicCart image={file.preview} key={file.size} />
+
+  }
+
+  const thumbs = (files as Array<IFileWithPreview>).map((file, index) => (
+    <React.Fragment key={file.size}>
+      <PicCart image={file.preview} />
+	  <Button onClick={()=>handleSend(file)} className="ml-2 " type="success" text="ارسال" />
+      <Button onClick={() => handleRemove(index)} type="danger" text="حذف" />
+    </React.Fragment>
   ));
   useEffect(
     () => () => {
@@ -38,7 +51,6 @@ const AddImage: React.FC<IProps> = ({ url }) => {
     },
     [files]
   );
-
   return (
     <div className="col-lg-6">
       <section className="container">
@@ -60,65 +72,3 @@ const AddImage: React.FC<IProps> = ({ url }) => {
   );
 };
 export default AddImage;
-
-// const AddImage = () => {
-//   return (
-// <div className="col-lg-3 col-md-6">
-//   <div className="card">
-//     <div className="el-card-item">
-//       <div className="el-card-avatar el-overlay-1">
-//         <img src={Img1} alt="user" />
-//         <div className="el-overlay">
-//           <ul className="el-info">
-//             <li>
-//               <a
-//                 className="btn default btn-outline image-popup-vertical-fit"
-//                 href="../assets/images/users/1.jpg"
-//               >
-//                 <i className="icon-magnifier"></i>
-//               </a>
-//             </li>
-//             <li>
-//               <a className="btn default btn-outline" href="">
-//                 <i className="icon-link"></i>
-//               </a>
-//             </li>
-//           </ul>
-//         </div>
-//       </div>
-
-//     </div>
-//   </div>
-// </div>
-// <div className="col-lg-3 col-md-6">
-//   <div className="dropify-wrapper">
-//     <div className="dropify-message">
-//       <span className="file-icon"></span> <p>تصویر جدید را انتخاب کنید</p>
-//       <p className="dropify-error">خطایی رخ داده است</p>
-//     </div>
-//     <div className="dropify-loader"></div>
-//     <div className="dropify-errors-container">
-//       <ul></ul>
-//     </div>
-//     <input type="file" id="input-file-now" className="dropify" />
-//     <button type="button" className="dropify-clear">
-//       حذف
-//     </button>
-//     <div className="dropify-preview">
-//       <span className="dropify-render"></span>
-//       <div className="dropify-infos">
-//         <div className="dropify-infos-inner">
-//           <p className="dropify-filename">
-//             <span className="file-icon"></span>{" "}
-//             <span className="dropify-filename-inner"></span>
-//           </p>
-//           <p className="dropify-infos-message">برای جایگزینی کلیک کنید</p>
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-// </div>
-//   );
-// };
-
-// export default AddImage;

@@ -4,7 +4,7 @@ export type IReqFunction<U, T = void, Y = void> = (
   t: T,
   params: Y
 ) => Promise<{
-  data: T;
+  data: U;
   status: number;
   statusText: string;
   headers: any;

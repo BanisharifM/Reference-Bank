@@ -14,18 +14,21 @@ interface IProps {
     | "dark";
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   loading?: boolean;
+  className? : string
 }
 const Button: React.FC<IProps> = ({
   loading,
   onClick,
   text = "NOTEXT",
-  type,
+	  type,
+  className
 }) => {
   return (
     <button
+
       type="button"
       onClick={onClick}
-      className={`btn waves-effect waves-light btn-${type}`}
+      className={`btn waves-effect waves-light btn-${type} ${className}`}
       disabled={loading}
     >
       {loading ? <Spinner /> : text}

@@ -1,13 +1,15 @@
 // Render Prop
-import {Field, Form, Formik} from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
 import CustomeCalanderComponent from "../../scenes/Dashboard/Scenes/CreateCompany/components/CustomeCalanderComponent";
-import {adminCreatevalidationSchema} from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
-import {IAdminCreateCompanyFormikState} from "../../scenes/Dashboard/Scenes/CreateCompany/models";
-import {companyEditValitionSchema} from "../../scenes/UserServices/scenes/Profile/constants";
-import {ICompanyEditFormikState} from "../../scenes/UserServices/scenes/Profile/models";
+import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
+import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
+import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Profile/constants";
+import { ICompanyEditFormikState } from "../../scenes/UserServices/scenes/Profile/models";
 import CustomInputComponent from "../CustomeInputComponent";
+import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
+import CustomeAsyncSelect from "../CustomeAsyncSelect";
 
 // declare function fromType<T extends boolean>(
 //   x: T
@@ -44,31 +46,93 @@ const CompanyForm = <
       >
         {({ isSubmitting, values }) => (
           <Form className="form-horizontal mt-4">
-            <Field
-              label="نام شرکت"
-              type="text"
-              name="name"
-              component={CustomInputComponent}
-            />
-            <Field
-              label="شماره همراه"
-              type="text"
-              name="phone_number"
-              component={CustomInputComponent}
-            />
-            <Field
-              label="شماره تلفن شرکت"
-              type="text"
-              name="company_number"
-              component={CustomInputComponent}
-            />
-            <Field
-              label="کد پستی"
-              type="text"
-              name="zip_code"
-              component={CustomInputComponent}
-            />
             <div className="row">
+              <div className="col-md-4">
+                <Field
+                  label="نام کاربری"
+                  type="text"
+                  name="username"
+                  component={CustomInputComponent}
+                />
+                <Field
+                  label="رمز عبور"
+                  type="text"
+                  name="password1"
+                  component={CustomInputComponent}
+                />
+                <Field
+                  label="تکرار رمز عبور"
+                  type="text"
+                  name="password2"
+                  component={CustomInputComponent}
+                />
+              </div>
+              <div className="col-md-4">
+                <Field
+                  label="نام شرکت"
+                  type="text"
+                  name="name"
+                  component={CustomInputComponent}
+                />
+                <Field
+                  label="نام مدیر عامل"
+                  type="text"
+                  name="manager_name"
+                  component={CustomInputComponent}
+                />
+                <Field
+                  label="شماره همراه"
+                  type="text"
+                  name="mobile_number"
+                  component={CustomInputComponent}
+                />
+              </div>
+              <div className="col-md-4">
+                <Field
+                  label="شماره تلفن شرکت"
+                  type="text"
+                  name="phone_number"
+                  component={CustomInputComponent}
+                />
+                <Field
+                  label="آدرس سایت"
+                  type="text"
+                  name="website"
+                  component={CustomInputComponent}
+                />
+                <Field
+                  label="فیلد کاری"
+                  type="text"
+                  name="category"
+                  component={CustomeAsyncSelect}
+                />
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-md-4">
+                <Field
+                  label="شرح فعالیت"
+                  type="text"
+                  name="description"
+                  component={CustomeTextAreaComponent}
+                  rows={20}
+				className='mt-md-0 mt-3'
+                />
+              </div>
+              <div className="col-md-8">
+                <Field
+                  name="address"
+                  component={CustomeTextAreaComponent}
+                  rows={4}
+                  label="آدرس"
+                  type="text"
+                />
+                <Field name="location" component={CompanyMap} />
+              </div>
+            </div>
+
+            {/* <div className="row">
               {status === "admin-create" && (
                 <>
                   <div className="col-12 col-md-6 col-xl-4 ">
@@ -102,14 +166,14 @@ const CompanyForm = <
                 />
                 <CompanyMap />
               </div>
-            </div>
+            </div> */}
 
             <button type="submit" className="btn btn-success">
               <i className="fa fa-check" />{" "}
               {status === "admin-create" ? "ثبت شرکت" : "ارسال درخواست تفییر"}
             </button>
 
-            {/*{JSON.stringify(values, null, 2)}*/}
+			{JSON.stringify(values, null, 2)}
           </Form>
         )}
       </Formik>

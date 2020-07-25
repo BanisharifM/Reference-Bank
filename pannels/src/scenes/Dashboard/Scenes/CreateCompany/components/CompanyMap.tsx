@@ -2,6 +2,7 @@ import React,{useState} from "react";
 // import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L, {LatLngTuple, LeafletMouseEvent} from "leaflet";
+import {FieldAttributes} from "formik";
 
 
 delete ((L.Icon.Default)as any).prototype._getIconUrl;
@@ -15,11 +16,19 @@ L.Icon.Default.mergeOptions({
 
 // L.Icon.Default.imagePath = "../../../../../assets/images/";
 const position = [35.64961, 51.166359] as LatLngTuple;
- export const CompanyMap: React.FC = () => {
+
+
+
+export const CompanyMap: React.FC<FieldAttributes<any>> = ({
+  field, // { name, value, onChange, onBlur }
+  form: { touched, errors,setFieldValue }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+
+}) => {
 	 const [state , setState] = useState<LatLngTuple> (position)
 	 const handleClick = (e :LeafletMouseEvent) => {
 		 const newPosition = [e.latlng.lat ,e.latlng.lng] as LatLngTuple
 		 setState(newPosition)
+		 setFieldValue(field.name ,newPosition,false)
 	 }
 
   return (
@@ -32,9 +41,7 @@ const position = [35.64961, 51.166359] as LatLngTuple;
 		/>
 		<Marker position={state}>
 		  <Popup>
-			A pretty CSS3 popup.
 			<br />
-			Easily customizable.
 		  </Popup>
 		</Marker>
 	  </Map>
