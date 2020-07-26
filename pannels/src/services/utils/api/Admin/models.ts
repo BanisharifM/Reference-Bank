@@ -64,7 +64,7 @@ interface ICompanyCreate {
 //end CreateCompany
 
 //start Category
-interface ICategoryRes {
+export interface ICategoryRes {
 	id : number | null,
 	parent :number | null
 	parent_title?: "" 

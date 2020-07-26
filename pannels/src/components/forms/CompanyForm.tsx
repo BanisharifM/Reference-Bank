@@ -1,15 +1,19 @@
 // Render Prop
 import { Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useMemo } from "react";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
-import CustomeCalanderComponent from "../../scenes/Dashboard/Scenes/CreateCompany/components/CustomeCalanderComponent";
 import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
 import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
 import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Profile/constants";
 import { ICompanyEditFormikState } from "../../scenes/UserServices/scenes/Profile/models";
 import CustomInputComponent from "../CustomeInputComponent";
 import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
-import CustomeAsyncSelect from "../CustomeAsyncSelect";
+import useSWR from "swr";
+import { baseAdminUrl } from "../../services/utils/api/Admin";
+import { ICategoryRes } from "../../services/utils/api/Admin/models";
+import { Tree } from "../../services/utils/treeTravers";
+import * as _ from "lodash";
+import CustomeSelect from "../CustomeSelect";
 
 // declare function fromType<T extends boolean>(
 //   x: T
@@ -21,12 +25,35 @@ interface IProps<T> {
   status: "admin-create" | "company-edit";
   initialValue: T;
 }
+
+function notHaveChildren(arr: any, data: any) {
+  if (!data.children.length) {
+    return arr.concat([{ ...data }]);
+  }
+  return arr;
+}
 const CompanyForm = <
   T extends IAdminCreateCompanyFormikState | ICompanyEditFormikState
 >({
   status,
   initialValue,
 }: IProps<T>) => {
+  const { data } = useSWR<ICategoryRes[]>(baseAdminUrl + "/category/");
+  const categoryOptions = useMemo(() => {
+	  if (data) {
+      const notHaveChildrenArray = data.map((d) =>
+        Tree.reduce(notHaveChildren, [], d)
+      );
+      const flattenVersion = _.flatten(notHaveChildrenArray);
+      const options = flattenVersion.map((item) => ({
+        value: item.id,
+        label: item.title,
+        parent_title: item.parent_title,
+      }));
+	  return options
+    }
+  }, [data]);
+
   return (
     <div>
       <Formik<T, {}>
@@ -104,22 +131,13 @@ const CompanyForm = <
                   label="فیلد کاری"
                   type="text"
                   name="category"
-                  component={CustomeAsyncSelect}
+                  options={categoryOptions}
+                  component={CustomeSelect}
                 />
               </div>
             </div>
 
             <div className="row">
-              <div className="col-md-4">
-                <Field
-                  label="شرح فعالیت"
-                  type="text"
-                  name="description"
-                  component={CustomeTextAreaComponent}
-                  rows={20}
-				className='mt-md-0 mt-3'
-                />
-              </div>
               <div className="col-md-8">
                 <Field
                   name="address"
@@ -129,6 +147,16 @@ const CompanyForm = <
                   type="text"
                 />
                 <Field name="location" component={CompanyMap} />
+              </div>
+              <div className="col-md-4">
+                <Field
+                  label="شرح فعالیت"
+                  type="text"
+                  name="description"
+                  component={CustomeTextAreaComponent}
+                  rows={20}
+                  className="mt-md-0 mt-3"
+                />
               </div>
             </div>
 
@@ -173,7 +201,7 @@ const CompanyForm = <
               {status === "admin-create" ? "ثبت شرکت" : "ارسال درخواست تفییر"}
             </button>
 
-			{JSON.stringify(values, null, 2)}
+            {JSON.stringify(values, null, 2)}
           </Form>
         )}
       </Formik>

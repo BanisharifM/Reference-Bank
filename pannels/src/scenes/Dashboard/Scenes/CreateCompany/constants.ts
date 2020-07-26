@@ -13,6 +13,7 @@ export const adminCreatevalidationSchema = Yup.object({
         "ﺮﻣﺯ ﻊﺑﻭﺭ ﺏﺍ ﺖﮐﺭﺍﺭ ﺂﻧ ﺏﺎﯾﺩ ﺏﺭﺎﺑﺭ ﺏﺎﺷﺩ"
       ),
     }),
+  category: Yup.number().moreThan(1, "لطفا دسته بندی را انتخاب کنید"),
   manager_name: Yup.string().required("لطفا نام مدیرعامل را وارد کنید"),
   name: Yup.string().required("لطفا نام شرکت را وارد کنید"),
   description: Yup.string().required("لطفا نام شرکت را وارد کنید"),
