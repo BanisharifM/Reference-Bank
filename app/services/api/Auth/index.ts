@@ -1,20 +1,13 @@
-import { axiosInstance } from "./../../axios/axios";
 import { IAuthApi } from "./models";
+import {axiosInstance} from "../../axios/axios";
+
+
 
 const baseAuthUrl = "/auth";
+export const apiAuth: IAuthApi = {
+  logout: () => axiosInstance.post(`${baseAuthUrl}/logout/`),
+  login: (userData) => axiosInstance.post(`${baseAuthUrl}/login/`, userData ),
+  register: (obj) => axiosInstance.post(`${baseAuthUrl}/registration/`, obj),
+  getUser: () => axiosInstance.get(`${baseAuthUrl}/user/`),
 
-export const authApi: IAuthApi = {
-  loginUser: ({ username, password, email }) => {
-    return axiosInstance.post(`${baseAuthUrl}/login/`, {
-      username,
-      password,
-      email,
-    });
-  },
-  signUpUser: ({ username }) => {
-    return axiosInstance.post(`${baseAuthUrl}/registration/`, { username });
-  },
-  logout: () => {
-    return axiosInstance.post(`${baseAuthUrl}/logout/`);
-  },
-};
+}

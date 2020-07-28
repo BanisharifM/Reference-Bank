@@ -5,6 +5,7 @@ import Img3 from "../../../../assets/images/Slider/3.jpg";
 import Img4 from "../../../../assets/images/Slider/4.jpg";
 import SliderCards from "../../components/SliderCards";
 import AddImage from "../../components/AddImage";
+import axios from "axios";
 
 interface ISliderImage {
   image: string;
@@ -52,19 +53,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-      {/* <div className="row el-element-overlay">
-        <div className="col-md-12">
-          <h4 className="card-title">اسلایدر</h4>
-        </div>
-
-        <SliderCards image={Img1} />
-        <SliderCards image={Img1} />
-        <SliderCards image={Img1} />
-        <SliderCards image={Img1} />
-        <SliderCards image={Img1} />
-        <SliderCards image={Img1} />
-        <AddImage />
-      </div> */}
     </>
   );
 };

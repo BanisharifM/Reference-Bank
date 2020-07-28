@@ -5,10 +5,12 @@ export interface ITokens {
   access: string;
   refresh: string;
 }
+
 export const createTokenObj = (access: string, refresh: string): ITokens => ({
   access,
   refresh,
 });
+
 const accessTokenKey = "access";
 const refreshTokenKey = "refresh";
 // const cartItemsKey = "cart";

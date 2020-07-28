@@ -1,7 +1,7 @@
 import { axiosInterceptor } from "./axiosInterceptor";
 import axios from "axios";
 
-const baseURL = "https://localhost:5000/";
+const baseURL = "";
 export const axiosInstance = axios.create({
   baseURL,
 });

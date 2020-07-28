@@ -17,4 +17,23 @@ export interface ISideNavItems {
   toHavePermissions: TPermissions[];
 }
 
-
+// interface Interface1 {
+//   name: string;
+// }
+// interface Interface2 {
+//   family: string;
+// }
+// type type1 = "app";
+// type type2 = "user";
+// : U extends type2 ? Interface2 : undefined,
+//
+// function Save<T extends Interface1 | Interface2, U extends type1 | type2>(
+//   data: U extends type1 ? Interface1 : Interface2,
+//   status: U
+// ) {
+//   console.log(data, status);
+// }
+// const numberOne: Interface1 = { name: "ali" };
+// const numberTwo: Interface2 = { family: "mamad" };
+// Save(numberTwo, "app"); error
+// Save(numberTwo, "user"); error

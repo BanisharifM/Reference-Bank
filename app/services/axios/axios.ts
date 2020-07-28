@@ -2,7 +2,7 @@ import { axiosServerInterceptor } from "./axiosServerInterceptor";
 import { axiosInterceptor } from "./axiosInterceptor";
 import axios from "axios";
 
-const baseURL = "http://localhost:8020";
+const baseURL = "/api";
 export const axiosInstance = axios.create({
   baseURL,
 });

@@ -1,27 +1,25 @@
 /** start importin styles */
-import "./assets/css/font.css";
-import "./assets/css/style.css";
-import "./assets/css/login-register.css";
-import "./assets/css/user-card.css";
-import "./assets/css/dropify.min.css";
-import "react-image-crop/dist/ReactCrop.css";
-import "./assets/css/magnific-popup.css";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import "leaflet/dist/leaflet.css"
-
+import "leaflet/dist/leaflet.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./scenes/App";
-import { Provider } from "react-redux";
-import { store, persistor } from "./redux";
-import { Router, Route, BrowserRouter } from "react-router-dom";
-import { browserHistory } from "./services/navigation/navigation";
-import PrivateRoute from "./components/PrivateRoute";
-import PrivatePage from "./scenes/PrivatePage";
-import { PersistGate } from "redux-persist/integration/react";
-import SampleModal from "./components/SampleModal";
+import "react-image-crop/dist/ReactCrop.css";
+import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import {Router} from "react-router-dom";
+import "./assets/css/dropify.min.css";
+import "./assets/css/font.css";
+import "./assets/css/login-register.css";
+import "./assets/css/magnific-popup.css";
+import "./assets/css/style.css";
+import "./assets/css/user-card.css";
+import "./assets/css/pages/dataTables.bootstrap4.css"
+import "./assets/css/pages/responsive.dataTables.min.css"
+
+
 import ModalRoot from "./components/ModalRoot";
+import App from "./scenes/App";
 import ModalProvider from "./services/contexts/ModalContext/ModalProvider";
+import {browserHistory} from "./services/navigation/navigation";
+
 
 ReactDOM.render(
 	<ModalProvider>

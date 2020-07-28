@@ -1,9 +1,9 @@
-import { authApi } from "./Auth/index";
+import { apiCategory } from "./Category/index";
+import {apiAuth} from './Auth'
+export default {
+  apiCategory,
+  apiAuth
+}
 
-// export default {
-//   login: {
-//     getProfile: getProfile,
-//     loginUser: loginUser,
-//   },
-// };
-export { authApi };
+
+

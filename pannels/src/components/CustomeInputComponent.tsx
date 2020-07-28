@@ -10,7 +10,7 @@ const CustomInputComponent: React.FC<FieldAttributes<any>> = ({
   const isError = touched[field.name] && errors[field.name];
   return (
     <div
-      className={`form-group ${props.className} ${isError ? "has-danger" : ""}`}
+      className={`form-group  ${props.className? props.className: ""} ${isError ? "has-danger" : ""}`}
     >
       <label>{label}</label>
       <input
