@@ -1,21 +1,14 @@
 // Render Prop
-import { Field, Form, Formik } from "formik";
-import React, { useMemo, useState } from "react";
+import {Field, Form, Formik} from "formik";
+import React from "react";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
-import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
-import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
-import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Profile/constants";
-import { ICompanyEditFormikState } from "../../scenes/UserServices/scenes/Profile/models";
+import CustomeSelectCategory from '../../scenes/Dashboard/Scenes/CreateCompany/components/CustomeSelectCategory';
+import {adminCreatevalidationSchema} from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
+import {IAdminCreateCompanyFormikState} from "../../scenes/Dashboard/Scenes/CreateCompany/models";
+import {companyEditValitionSchema} from "../../scenes/UserServices/scenes/Profile/constants";
+import {ICompanyEditFormikState} from "../../scenes/UserServices/scenes/Profile/models";
 import CustomInputComponent from "../CustomeInputComponent";
 import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
-import useSWR from "swr";
-import { baseAdminUrl } from "../../services/utils/api/Admin";
-import { ICategoryRes } from "../../services/utils/api/Admin/models";
-import { Tree, notHaveChildren } from "../../services/utils/treeTravers";
-import * as _ from "lodash";
-import CustomeSelect from "../CustomeSelect";
-import { fetcherWithSearch } from "../../services/axios/fetchers";
-import useDebounce from "../../services/hooks/useDebounce";
 
 // declare function fromType<T extends boolean>(
 //   x: T
@@ -34,33 +27,6 @@ const CompanyForm = <
   status,
   initialValue,
 }: IProps<T>) => {
-  const [searchValue, setSearchValue] = useState("");
-  const debouncedValueSearch = useDebounce(searchValue, 1000);
-  const { data ,isValidating} = useSWR<ICategoryRes[]>(
-    [
-      baseAdminUrl + "/category/",
-      debouncedValueSearch
-    ],
-    fetcherWithSearch
-  );
-  const categoryOptions = useMemo(() => {
-    if (data) {
-      const notHaveChildrenArray = data.map((d) =>
-        Tree.reduce(notHaveChildren, [], d)
-      );
-      const flattenVersion = _.flatten(notHaveChildrenArray);
-      const options = flattenVersion.map((item) => ({
-        value: item.id,
-        label: item.title,
-        parent_title: item.parent_title,
-      }));
-      return options;
-    }
-  }, [data]);
-  console.log(isValidating)
-
-  const handleSearchValueChange = (newValue: string) =>
-    setSearchValue(newValue);
   return (
     <div>
       <Formik<T, {}>
@@ -138,10 +104,7 @@ const CompanyForm = <
                   label="فیلد کاری"
                   type="text"
                   name="category"
-                  options={categoryOptions}
-                  component={CustomeSelect}
-                  initialValue={searchValue}
-                  handleSearchValueChange={handleSearchValueChange}
+                  component={CustomeSelectCategory}
                 />
               </div>
             </div>
