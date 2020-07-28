@@ -1,6 +1,6 @@
 // Render Prop
 import { Field, Form, Formik } from "formik";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
 import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
 import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
@@ -11,9 +11,11 @@ import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
 import useSWR from "swr";
 import { baseAdminUrl } from "../../services/utils/api/Admin";
 import { ICategoryRes } from "../../services/utils/api/Admin/models";
-import { Tree } from "../../services/utils/treeTravers";
+import { Tree, notHaveChildren } from "../../services/utils/treeTravers";
 import * as _ from "lodash";
 import CustomeSelect from "../CustomeSelect";
+import { fetcherWithSearch } from "../../services/axios/fetchers";
+import useDebounce from "../../services/hooks/useDebounce";
 
 // declare function fromType<T extends boolean>(
 //   x: T
@@ -26,21 +28,23 @@ interface IProps<T> {
   initialValue: T;
 }
 
-function notHaveChildren(arr: any, data: any) {
-  if (!data.children.length) {
-    return arr.concat([{ ...data }]);
-  }
-  return arr;
-}
 const CompanyForm = <
   T extends IAdminCreateCompanyFormikState | ICompanyEditFormikState
 >({
   status,
   initialValue,
 }: IProps<T>) => {
-  const { data } = useSWR<ICategoryRes[]>(baseAdminUrl + "/category/");
+  const [searchValue, setSearchValue] = useState("");
+  const debouncedValueSearch = useDebounce(searchValue, 1000);
+  const { data ,isValidating} = useSWR<ICategoryRes[]>(
+    [
+      baseAdminUrl + "/category/",
+      debouncedValueSearch
+    ],
+    fetcherWithSearch
+  );
   const categoryOptions = useMemo(() => {
-	  if (data) {
+    if (data) {
       const notHaveChildrenArray = data.map((d) =>
         Tree.reduce(notHaveChildren, [], d)
       );
@@ -50,10 +54,13 @@ const CompanyForm = <
         label: item.title,
         parent_title: item.parent_title,
       }));
-	  return options
+      return options;
     }
   }, [data]);
+  console.log(isValidating)
 
+  const handleSearchValueChange = (newValue: string) =>
+    setSearchValue(newValue);
   return (
     <div>
       <Formik<T, {}>
@@ -133,6 +140,8 @@ const CompanyForm = <
                   name="category"
                   options={categoryOptions}
                   component={CustomeSelect}
+                  initialValue={searchValue}
+                  handleSearchValueChange={handleSearchValueChange}
                 />
               </div>
             </div>
