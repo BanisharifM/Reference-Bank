@@ -1,4 +1,5 @@
-import { IReqFunction, NotRequire } from "../models";
+import { IReqFunction } from './../models';
+import {  NotRequire } from "../models";
 
 //TODO :
 //Put and patch for company
@@ -15,7 +16,8 @@ export interface IAdminApi {
     { id: number } & Partial<ICompanyRes>
   >;
   deleteCompany: IReqFunction<undefined, number>;
-  getCategories : IReqFunction<ICategoryRes>
+  getCategories : (params :ICategoryParams) =>ReturnType<IReqFunction<ICategoryRes[], void , ICompanyParams>> ;
+  deleteCategory : IReqFunction<undefined , number>
 }
 //Start GetCompanies
 export interface ICompanyRes {
@@ -65,9 +67,13 @@ interface ICompanyCreate {
 
 //start Category
 export interface ICategoryRes {
-	id : number | null,
+  id : number ,
+  title :string
 	parent :number | null
 	parent_title?: "" 
 	children : ICategoryRes[]| []
+}
+interface ICategoryParams {
+  search : string
 }
 //end Category

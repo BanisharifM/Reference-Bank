@@ -1,5 +1,5 @@
+import { axiosInstance } from "./../../../axios/axios";
 import { IAdminApi } from "./models";
-import { axiosInstance } from "../../../axios/axios";
 
 export const baseAdminUrl = "/data_bank/admin";
 export const adminApi: IAdminApi = {
@@ -12,5 +12,9 @@ export const adminApi: IAdminApi = {
     axiosInstance.patch(`${baseAdminUrl}/companies/${id}/`, newData),
   deleteCompany: (id) =>
     axiosInstance.delete(`${baseAdminUrl}/companies/${id}/`),
-  getCategories: () => axiosInstance.get(`${baseAdminUrl}/category/`),
+  getCategories: ({ search }) =>
+    axiosInstance.get(
+      `${baseAdminUrl}/category/${search ? `?search=${search}` : ""}`
+    ),
+  deleteCategory: (id) => axiosInstance.get(`${baseAdminUrl}/category/${id}/`),
 };

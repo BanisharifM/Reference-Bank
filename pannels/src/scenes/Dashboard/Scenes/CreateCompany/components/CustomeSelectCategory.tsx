@@ -1,22 +1,15 @@
-import React, { Component, useState, useMemo } from "react";
+import React, { Component, useState, useMemo, useCallback } from "react";
 
 import { FieldAttributes } from "formik";
-import Select, { StylesConfig } from "react-select";
+import { StylesConfig, OptionsType, OptionTypeBase } from "react-select";
 import AsyncSelect from "react-select/async";
-import { baseAdminUrl } from "../../../../../services/utils/api/Admin";
-import { fetcherWithSearch } from "../../../../../services/axios/fetchers";
-import useDebounce from "../../../../../services/hooks/useDebounce";
-import useSWR from "swr";
 import {
   Tree,
   notHaveChildren,
 } from "../../../../../services/utils/treeTravers";
 import * as _ from "lodash";
-import {
-  ICompanyRes,
-  ICategoryRes,
-} from "../../../../../services/utils/api/Admin/models";
-import axios from "axios";
+import { ICategoryRes } from "../../../../../services/utils/api/Admin/models";
+import api from "../../../../../services/utils/api";
 
 const styles: StylesConfig = {
   control: (provided) => ({
@@ -27,34 +20,33 @@ const styles: StylesConfig = {
   indicatorSeparator: (provided) => ({ ...provided, color: "red" }),
 };
 
-  const calculateOptions = (data: ICategoryRes[]) => {
-    if (data) {
-      const notHaveChildrenArray = data.map((d) =>
-        Tree.reduce(notHaveChildren, [], d)
-      );
-      const flattenVersion = _.flatten(notHaveChildrenArray);
-      const options = flattenVersion.map((item) => ({
-        value: item.id,
-        label: item.title,
-        parent_title: item.parent_title,
-      }));
-      return options;
-    }
-  };
+const calculateOptions = (data: ICategoryRes[]) => {
+  if (data) {
+    const notHaveChildrenArray = data.map((d) =>
+      Tree.reduce(notHaveChildren, [], d)
+    );
+    const flattenVersion = _.flatten(notHaveChildrenArray);
+    const options = flattenVersion.map((item) => ({
+      value: item.id,
+      label: item.title,
+      parent_title: item.parent_title,
+    }));
+    return options;
+  }
+};
 const CustomeSelectCategory: React.FC<FieldAttributes<any>> = ({
   label,
-  options,
   field, // { name, value, onChange, onBlur }
   form: { touched, errors, setFieldValue, setFieldTouched }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
 }) => {
   const [searchValue, setSearchValue] = useState("");
 
-
   const handleSearchValueChange = (newValue: string) =>
     setSearchValue(newValue);
   const isError = touched[field.name] && errors[field.name];
   const handleChange = (e: any) => {
-    setFieldValue(field.name, e.value, true);
+    e && e.value && setFieldValue(field.name, e.value, false);
+    !e && setFieldValue(field.name, 0, false);
   };
   const handleFocus = () => {
     setFieldTouched(field.name, false, true);
@@ -62,42 +54,38 @@ const CustomeSelectCategory: React.FC<FieldAttributes<any>> = ({
   const handleBlur = () => {
     setFieldTouched(field.name, true, true);
   };
-  const handleInputChange = (e: string) => {
-    handleSearchValueChange(e);
+  const promiseOptions = (
+    inputValue: string,
+    callback: (options: OptionsType<OptionTypeBase>) => void
+  ) => {
+    api.adminApi.getCategories({ search: inputValue }).then(({ data }) => {
+      callback(calculateOptions(data)!);
+    });
   };
-  const promiseOptions = (inputValue: string) => 
-     axios
-	 .get(`${baseAdminUrl}/category/search?=${inputValue}`)
-      .then((res) => {
-         calculateOptions(res.data);
-      });
-  const debouncedLoadOptions = _.debounce(promiseOptions, 1000);
+
+  const debouncedLoadOptions = useCallback(
+    _.debounce(promiseOptions, 1000),
+    []
+  );
 
   return (
     <>
       <label>{label}</label>
       <AsyncSelect
         cacheOptions
-        defaultOptions={options}
-        loadOptions={(e) => debouncedLoadOptions(e)}
+        isClearable
+        defaultOptions
+        loadOptions={(e, cb) => debouncedLoadOptions(e, cb)}
         inputValue={searchValue}
         onInputChange={handleSearchValueChange}
-        // onChange={handleChange}
-        // onFocus={handleFocus}
-        // onBlur={handleBlur}
-        // placeholder="انتخاب کنید"
-        // styles={isError && styles}
+        placeholder="انتخاب کنید"
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        styles={isError && styles}
+        noOptionsMessage={() => "موردی یافت نشد!"}
+        loadingMessage={() => "در حال بارگذاری..."}
       />
-      {/* <Select
-       *   className="kkkkkkkh"
-       *   options={options}
-       *   placeholder="انتخاب کنید"
-       *   onChange={handleChange}
-       *   onFocus={handleFocus}
-       *   onBlur={handleBlur}
-       *   onInputChange={handleInputChange}
-       *   inputValue={inputValue}
-       * /> */}
 
       {isError && (
         <div role="alert" className="text-danger form-control-feedback">

@@ -8,22 +8,23 @@ import EditChangeName from "./EditChangeName";
 import NavTabs from "./NavTabs";
 import ImageEditSection from "./ImageEditSection";
 import SubmitModalButton from "../../../../../../components/SubmitModalButton";
-import { ISliderImage, ICategory } from "../Table/model";
+import { ICategoryRes } from "../../../../../../services/utils/api/Admin/models";
+import { TCompanyTableData } from "../../../../../Dashboard/Scenes/CompaniesList/components/models";
+import { TCategoryTableData } from "../../models";
 //-----------------------------------------------------------------
 interface IProps {
   modalDispatcher: (actions: AppActions) => void;
 }
 
-const EditCategoryModal: React.FC<IProps & ICategory> = ({
+const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
   modalDispatcher,
   id,
-  name,
-  image,
-  slider,
+  title, 
 }) => {
   const handleCloseModal = () => {
     modalDispatcher({ type: EModalActionTypes.HIDE_MODAL });
   };
+
   const modalContentRef = useRef<HTMLDivElement>(null);
   useOutsideClicker(modalContentRef, handleCloseModal);
   const [activeItem, setActiveItem] = useState("تصویر دسته بندی");
@@ -31,7 +32,7 @@ const EditCategoryModal: React.FC<IProps & ICategory> = ({
     setActiveItem(item);
   };
   //----------------form states----------------------//
-  const [categoryName, setCategoryName] = useState(name);
+  const [categoryName, setCategoryName] = useState(title);
   const handleEditCategoryName = (e: React.ChangeEvent<HTMLInputElement>) =>
     setCategoryName(e.currentTarget.value);
 
@@ -49,7 +50,8 @@ const EditCategoryModal: React.FC<IProps & ICategory> = ({
           <div className="modal-content" ref={modalContentRef}>
             <div className="modal-header">
               <h4 className="modal-title" id="myModalLabel">
-                {name}
+                {title}
+
               </h4>
               <CloseModalIcon handleCloseModal={handleCloseModal} />
             </div>
@@ -59,7 +61,7 @@ const EditCategoryModal: React.FC<IProps & ICategory> = ({
                 onEditCategoryName={handleEditCategoryName}
               />
             </div>
-            <NavTabs
+            {/* <NavTabs
               activeItem={activeItem}
               onChangeActiveItem={handleCahngeActiveItem}
             />
@@ -68,7 +70,7 @@ const EditCategoryModal: React.FC<IProps & ICategory> = ({
               slider={slider}
               activeItem={activeItem}
               onChangeActiveItem={handleCahngeActiveItem}
-            />
+            /> */}
             <div className="modal-footer">
               <SubmitModalButton handleSubmitModal={handleSubmit} />
               <CloseModalButton handleCloseModal={handleCloseModal} />

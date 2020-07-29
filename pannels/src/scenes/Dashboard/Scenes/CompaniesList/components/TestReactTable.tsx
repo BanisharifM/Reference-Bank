@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { CellProps, useTable } from "react-table";
 import EditableCell from "./EditableCell";
-import { ReactTable } from "./ReactTable";
 import { Formik, Form } from "formik";
-import TableContainer from "./TableContainer";
+import { ReactTable } from "../../../../../components/Table/ReactTable";
 
 const CompaniesList = () => {
   const [editing, setEditing] = useState<any>({ col1: "", col2: "" });

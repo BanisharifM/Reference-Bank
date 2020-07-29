@@ -1,12 +1,12 @@
 // Render Prop
-import {Field, Form, Formik} from "formik";
+import { Field, Form, Formik } from "formik";
 import React from "react";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
-import CustomeSelectCategory from '../../scenes/Dashboard/Scenes/CreateCompany/components/CustomeSelectCategory';
-import {adminCreatevalidationSchema} from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
-import {IAdminCreateCompanyFormikState} from "../../scenes/Dashboard/Scenes/CreateCompany/models";
-import {companyEditValitionSchema} from "../../scenes/UserServices/scenes/Profile/constants";
-import {ICompanyEditFormikState} from "../../scenes/UserServices/scenes/Profile/models";
+import CustomeSelectCategory from "../../scenes/Dashboard/Scenes/CreateCompany/components/CustomeSelectCategory";
+import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
+import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
+import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Profile/constants";
+import { ICompanyEditFormikState } from "../../scenes/UserServices/scenes/Profile/models";
 import CustomInputComponent from "../CustomeInputComponent";
 import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
 
@@ -38,10 +38,6 @@ const CompanyForm = <
         }
         onSubmit={(values, { setSubmitting }) => {
           console.log(values);
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
         }}
       >
         {({ isSubmitting, values }) => (
