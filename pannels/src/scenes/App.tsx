@@ -1,14 +1,11 @@
-import React, { Suspense, useEffect } from "react";
-import Header from "../components/Header";
-import SideNav from "../components/SideNav";
-import BaseLayout from "../components/BaseLayout";
-import { Switch, Route } from "react-router-dom";
-import routes, { renderRoutes } from "./routes";
-import Loading from "../components/Loading";
-import Dashboard from "./Dashboard";
-import { useUserState } from "../services/contexts/UserContext/UserContext";
-import { SWRConfig } from "swr";
 import axios from "axios";
+import React, {Suspense} from "react";
+import {Switch} from "react-router-dom";
+import {SWRConfig} from "swr";
+import BaseLayout from "../components/BaseLayout";
+import Loading from "../components/Loading";
+import {useUserState} from "../services/contexts/UserContext/UserContext";
+import routes, {renderRoutes} from "./routes";
 
 const App = () => {
   // useEffect(() => {

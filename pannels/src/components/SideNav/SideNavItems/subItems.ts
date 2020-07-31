@@ -9,7 +9,7 @@ const adminDashboardItems: IMenuItem[] = [
   {
 	  path:"/dashboard/companies-list",
 	  title : 'لیست شرکت‌ها',
-	  toHavePermissions :[]
+	  toHavePermissions :["company:companylist"]
   }
   // {
   //   path: "/felan",

@@ -32,9 +32,11 @@ const sliders: ISliderImage[] = [
 const Index = () => {
   const [items, setItems] = useState<ISliderImage[]>(sliders);
   const handleDeleteItem = (id: number) => {
+	  return new Promise((resolve) => resolve('hi'))
     const newItems = items.filter((item) => item.index !== id);
     setItems(newItems);
   };
+  const handleSendSubmit = () => new Promise(res=>res)
 
   return (
     <>
@@ -49,7 +51,7 @@ const Index = () => {
                 onDelete={handleDeleteItem}
               />
             ))}
-            <AddImage url="/" />
+            <AddImage url="/" onSubmit={handleSendSubmit}/>
           </div>
         </div>
       </div>

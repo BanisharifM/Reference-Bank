@@ -5,12 +5,13 @@ const rules: IRules = {
     static: [],
   },
   company: {
-    static: ["company:signup"],
+    static: ["company:edit"],
   },
   admin: {
     static: [
       "main-site:edit",
       "company:create",
+	  "company:companylist",
       "category:update",
       "category:read",
       "category:delete",

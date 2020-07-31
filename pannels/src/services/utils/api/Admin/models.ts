@@ -1,5 +1,4 @@
-import { IReqFunction } from './../models';
-import {  NotRequire } from "../models";
+import { IReqFunction, ICompanyRes } from './../models';
 
 //TODO :
 //Put and patch for company
@@ -18,27 +17,11 @@ export interface IAdminApi {
   deleteCompany: IReqFunction<undefined, number>;
   getCategories : (params :ICategoryParams) =>ReturnType<IReqFunction<ICategoryRes[], void , ICompanyParams>> ;
   deleteCategory : IReqFunction<undefined , number>
+  deleteCategorySlider : IReqFunction <undefined , number>
+  addCategorySlider : IReqFunction<undefined ,  {category:number , image :File}  >
 }
 //Start GetCompanies
-export interface ICompanyRes {
-  id: number;
-  user: number;
-  username: string;
-  email: string;
-  mobile_number: string;
-  name: string;
-  manager_name: string;
-  phone_number: string;
-  website: string;
-  address: string;
-  location: string;
-  logo: string | null;
-  category: number | null;
-  category_title: string;
-  description: string;
-  status: "s" | "a";
-  [index : string] : string | number|null
-}
+//ICompany Res moved to .. directory    
 
 export interface ICompanyPaginateRes {
   num_pages: number;
@@ -77,3 +60,9 @@ interface ICategoryParams {
   search : string
 }
 //end Category
+//Category_Slider 
+export interface ICategorySlider {
+	id : number , 
+	category : number ,
+	image : string
+}

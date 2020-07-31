@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useModalDispatch } from "../../../services/contexts/ModalContext/ModalContext";
 import { EModalActionTypes } from "../../../services/contexts/ModalContext/models";
 import PictureOverlayPreview from "../../../components/PictureOverlayPreview";
+import Button from "../../../components/Button";
 
 interface IProps {
   image: string;
   index: number;
-  onDelete: (id: number) => void;
+  onDelete: (id: number) => Promise<any>;
 }
 const SliderCards: React.FC<IProps> = ({ index, image, onDelete }) => {
   const [sureDelete, setSureDelete] = useState(false);
@@ -17,9 +18,11 @@ const SliderCards: React.FC<IProps> = ({ index, image, onDelete }) => {
   const handleDiscaredDelete = () => {
     setSureDelete(false);
   };
-  const handleDelete = () => {
-    onDelete(index);
-    setSureDelete(false);
+  const handleDelete = async () => {
+    try {
+      await onDelete(index);
+    } catch (e) {
+    } 
   };
   const dispatch = useModalDispatch();
   const handleOpenPreview = () => {
@@ -33,7 +36,7 @@ const SliderCards: React.FC<IProps> = ({ index, image, onDelete }) => {
       <div className="card">
         <div className="el-card-item">
           <div className="el-card-avatar el-overlay-1">
-            <img src={image} alt="user" style={{minHeight:"150px"}} />
+            <img src={image} alt="user" style={{ minHeight: "150px" }} />
             <div className="el-overlay">
               <ul className="el-info">
                 <li>
@@ -60,20 +63,17 @@ const SliderCards: React.FC<IProps> = ({ index, image, onDelete }) => {
               </button>
             ) : (
               <>
-                <button
-                    type="button"
-                    onClick={handleDelete}
-                    className="btn waves-effect waves-light btn-success m-r-10"
-                >
-                  بله
-                </button>
-                <button
-                  type="button"
-                  className="btn waves-effect waves-light btn-warning "
+                <Button
+                  type="success"
+                  className="m-r-10"
+                  text="بله"
+                  onClick={handleDelete}
+                />
+                <Button
+                  type="warning"
+                  text="خیر "
                   onClick={handleDiscaredDelete}
-                >
-                  خیر
-                </button>
+                />
               </>
             )}
           </div>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useSWR from "swr";
-import { ICompanyRes } from "../../../../services/utils/api/Admin/models";
 import api from "../../../../services/utils/api";
 import {
   useTable,
@@ -21,6 +20,7 @@ import { baseAdminUrl } from "../../../../services/utils/api/Admin";
 import TableContainer from "../../../../components/Table/TableContainer";
 import { ReactTable } from "../../../../components/Table/ReactTable";
 import { Tree, renameProp } from "../../../../services/utils/treeTravers";
+import {ICompanyRes} from "../../../../services/utils/api/models";
 const hooks = [
   useColumnOrder,
   useFilters,

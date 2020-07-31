@@ -1,3 +1,3 @@
 import axios from "axios";
-export const fetcherWithSearch = (apiUrl: string, toSearch: string) =>
-  axios.get(`${apiUrl}?search=${toSearch}`).then((res) => res.data);
+export const fetcherWithParam = (apiUrl: string, param: string, paramValue:  number |string) =>
+  axios.get(`${apiUrl}?${param}=${paramValue}`).then((res) => res.data);

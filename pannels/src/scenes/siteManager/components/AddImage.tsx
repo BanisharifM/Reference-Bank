@@ -8,11 +8,12 @@ import Button from "../../../components/Button";
 
 interface IProps {
   url: string;
+  onSubmit: (image: File) => Promise<any>;
 }
 interface IFileWithPreview extends File {
   preview: any;
 }
-const AddImage: React.FC<IProps> = ({ url }) => {
+const AddImage: React.FC<IProps> = ({ onSubmit, url }) => {
   const [files, setFiles] = useState<File[]>([]);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: "image/jpeg, image/png",
@@ -30,15 +31,21 @@ const AddImage: React.FC<IProps> = ({ url }) => {
     const newFiles = files.filter((item, i) => index !== i);
     setFiles(newFiles);
   };
-  const handleSend = (file:File) => {
-
-
-  }
+  const handleSend = async (file: File) => {
+    try {
+      await onSubmit(file);
+    } catch (e) {}
+  };
 
   const thumbs = (files as Array<IFileWithPreview>).map((file, index) => (
     <React.Fragment key={file.size}>
       <PicCart image={file.preview} />
-	  <Button onClick={()=>handleSend(file)} className="ml-2 " type="success" text="ارسال" />
+      <Button
+        onClick={() => handleSend(file)}
+        className="ml-2 "
+        type="success"
+        text="ارسال"
+      />
       <Button onClick={() => handleRemove(index)} type="danger" text="حذف" />
     </React.Fragment>
   ));

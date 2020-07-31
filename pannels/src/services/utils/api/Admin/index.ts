@@ -16,5 +16,18 @@ export const adminApi: IAdminApi = {
     axiosInstance.get(
       `${baseAdminUrl}/category/${search ? `?search=${search}` : ""}`
     ),
-  deleteCategory: (id) => axiosInstance.get(`${baseAdminUrl}/category/${id}/`),
+  deleteCategory: (id) =>
+    axiosInstance.delete(`${baseAdminUrl}/category/${id}/`),
+  deleteCategorySlider: (id) =>
+    axiosInstance.delete(`${baseAdminUrl}/category_slider/${id}/`),
+  addCategorySlider: ({ category, image }) =>
+    axiosInstance.post(
+      `${baseAdminUrl}/category_slider/`,
+      { category, image },
+      {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      }
+    ),
 };

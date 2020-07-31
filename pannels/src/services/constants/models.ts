@@ -12,9 +12,11 @@ interface ICompanyRules {}
 interface IAdminRules {}
 
 export type TPermissions =
+  | "company:companylist"
   | "company:signup"
-  | "main-site:edit"
   | "company:create"
+  | "company:edit"
+  | "main-site:edit"
   | "category:read"
   | "category:update"
   | "category:delete"

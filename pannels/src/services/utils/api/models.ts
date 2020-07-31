@@ -11,9 +11,26 @@ export type IReqFunction<U, T = void, Y = void> = (
   config: AxiosRequestConfig;
   request?: any;
 }>;
-export type NotRequire<T> = {
-  [P in keyof T]?: T[P];
-};
+
+export interface ICompanyRes {
+  id: number;
+  user: number;
+  username: string;
+  email: string;
+  mobile_number: string;
+  name: string;
+  manager_name: string;
+  phone_number: string;
+  website: string;
+  address: string;
+  location: [number, number];
+  logo: string | null;
+  category: number | null;
+  category_title: string;
+  description: string;
+  status: "s" | "a";
+  [index : string] : string | number|null | [number , number]
+}
 
 //     fetch('http://bank.pythonanywhere.com/auth/login/', {
 //     method: 'POST', // *GET, POST, PUT, DELETE, etc.

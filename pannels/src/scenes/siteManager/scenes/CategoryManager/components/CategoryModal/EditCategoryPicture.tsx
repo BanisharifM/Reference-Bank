@@ -6,7 +6,10 @@ import AddImage from "../../../../components/AddImage";
 interface IProps {
  image :string
 }
+
+
 const EditCategoryPicture:React.FC<IProps> = ({image}) => {
+	const handleSubmitSend = () => new Promise(res=>res)
   return (
     <div className="tab-pane active">
       <div className="p-20 container">
@@ -14,7 +17,7 @@ const EditCategoryPicture:React.FC<IProps> = ({image}) => {
           <div className="col-lg-3 col-md-6">
             <PicCart image={image} />
           </div>
-          <AddImage url="/" />
+          <AddImage url="/" onSubmit={handleSubmitSend}/>
         </div>
       </div>
     </div>

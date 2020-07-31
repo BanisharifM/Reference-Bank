@@ -8,10 +8,19 @@ import EditChangeName from "./EditChangeName";
 import NavTabs from "./NavTabs";
 import ImageEditSection from "./ImageEditSection";
 import SubmitModalButton from "../../../../../../components/SubmitModalButton";
-import { ICategoryRes } from "../../../../../../services/utils/api/Admin/models";
+import {
+  ICategoryRes,
+  ICategorySlider,
+} from "../../../../../../services/utils/api/Admin/models";
 import { TCompanyTableData } from "../../../../../Dashboard/Scenes/CompaniesList/components/models";
 import { TCategoryTableData } from "../../models";
+import useSWR from "swr";
+import { fetcherWithParam } from "../../../../../../services/axios/fetchers";
+import { baseAdminUrl } from "../../../../../../services/utils/api/Admin";
+import Spinner from "../../../../../../components/Spinner";
+import CategoryIdProvider from "../../../../../../services/contexts/CategoryIdContext/CategoryIdProvider";
 //-----------------------------------------------------------------
+
 interface IProps {
   modalDispatcher: (actions: AppActions) => void;
 }
@@ -19,15 +28,20 @@ interface IProps {
 const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
   modalDispatcher,
   id,
-  title, 
+  title,
 }) => {
+  const { data } = useSWR<ICategorySlider[]>(
+    [`${baseAdminUrl}/category_slider/`,'category',id],
+    fetcherWithParam
+  );
+
   const handleCloseModal = () => {
     modalDispatcher({ type: EModalActionTypes.HIDE_MODAL });
   };
 
   const modalContentRef = useRef<HTMLDivElement>(null);
   useOutsideClicker(modalContentRef, handleCloseModal);
-  const [activeItem, setActiveItem] = useState("تصویر دسته بندی");
+  const [activeItem, setActiveItem] = useState("اسلایدر دسته بندی");
   const handleCahngeActiveItem = (item: string) => {
     setActiveItem(item);
   };
@@ -51,7 +65,6 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
             <div className="modal-header">
               <h4 className="modal-title" id="myModalLabel">
                 {title}
-
               </h4>
               <CloseModalIcon handleCloseModal={handleCloseModal} />
             </div>
@@ -61,16 +74,24 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
                 onEditCategoryName={handleEditCategoryName}
               />
             </div>
-            {/* <NavTabs
-              activeItem={activeItem}
-              onChangeActiveItem={handleCahngeActiveItem}
-            />
-            <ImageEditSection
-              picture={image}
-              slider={slider}
-              activeItem={activeItem}
-              onChangeActiveItem={handleCahngeActiveItem}
-            /> */}
+            {!data && <Spinner />}
+            {data && (
+              <>
+                <NavTabs
+                  activeItem={activeItem}
+                  onChangeActiveItem={handleCahngeActiveItem}
+                />
+                <CategoryIdProvider categoryId={id}>
+                  <ImageEditSection
+                    // picture={image}
+
+                    activeItem={activeItem}
+                    onChangeActiveItem={handleCahngeActiveItem}
+                  />
+                </CategoryIdProvider>
+              </>
+            )}
+
             <div className="modal-footer">
               <SubmitModalButton handleSubmitModal={handleSubmit} />
               <CloseModalButton handleCloseModal={handleCloseModal} />
@@ -83,15 +104,6 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
 };
 
 export default EditCategoryModal;
-
-
-
-
-
-
-
-
-
 
 // user{
 

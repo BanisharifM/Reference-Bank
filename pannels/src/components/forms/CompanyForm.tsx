@@ -9,6 +9,9 @@ import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Prof
 import { ICompanyEditFormikState } from "../../scenes/UserServices/scenes/Profile/models";
 import CustomInputComponent from "../CustomeInputComponent";
 import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
+import { ICompanyRes } from "../../services/utils/api/models";
+import classnames from 'classnames'
+import {stat} from "fs";
 
 // declare function fromType<T extends boolean>(
 //   x: T
@@ -21,12 +24,12 @@ interface IProps<T> {
   initialValue: T;
 }
 
-const CompanyForm = <
-  T extends IAdminCreateCompanyFormikState | ICompanyEditFormikState
->({
+const CompanyForm = <T extends IAdminCreateCompanyFormikState | ICompanyRes>({
   status,
   initialValue,
 }: IProps<T>) => {
+	const canCreate= status === 'admin-create'
+	const canEdit= status === 'company-edit'
   return (
     <div>
       <Formik<T, {}>
@@ -43,27 +46,29 @@ const CompanyForm = <
         {({ isSubmitting, values }) => (
           <Form className="form-horizontal mt-4">
             <div className="row">
-              <div className="col-md-4">
-                <Field
-                  label="نام کاربری"
-                  type="text"
-                  name="username"
-                  component={CustomInputComponent}
-                />
-                <Field
-                  label="رمز عبور"
-                  type="text"
-                  name="password1"
-                  component={CustomInputComponent}
-                />
-                <Field
-                  label="تکرار رمز عبور"
-                  type="text"
-                  name="password2"
-                  component={CustomInputComponent}
-                />
-              </div>
-              <div className="col-md-4">
+              {canCreate && (
+                <div className="col-md-4">
+                  <Field
+                    label="نام کاربری"
+                    type="text"
+                    name="username"
+                    component={CustomInputComponent}
+                  />
+                  <Field
+                    label="رمز عبور"
+                    type="text"
+                    name="password1"
+                    component={CustomInputComponent}
+                  />
+                  <Field
+                    label="تکرار رمز عبور"
+                    type="text"
+                    name="password2"
+                    component={CustomInputComponent}
+                  />
+                </div>
+              )}
+              <div className={classnames({'col-md-4' : canCreate , 'col-md-6' : canEdit})}>
                 <Field
                   label="نام شرکت"
                   type="text"
@@ -83,7 +88,7 @@ const CompanyForm = <
                   component={CustomInputComponent}
                 />
               </div>
-              <div className="col-md-4">
+              <div className={classnames({'col-md-4' : canCreate , 'col-md-6' : canEdit})}>
                 <Field
                   label="شماره تلفن شرکت"
                   type="text"
@@ -106,7 +111,7 @@ const CompanyForm = <
             </div>
 
             <div className="row">
-              <div className="col-md-8">
+              <div className="col-md-6">
                 <Field
                   name="address"
                   component={CustomeTextAreaComponent}
@@ -116,7 +121,7 @@ const CompanyForm = <
                 />
                 <Field name="location" component={CompanyMap} />
               </div>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <Field
                   label="شرح فعالیت"
                   type="text"
@@ -166,7 +171,7 @@ const CompanyForm = <
 
             <button type="submit" className="btn btn-success">
               <i className="fa fa-check" />{" "}
-              {status === "admin-create" ? "ثبت شرکت" : "ارسال درخواست تفییر"}
+              {canCreate ? "ثبت شرکت" : "ارسال درخواست تفییر"}
             </button>
 
             {JSON.stringify(values, null, 2)}

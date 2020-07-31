@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
 import { ReactTable } from "../../../../components/Table/ReactTable";
 import TableContainer from "../../../../components/Table/TableContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,7 +19,7 @@ import {
 } from "react-table";
 import useSWR from "swr";
 import { baseAdminUrl } from "../../../../services/utils/api/Admin";
-import { ICategoryRes, ICompanyRes } from "../../../../services/utils/api/Admin/models";
+import { ICategoryRes } from "../../../../services/utils/api/Admin/models";
 import { Tree, renameProp } from "../../../../services/utils/treeTravers";
 import { CircleButton } from "../../../../components/CircleButton";
 import api from "../../../../services/utils/api";
@@ -41,8 +41,6 @@ const hooks = [
   useRowSelect,
 ];
 
-
-
 const Index = () => {
   const modalDispatch = useModalDispatch();
   const { data } = useSWR<ICategoryRes[]>(`${baseAdminUrl}/category/`);
@@ -56,22 +54,24 @@ const Index = () => {
     return [];
   }, [data]);
 
-  const openModal = (modalProps: TCategoryTableData) => {
-    modalDispatch({
-      type: EModalActionTypes.SHOW_MODAL,
-      payload: {
-        component: EditCategoryModal,
-        props: {
-          ...modalProps,
-          // id: 1,
-          // name: "فلان",
-          // picture: "bla",
-          // slider: ["khar", "olaq"],
+  const openModal = useCallback(
+    (modalProps: TCategoryTableData) => {
+      modalDispatch({
+        type: EModalActionTypes.SHOW_MODAL,
+        payload: {
+          component: EditCategoryModal,
+          props: {
+            ...modalProps,
+            // id: 1,
+            // name: "فلان",
+            // picture: "bla",
+            // slider: ["khar", "olaq"],
+          },
         },
-      },
-    });
-  };
-
+      });
+    },
+    [modalDispatch]
+  );
   const handleDeleteCategory = async (id: number) => {
     try {
       const toDelete = window.confirm("آیا این دسته بندی حذف شود؟");
@@ -80,9 +80,12 @@ const Index = () => {
       }
     } catch (e) {}
   };
-  const handleEditCategory = (data : TCategoryTableData) => {
-    openModal(data);
-  };
+  const handleEditCategory = useCallback(
+    (data: TCategoryTableData) => {
+      openModal(data);
+    },
+    [openModal]
+  );
   const columns = React.useMemo(
     () => [
       {
@@ -124,13 +127,21 @@ const Index = () => {
           ) : null,
       },
       {
+        // {...row.getToggleRowExpandedProps({
+        //   style: { paddingRight: `${row.depth * 2} rem` },
+        // })} : ''}
         Header: "نام دسته بندی",
         accessor: "title",
         Cell: ({
-          row: { canExpand, original },
+          row: { canExpand, original, ...row },
         }: CellProps<TCategoryTableData>) => {
           return (
-            <span className={`${canExpand ? "font-bold" : ""}`}>
+            <span
+              {...row.getToggleRowExpandedProps({
+                style: { paddingRight: `${row.depth * 2}rem` },
+              })}
+              className={`${canExpand ? "font-bold" : ""}`}
+            >
               {original.title}
             </span>
           );
@@ -141,9 +152,18 @@ const Index = () => {
         accessor: "parent_title",
         Cell: ({
           row: {
-            original: { parent_title },
+            original: { parent_title }, ...row
           },
         }: CellProps<TCategoryTableData>) => {
+          return (
+            <span
+              {...row.getToggleRowExpandedProps({
+                style: { paddingRight: `${row.depth * 2}rem` },
+              })}
+            >
+              {parent_title ? parent_title : "ندارد"}
+            </span>
+          );
           if (parent_title) {
             return parent_title;
           } else return <span className="text-warning ">ندارد</span>;
@@ -172,7 +192,7 @@ const Index = () => {
         },
       },
     ],
-    []
+    [handleEditCategory]
   );
 
   // const data = React.useMemo(() => makeData(5, 5, 5), []);
