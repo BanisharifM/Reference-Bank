@@ -21,6 +21,7 @@ import Spinner from "../../../../../../components/Spinner";
 import CategoryIdProvider from "../../../../../../services/contexts/CategoryIdContext/CategoryIdProvider";
 import api from "../../../../../../services/utils/api";
 import Button from "../../../../../../components/Button";
+import Centerise from "../../../../../../components/Centerise";
 //-----------------------------------------------------------------
 
 interface IProps {
@@ -32,7 +33,6 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
   id,
   title,
 }) => {
-
   const { mutate } = useSWR<ICategoryRes[]>(`${baseAdminUrl}/category/`);
   const { data } = useSWR<ICategorySlider[]>(
     [`${baseAdminUrl}/category_slider/`, "category", id],
@@ -59,7 +59,7 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
     setLoading(true);
     try {
       await api.adminApi.editCategory({ id, title: categoryName });
-	  mutate()
+      mutate();
     } finally {
       setLoading(false);
     }
@@ -87,13 +87,18 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
                 onEditCategoryName={handleEditCategoryName}
               />
             </div>
-            {!data && <Spinner />}
+            <NavTabs
+              activeItem={activeItem}
+              onChangeActiveItem={handleCahngeActiveItem}
+            />
+
+            {!data && (
+              <Centerise height="170px" width="auto">
+                <Spinner size="lg" />
+              </Centerise>
+            )}
             {data && (
               <>
-                <NavTabs
-                  activeItem={activeItem}
-                  onChangeActiveItem={handleCahngeActiveItem}
-                />
                 <CategoryIdProvider categoryId={id}>
                   <ImageEditSection
                     // picture={image}
