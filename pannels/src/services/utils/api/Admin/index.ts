@@ -2,6 +2,11 @@ import { axiosInstance } from "./../../../axios/axios";
 import { IAdminApi } from "./models";
 
 export const baseAdminUrl = "/data_bank/admin";
+const addCompanySliderConfigReq = {
+  headers: {
+    "content-type": "multipart/form-data",
+  },
+};
 export const adminApi: IAdminApi = {
   getCompanies: (params) =>
     axiosInstance.get(`${baseAdminUrl}/companies/`, { params }),
@@ -24,10 +29,8 @@ export const adminApi: IAdminApi = {
     axiosInstance.post(
       `${baseAdminUrl}/category_slider/`,
       { category, image },
-      {
-        headers: {
-          "content-type": "multipart/form-data",
-        },
-      }
+      addCompanySliderConfigReq
     ),
+  editCategory: ({ id, ...rest }) =>
+    axiosInstance.patch(`${baseAdminUrl}/category/${id}/`, rest),
 };

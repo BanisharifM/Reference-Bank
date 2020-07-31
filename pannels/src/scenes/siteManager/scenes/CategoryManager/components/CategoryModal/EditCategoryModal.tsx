@@ -19,6 +19,8 @@ import { fetcherWithParam } from "../../../../../../services/axios/fetchers";
 import { baseAdminUrl } from "../../../../../../services/utils/api/Admin";
 import Spinner from "../../../../../../components/Spinner";
 import CategoryIdProvider from "../../../../../../services/contexts/CategoryIdContext/CategoryIdProvider";
+import api from "../../../../../../services/utils/api";
+import Button from "../../../../../../components/Button";
 //-----------------------------------------------------------------
 
 interface IProps {
@@ -30,8 +32,10 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
   id,
   title,
 }) => {
+
+  const { mutate } = useSWR<ICategoryRes[]>(`${baseAdminUrl}/category/`);
   const { data } = useSWR<ICategorySlider[]>(
-    [`${baseAdminUrl}/category_slider/`,'category',id],
+    [`${baseAdminUrl}/category_slider/`, "category", id],
     fetcherWithParam
   );
 
@@ -42,6 +46,7 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
   const modalContentRef = useRef<HTMLDivElement>(null);
   useOutsideClicker(modalContentRef, handleCloseModal);
   const [activeItem, setActiveItem] = useState("اسلایدر دسته بندی");
+  const [loading, setLoading] = useState(false);
   const handleCahngeActiveItem = (item: string) => {
     setActiveItem(item);
   };
@@ -50,7 +55,15 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
   const handleEditCategoryName = (e: React.ChangeEvent<HTMLInputElement>) =>
     setCategoryName(e.currentTarget.value);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      await api.adminApi.editCategory({ id, title: categoryName });
+	  mutate()
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -93,8 +106,13 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
             )}
 
             <div className="modal-footer">
-              <SubmitModalButton handleSubmitModal={handleSubmit} />
-              <CloseModalButton handleCloseModal={handleCloseModal} />
+              <Button
+                onClick={handleSubmit}
+                type="success"
+                text="ویرایش"
+                loading={loading}
+              />
+              <Button onClick={handleCloseModal} type="danger" text="بستن" />
             </div>
           </div>
         </div>

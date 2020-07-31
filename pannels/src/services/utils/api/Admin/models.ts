@@ -1,4 +1,4 @@
-import { IReqFunction, ICompanyRes } from './../models';
+import { IReqFunction, ICompanyRes } from "./../models";
 
 //TODO :
 //Put and patch for company
@@ -10,18 +10,18 @@ export interface IAdminApi {
   >;
   createCompany: IReqFunction<ICompanyRes, ICompanyCreate>;
   getCompany: IReqFunction<ICompanyRes, number>;
-  editCompany: IReqFunction<
-    ICompanyRes,
-    { id: number } & Partial<ICompanyRes>
-  >;
+  editCompany: IReqFunction<ICompanyRes, { id: number } & Partial<ICompanyRes>>;
   deleteCompany: IReqFunction<undefined, number>;
-  getCategories : (params :ICategoryParams) =>ReturnType<IReqFunction<ICategoryRes[], void , ICompanyParams>> ;
-  deleteCategory : IReqFunction<undefined , number>
-  deleteCategorySlider : IReqFunction <undefined , number>
-  addCategorySlider : IReqFunction<undefined ,  {category:number , image :File}  >
+  getCategories: (
+    params: ICategoryParams
+  ) => ReturnType<IReqFunction<ICategoryRes[], void, ICompanyParams>>;
+  editCategory: IReqFunction<undefined, Partial<ICategoryRes>>;
+  deleteCategory: IReqFunction<undefined, number>;
+  deleteCategorySlider: IReqFunction<undefined, number>;
+  addCategorySlider: IReqFunction<undefined, { category: number; image: File }>;
 }
 //Start GetCompanies
-//ICompany Res moved to .. directory    
+//ICompany Res moved to .. directory
 
 export interface ICompanyPaginateRes {
   num_pages: number;
@@ -50,19 +50,19 @@ interface ICompanyCreate {
 
 //start Category
 export interface ICategoryRes {
-  id : number ,
-  title :string
-	parent :number | null
-	parent_title?: "" 
-	children : ICategoryRes[]| []
+  id: number;
+  title: string;
+  parent: number | null;
+  parent_title?: "";
+  children: ICategoryRes[] | [];
 }
 interface ICategoryParams {
-  search : string
+  search: string;
 }
 //end Category
-//Category_Slider 
+//Category_Slider
 export interface ICategorySlider {
-	id : number , 
-	category : number ,
-	image : string
+  id: number;
+  category: number;
+  image: string;
 }
