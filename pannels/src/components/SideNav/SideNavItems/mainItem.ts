@@ -1,6 +1,6 @@
 import { TPermissions } from "./../../../services/constants/models";
 import { ISideNavItems, IMenuItem } from "./../types";
-import { adminDashboardItems, siteManagementItems } from "./subItems";
+import { adminDashboardItems, siteManagementItems, companyPageManageitems } from "./subItems";
 import { flatten, isEmpty } from "lodash";
 
 const calcOrChildPermission = (childIitem: IMenuItem[]): TPermissions[] => {
@@ -46,4 +46,10 @@ export const menuItems: ISideNavItems[] = [
     icon: "ti-layout-grid2",
     toHavePermissions: calcOrChildPermission(siteManagementItems),
   },
+  {
+	  title : 'مدیریت صفحه شرکت',
+	  items : companyPageManageitems,
+	  icon : 'ti-palette',
+	  toHavePermissions : calcOrChildPermission(companyPageManageitems)
+  }
 ];

@@ -1,8 +1,8 @@
-import {IReqFunction, ICompanyRes} from "../models";
+import { IReqFunction, ICompanyRes } from "../models";
 
-export interface ICompanyApi  {
-	getMyCompany : IReqFunction<ICompanyRes[] >,
-	editMyCompany: IReqFunction<
+export interface IMyCompanyApi {
+  getMyCompany: IReqFunction<ICompanyRes[]>;
+  editMyCompany: IReqFunction<
     ICompanyRes,
     { id: number } & Partial<ICompanyRes>
   >;

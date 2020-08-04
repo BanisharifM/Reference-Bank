@@ -41,4 +41,12 @@ const siteManagementItems: IMenuItem[] = [
   },
 ];
 
-export { adminDashboardItems, siteManagementItems };
+const companyPageManageitems : IMenuItem[] =[
+	{
+		path : "/company-page-manager/slider" ,
+		title : "اسلایدر شرکت",
+		toHavePermissions :["company:manage-site"]
+	}
+]
+
+export { adminDashboardItems, siteManagementItems , companyPageManageitems };

@@ -16,6 +16,7 @@ export type TPermissions =
   | "company:signup"
   | "company:create"
   | "company:edit"
+  | "company:manage-site"
   | "main-site:edit"
   | "category:read"
   | "category:update"

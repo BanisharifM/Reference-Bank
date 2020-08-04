@@ -8,10 +8,12 @@ import { dashboardRoutes } from "./Dashboard/Scenes/routes";
 import { siteManagerRoutes } from "./siteManager/scenes/routes";
 import { TPermissions } from "../services/constants/models";
 import{userServicesRoutes} from "./UserServices/scenes/routes";
+import {companyPageManagerRoutes} from "./CompanyPageManager/scenes/routes";
 const Dashboard = lazy(() => import("./Dashboard"));
 const Redirect = lazy(() => import("./Redirect"));
 const SiteManager = lazy(() => import("./siteManager"));
 const UserServices = lazy (()=> import ("./UserServices"))
+const CompanyPageManager = lazy (()=> import ("./CompanyPageManager"))
 
 export interface IRoute {
   path?: string | string[];
@@ -42,10 +44,21 @@ const routes: IRoute[] = [
     toHavePermissions: ["main-site:edit"],
   },
   {
+
+	  path : "/company-page-manager", 
+	  component : CompanyPageManager,
+	  routes:companyPageManagerRoutes,
+	  private : true ,
+	  toHavePermissions : ['company:manage-site']
+
+  },
+
+  {
 	  path : '/user-services',
 	  routes : 	userServicesRoutes,
 	  component :UserServices
   }
+
 ];
 
 export const renderRoutes = (routes: IRoute[]) => {
