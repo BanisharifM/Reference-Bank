@@ -19,6 +19,8 @@ export interface IAdminApi {
   deleteCategory: IReqFunction<undefined, number>;
   deleteCategorySlider: IReqFunction<undefined, number>;
   addCategorySlider: IReqFunction<undefined, { category: number; image: File }>;
+  createCategory : IReqFunction<undefined , ICreateCategory>
+  
 }
 //Start GetCompanies
 //ICompany Res moved to .. directory
@@ -65,4 +67,11 @@ export interface ICategorySlider {
   id: number;
   category: number;
   image: string;
+}
+//End Category-slider
+
+//start create category 
+export interface ICreateCategory {
+  title :string
+  parent:number|null
 }

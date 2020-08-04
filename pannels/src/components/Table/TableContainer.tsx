@@ -7,11 +7,13 @@ import React, {
 import { TableInstance } from "react-table";
 import TableHeader from "./TableHeader";
 import TableFooter from "./TableFooter";
+import Button from "../Button";
 
 const TableContainer = <T extends object>({
   children,
   ...tableProps
 }: PropsWithChildren<TableInstance<T>>) => {
+  console.log(tableProps)
   return (
     <>
       <div className="table-responsive m-t-40">

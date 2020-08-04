@@ -8,6 +8,6 @@ export interface ITableCategory { // this is a Interface similar to ICaregoryRes
 
 
 export type TCategoryTableData = ITableCategory & {
-    expander: string;
-    edit: string;
+    expander: any;
+    options: any;
   };

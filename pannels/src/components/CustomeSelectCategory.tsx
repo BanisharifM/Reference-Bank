@@ -1,15 +1,10 @@
-import React, { Component, useState, useMemo, useCallback } from "react";
-
-import { FieldAttributes } from "formik";
-import { StylesConfig, OptionsType, OptionTypeBase } from "react-select";
-import AsyncSelect from "react-select/async";
-import {
-  Tree,
-  notHaveChildren,
-} from "../../../../../services/utils/treeTravers";
+import {FieldAttributes} from "formik";
 import * as _ from "lodash";
-import { ICategoryRes } from "../../../../../services/utils/api/Admin/models";
-import api from "../../../../../services/utils/api";
+import React, {useCallback, useState} from "react";
+import {OptionsType, OptionTypeBase, StylesConfig} from "react-select";
+import AsyncSelect from "react-select/async";
+import api from "../services/utils/api";
+
 
 const styles: StylesConfig = {
   control: (provided) => ({
@@ -20,21 +15,8 @@ const styles: StylesConfig = {
   indicatorSeparator: (provided) => ({ ...provided, color: "red" }),
 };
 
-const calculateOptions = (data: ICategoryRes[]) => {
-  if (data) {
-    const notHaveChildrenArray = data.map((d) =>
-      Tree.reduce(notHaveChildren, [], d)
-    );
-    const flattenVersion = _.flatten(notHaveChildrenArray);
-    const options = flattenVersion.map((item) => ({
-      value: item.id,
-      label: item.title,
-      parent_title: item.parent_title,
-    }));
-    return options;
-  }
-};
 const CustomeSelectCategory: React.FC<FieldAttributes<any>> = ({
+	calculateOptions,
   label,
   field, // { name, value, onChange, onBlur }
   form: { touched, errors, setFieldValue, setFieldTouched }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.

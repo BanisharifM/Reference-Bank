@@ -83,6 +83,7 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
             </div>
             <div className="modal-body">
               <EditChangeName
+                label="عنوان دسته بندی"
                 categoryName={categoryName}
                 onEditCategoryName={handleEditCategoryName}
               />

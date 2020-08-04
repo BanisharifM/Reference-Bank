@@ -14,6 +14,9 @@ function hasChildren(node: any) {
   );
 }
 
+export function flattenToArray(arr:any, {children, ...data} :any) {
+    return arr.concat([{...data}]);
+}
 function hasSubRows(node: any) {
   return (
     typeof node === "object" &&

@@ -33,4 +33,6 @@ export const adminApi: IAdminApi = {
     ),
   editCategory: ({ id, ...rest }) =>
     axiosInstance.patch(`${baseAdminUrl}/category/${id}/`, rest),
+  createCategory: (newCategory) =>
+    axiosInstance.post(`${baseAdminUrl}/category/`, newCategory),
 };

@@ -1,33 +1,20 @@
-import React, { useMemo, useCallback } from "react";
-import { ReactTable } from "../../../../components/Table/ReactTable";
-import TableContainer from "../../../../components/Table/TableContainer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import {
-  useExpanded,
-  HeaderProps,
-  CellProps,
-  useColumnOrder,
-  usePagination,
-  useFilters,
-  useGroupBy,
-  useSortBy,
-  useFlexLayout,
-  useResizeColumns,
-  useRowSelect,
-  useTable,
-} from "react-table";
+import React, {useCallback, useMemo} from "react";
+import {CellProps, HeaderProps, useColumnOrder, useExpanded, useFilters, useFlexLayout, useGroupBy, usePagination, useResizeColumns, useRowSelect, useSortBy, useTable} from "react-table";
 import useSWR from "swr";
-import { baseAdminUrl } from "../../../../services/utils/api/Admin";
-import { ICategoryRes } from "../../../../services/utils/api/Admin/models";
-import { Tree, renameProp } from "../../../../services/utils/treeTravers";
-import { CircleButton } from "../../../../components/CircleButton";
+import Button from "../../../../components/Button";
+import {CircleButton} from "../../../../components/CircleButton";
+import {ReactTable} from "../../../../components/Table/ReactTable";
+import TableContainer from "../../../../components/Table/TableContainer";
+import {useModalDispatch} from "../../../../services/contexts/ModalContext/ModalContext";
+import {EModalActionTypes} from "../../../../services/contexts/ModalContext/models";
 import api from "../../../../services/utils/api";
+import {baseAdminUrl} from "../../../../services/utils/api/Admin";
+import {ICategoryRes} from "../../../../services/utils/api/Admin/models";
+import {renameProp, Tree} from "../../../../services/utils/treeTravers";
+import CreateCategoryModal from "./components/CategoryModal/CreateCategoryModal";
 import EditCategoryModal from "./components/CategoryModal/EditCategoryModal";
-import { EModalActionTypes } from "../../../../services/contexts/ModalContext/models";
-import { useModalDispatch } from "../../../../services/contexts/ModalContext/ModalContext";
-import { TCompanyTableData } from "../../../Dashboard/Scenes/CompaniesList/components/models";
-import { TCategoryTableData } from "./models";
+import {TCategoryTableData} from "./models";
+
 
 const hooks = [
   useColumnOrder,
@@ -54,7 +41,7 @@ const Index = () => {
     return [];
   }, [data]);
 
-  const openModal = useCallback(
+  const openEditCategoryModal = useCallback(
     (modalProps: TCategoryTableData) => {
       modalDispatch({
         type: EModalActionTypes.SHOW_MODAL,
@@ -72,6 +59,18 @@ const Index = () => {
     },
     [modalDispatch]
   );
+  const openCreateCategoryModal = () => {
+    modalDispatch({
+      type: EModalActionTypes.SHOW_MODAL,
+      payload: {
+        component: CreateCategoryModal,
+        props: {},
+      },
+    });
+  };
+  const handleCreateCategory = () => {
+    openCreateCategoryModal();
+  };
   const handleDeleteCategory = async (id: number) => {
     try {
       const toDelete = window.confirm("آیا این دسته بندی حذف شود؟");
@@ -82,9 +81,9 @@ const Index = () => {
   };
   const handleEditCategory = useCallback(
     (data: TCategoryTableData) => {
-      openModal(data);
+      openEditCategoryModal(data);
     },
-    [openModal]
+    [openEditCategoryModal]
   );
   const columns = React.useMemo(
     () => [
@@ -152,7 +151,8 @@ const Index = () => {
         accessor: "parent_title",
         Cell: ({
           row: {
-            original: { parent_title }, ...row
+            original: { parent_title },
+            ...row
           },
         }: CellProps<TCategoryTableData>) => {
           return (
@@ -164,9 +164,6 @@ const Index = () => {
               {parent_title ? parent_title : "ندارد"}
             </span>
           );
-          if (parent_title) {
-            return parent_title;
-          } else return <span className="text-warning ">ندارد</span>;
         },
       },
       {
@@ -201,8 +198,18 @@ const Index = () => {
   return (
     <div>
       <div className="card">
-        <div className="card-body">
-          <TableContainer {...tableInstance}>
+        <div className="card-body px-4">
+          <TableContainer
+            {...tableInstance}
+            tool={() => (
+              <Button
+                onClick={handleCreateCategory}
+                text="ایجاد دسته بندی"
+                type="info"
+                className="ml-auto d-block mr-5"
+              />
+            )}
+          >
             <ReactTable {...tableInstance} />
           </TableContainer>
         </div>

@@ -35,13 +35,20 @@ export const TableFooter = <T extends object>({
               >
                 <span className="page-link">قبلی</span>
               </li>
-              {Array(pageCount).fill("").map((item, index) => {
-				return (
-					<li className={`paginate_button page-item ${pageIndex === index && "active"}`} onClick={() => gotoPage(index)}>
-					<span className="page-link">{index +1}</span>
-				  </li>
-				);
-              })}
+              {Array(pageCount)
+                .fill("")
+                .map((item, index) => {
+                  return (
+                    <li
+                      className={`paginate_button page-item ${
+                        pageIndex === index && "active"
+                      }`}
+                      onClick={() => gotoPage(index)}
+                    >
+                      <span className="page-link">{index + 1}</span>
+                    </li>
+                  );
+                })}
               <li
                 className={`paginate_button page-item next ${
                   !canNextPage && "disabled"

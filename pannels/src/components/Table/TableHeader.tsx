@@ -1,16 +1,10 @@
 import React, { PropsWithChildren } from "react";
 import { TableInstance } from "react-table";
+import Button from "../Button";
 export const TableHeader = <T extends object>({
-  children,
-  canPreviousPage,
-  canNextPage,
-  pageOptions,
-  pageCount,
-  gotoPage,
-  nextPage,
-  previousPage,
   setPageSize,
   state: { pageIndex, pageSize },
+  ...rest
 }: PropsWithChildren<TableInstance<T>>) => {
   return (
     <div className="row">
@@ -34,6 +28,10 @@ export const TableHeader = <T extends object>({
             ردیف
           </label>
         </div>
+      </div>
+      
+      <div className="col-sm-12 col-md-6">
+		  {rest.tool && rest.tool()}
       </div>
     </div>
   );

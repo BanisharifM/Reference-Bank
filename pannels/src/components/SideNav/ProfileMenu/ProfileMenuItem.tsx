@@ -6,7 +6,7 @@ const ProfileMenuItem: React.FC<IMenuItemIcon> = ({ title, path, icon }) => {
   return (
     <NavLink
       activeClassName="active"
-      to={path}
+      to={path!}
       className="dropdown-item text-right"
     >
       <i className={`ml-2 ${icon}`} />

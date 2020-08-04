@@ -2,7 +2,7 @@
 import { Field, Form, Formik } from "formik";
 import React from "react";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
-import CustomeSelectCategory from "../../scenes/Dashboard/Scenes/CreateCompany/components/CustomeSelectCategory";
+import CustomeSelectCategory from "../CustomeSelectCategory";
 import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
 import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
 import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Profile/constants";
@@ -12,6 +12,7 @@ import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
 import { ICompanyRes } from "../../services/utils/api/models";
 import classnames from 'classnames'
 import {stat} from "fs";
+import {calculateLeafs} from "../../services/utils/calculateOptions";
 
 // declare function fromType<T extends boolean>(
 //   x: T
@@ -102,7 +103,8 @@ const CompanyForm = <T extends IAdminCreateCompanyFormikState | ICompanyRes>({
                   component={CustomInputComponent}
                 />
                 <Field
-                  label="فیلد کاری"
+				label="فیلد کاری"
+				calculateOptions={calculateLeafs}
                   type="text"
                   name="category"
                   component={CustomeSelectCategory}
