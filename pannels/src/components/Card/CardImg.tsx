@@ -20,6 +20,7 @@ const CardImg: React.FC<{ src: string }> = ({ src }) => {
               height: "150px",
               background: `url(${src})`,
               backgroundSize: "cover",
+              backgroundPosition:'center'
             }}
           />
           <div className="el-overlay">

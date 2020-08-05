@@ -34,6 +34,10 @@ const Main = () => {
     setSureDelete(false);
     setWantDeletedItemId(-1);
   };
+  //ubuntu
+  //tPJr557pLI
+  //https://help.arvancloud.com/hc/fa/articles/360034478893
+  //185.206.92.24
 
   return (
     <>
