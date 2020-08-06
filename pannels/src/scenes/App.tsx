@@ -20,7 +20,7 @@ const App = () => {
       <Suspense fallback={<Loading />}>
         <SWRConfig
           value={{
-            fetcher: (...args) => axios.get(args).then((r) => r.data),
+            fetcher: (url) => axios.get('/api'+url).then((r) => r.data),
           }}
         >
           <BaseLayout>
