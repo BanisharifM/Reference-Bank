@@ -1,7 +1,7 @@
 import { axiosInterceptor } from "./axiosInterceptor";
 import axios from "axios";
 
-const baseURL = "";
+const baseURL = "/api";
 export const axiosInstance = axios.create({
   baseURL,
 });
