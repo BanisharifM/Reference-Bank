@@ -2,6 +2,7 @@
   "name": "pannels",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://185.206.92.24/pannel",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
@@ -59,7 +60,7 @@
     "typescript": "~3.7.2",
     "yup": "^0.29.1"
   },
-  "proxy": "http://bank.pythonanywhere.com",
+  "proxy": "http://185.206.92.24",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
