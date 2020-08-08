@@ -22,7 +22,7 @@ const FormLogin = () => (
       })}
       onSubmit={async (values, { setSubmitting }) => {
 		const res = await api.apiAuth.login(values)
-		window.location.href = 'http://localhost:3000'
+		window.location.href = 'http://185.206.92.24/pannel'
 		
 		//   fetch("/api/auth/login/", {
         //   method: "POST",

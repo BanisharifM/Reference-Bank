@@ -132,8 +132,8 @@ export const BottomHeader = () => {
                 </MegaMenuLi>
               </NavbarMegaMenu>
 
-              <NavbarLi itemName="تماس با ما" />
-              <NavbarLi itemName="درباره ما" />
+              <NavbarLi path='/' itemName="تماس با ما" />
+              <NavbarLi path='/' itemName="درباره ما" />
             </ul>
           </div>
           <ul className="navbar-nav attr-nav align-items-center">
