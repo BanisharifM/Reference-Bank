@@ -1,6 +1,5 @@
 import withRedux from "next-redux-wrapper";
 import { Provider } from "react-redux";
-import { wrapper } from "../redux";
 import { AppProps } from "next/app";
 import "../assets/css2/global.css";
 // import "../assets/css/animate-rtl.css"
