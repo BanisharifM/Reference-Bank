@@ -1,5 +1,5 @@
 import React from "react";
-import SliderImageLoader from "../../../../../components/SkeletonLoaders/SliderImageLoader";
+import SliderImageLoader from "./SkeletonLoaders/SliderImageLoader";
 
 const SliderLoaders = () => {
   return (

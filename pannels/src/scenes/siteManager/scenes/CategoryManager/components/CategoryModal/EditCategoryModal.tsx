@@ -22,6 +22,7 @@ import CategoryIdProvider from "../../../../../../services/contexts/CategoryIdCo
 import api from "../../../../../../services/utils/api";
 import Button from "../../../../../../components/Button";
 import Centerise from "../../../../../../components/Centerise";
+import { toast } from "react-toastify";
 //-----------------------------------------------------------------
 
 interface IProps {
@@ -59,6 +60,7 @@ const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
     setLoading(true);
     try {
       await api.adminApi.editCategory({ id, title: categoryName });
+      toast.info('با موفقیت تغییر یافت')
       mutate();
     } finally {
       setLoading(false);

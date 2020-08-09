@@ -49,7 +49,8 @@ const Index = () => {
           });
           await revalidate();
           setLoading(false);
-        }
+		}
+		setLoading(false)
       }
       if (original.status === "a") {
         if (window.confirm("آیا میخواهید شرکت غیر فعال شود؟")) {
@@ -59,7 +60,8 @@ const Index = () => {
           });
           await revalidate();
           setLoading(false);
-        }
+		}
+		setLoading(false)
       }
     },
     [revalidate]

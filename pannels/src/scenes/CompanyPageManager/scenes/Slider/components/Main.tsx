@@ -4,10 +4,10 @@ import Button from "../../../../../components/Button";
 import api from "../../../../../services/utils/api";
 import { baseMyCompanySlideUrl } from "../../../../../services/utils/api/MyCompanySlider";
 import { IMyCompanySliderRes } from "../../../../../services/utils/api/MyCompanySlider/models";
-import AddImage from "../../../../siteManager/components/AddImage";
+import AddImage from "../../../../../components/AddImage";
 import Card from "../../../../../components/Card/Card";
-import SliderLoaders from "./SliderLoaders";
-import SliderCard from "./SliderCard";
+import SliderLoaders from "../../../../../components/SliderLoaders";
+import SliderCard from "../../../../../components/SliderCard";
 
 const Main = () => {
   const { data, mutate } = useSWR<IMyCompanySliderRes[]>(

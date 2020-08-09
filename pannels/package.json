@@ -51,7 +51,7 @@
     "react-scripts": "3.4.1",
     "react-select": "^3.1.0",
     "react-table": "^7.3.2",
-    "react-toastify": "^6.0.5",
+    "react-toastify": "^6.0.8",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
@@ -90,6 +90,7 @@
     "@types/react-dropzone": "^5.1.0",
     "@types/react-image-crop": "^8.1.2",
     "@types/react-select": "^3.0.14",
+    "@types/react-toastify": "^4.1.0",
     "@types/yup": "^0.29.2"
   }
 }

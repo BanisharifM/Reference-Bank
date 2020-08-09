@@ -3,8 +3,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import PicCart from "../scenes/CategoryManager/components/CategoryModal/PicCart";
-import Button from "../../../components/Button";
+import PicCart from "../scenes/siteManager/scenes/CategoryManager/components/CategoryModal/PicCart";
+import Button from "./Button";
 
 interface IProps {
   url: string;
