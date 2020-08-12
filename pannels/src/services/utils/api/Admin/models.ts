@@ -65,7 +65,7 @@ interface ICategoryParams {
 //Category_Slider
 export interface ICategorySlider {
   id: number;
-  category: number;
+  category: number|number;
   image: string;
 }
 //End Category-slider

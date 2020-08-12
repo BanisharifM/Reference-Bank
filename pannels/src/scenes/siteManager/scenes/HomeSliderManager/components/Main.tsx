@@ -3,9 +3,16 @@ import useSWR from "swr";
 import SliderLoaders from "../../../../../components/SliderLoaders";
 import AddImage from "../../../../../components/AddImage";
 import SliderCard from "../../../../../components/SliderCard";
+import { baseAdminUrl } from "../../../../../services/utils/api/Admin";
+import { ICategorySlider } from "../../../../../services/utils/api/Admin/models";
+
 export const Main = () => {
-  const { data } = useSWR<{id :number ,image: string}[]>("");
-  const handleDeleteItem = (id: number) => {};
+  const { data } = useSWR<ICategorySlider[]>(`${baseAdminUrl}/category_slider/`);
+  const handleDeleteItem = async(id: number) => {
+
+
+
+  };
   const handleSendSubmit = () => {
     return new Promise((res) => res());
   };
