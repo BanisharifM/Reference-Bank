@@ -2,11 +2,16 @@
   "name": "pannels",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://185.206.92.24/pannel",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/axios": "^0.14.0",
+    "@types/debounce-promise": "^3.1.2",
     "@types/history": "^4.7.6",
     "@types/jest": "^24.0.0",
     "@types/js-cookie": "^2.2.6",
@@ -21,14 +26,19 @@
     "@types/react-table": "^7.0.19",
     "@types/redux-persist": "^4.3.1",
     "axios": "^0.19.2",
+    "classnames": "^2.2.6",
     "debounce": "^1.2.0",
+    "debounce-promise": "^3.1.2",
+    "express": "^4.17.1",
     "formik": "^2.1.4",
     "history": "^4.10.1",
     "js-cookie": "^2.2.1",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.19",
+    "namor": "^2.0.2",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
+    "react-content-loader": "^5.1.0",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.0.1",
     "react-image-crop": "^8.6.4",
@@ -41,7 +51,7 @@
     "react-scripts": "3.4.1",
     "react-select": "^3.1.0",
     "react-table": "^7.3.2",
-    "react-toastify": "^6.0.5",
+    "react-toastify": "^6.0.8",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
@@ -50,7 +60,7 @@
     "typescript": "~3.7.2",
     "yup": "^0.29.1"
   },
-  "proxy": "http://bank.pythonanywhere.com",
+  "proxy": "http://185.206.92.24",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -72,12 +82,16 @@
       "last 1 safari version"
     ]
   },
+  
   "devDependencies": {
+    "@types/classnames": "^2.2.10",
     "@types/debounce": "^1.2.0",
     "@types/lodash": "^4.14.155",
+    "@types/react-content-loader": "^4.0.0",
     "@types/react-dropzone": "^5.1.0",
     "@types/react-image-crop": "^8.1.2",
     "@types/react-select": "^3.0.14",
+    "@types/react-toastify": "^4.1.0",
     "@types/yup": "^0.29.2"
   }
 }

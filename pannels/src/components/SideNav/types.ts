@@ -1,7 +1,7 @@
 import { TPermissions } from "./../../services/constants/models";
 import { string, number } from "yup";
 export interface IMenuItem {
-  path: string;
+  path?: string; //its optional because of exit item : exit item haven't any path 
   title: string;
   toHavePermissions: TPermissions[];
 }

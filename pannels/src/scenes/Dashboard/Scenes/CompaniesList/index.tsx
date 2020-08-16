@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useSWR from "swr";
-import TableContainer from "./components/TableContainer";
-import { ICompanyRes } from "../../../../services/utils/api/Admin/models";
 import api from "../../../../services/utils/api";
 import {
   useTable,
@@ -16,10 +14,13 @@ import {
   useRowSelect,
   CellProps,
 } from "react-table";
-import { ReactTable } from "./components/ReactTable";
 import { TCompanyTableData } from "./components/models";
 import Button from "../../../../components/Button";
 import { baseAdminUrl } from "../../../../services/utils/api/Admin";
+import TableContainer from "../../../../components/Table/TableContainer";
+import { ReactTable } from "../../../../components/Table/ReactTable";
+import { Tree, renameProp } from "../../../../services/utils/treeTravers";
+import {ICompanyRes} from "../../../../services/utils/api/models";
 const hooks = [
   useColumnOrder,
   useFilters,
@@ -31,6 +32,7 @@ const hooks = [
   useResizeColumns,
   useRowSelect,
 ];
+
 const Index = () => {
   const { data, revalidate } = useSWR(baseAdminUrl + "/companies");
   const [loading, setLoading] = useState(false);
@@ -47,7 +49,8 @@ const Index = () => {
           });
           await revalidate();
           setLoading(false);
-        }
+		}
+		setLoading(false)
       }
       if (original.status === "a") {
         if (window.confirm("آیا میخواهید شرکت غیر فعال شود؟")) {
@@ -57,7 +60,8 @@ const Index = () => {
           });
           await revalidate();
           setLoading(false);
-        }
+		}
+		setLoading(false)
       }
     },
     [revalidate]
@@ -84,6 +88,7 @@ const Index = () => {
         Header: "ایمیل",
         accessor: "email",
       },
+
       {
         Header: "وضعیت",
         accessor: "status",
@@ -131,9 +136,20 @@ const Index = () => {
 
   return (
     <>
-      <TableContainer<TCompanyTableData> {...tableInstance}>
-        <ReactTable<TCompanyTableData> {...tableInstance} />
-      </TableContainer>
+      <div className="row">
+        <div className="col-sm-12">
+          <div className="card card-body">
+            <h4 className="card-title">لیست شرکت‌ها</h4>
+            <h5 className="card-subtitle">
+              در اینجا میتوانید لیست شرکت‌ها را مشاهده کنید
+            </h5>
+
+            <TableContainer<TCompanyTableData> {...tableInstance}>
+              <ReactTable<TCompanyTableData> {...tableInstance} />
+            </TableContainer>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

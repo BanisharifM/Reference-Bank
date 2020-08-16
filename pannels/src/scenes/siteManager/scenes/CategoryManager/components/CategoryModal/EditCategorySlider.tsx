@@ -1,52 +1,53 @@
 import React, { useState } from "react";
-import Img1 from "../../../../../../assets/images/users/1.jpg";
-import Img2 from "../../../../../../assets/images/users/2.jpg";
-import Img3 from "../../../../../../assets/images/users/3.jpg";
-import Img4 from "../../../../../../assets/images/users/4.jpg";
-import SliderCards from "../../../../components/SliderCards";
-import AddImage from "../../../../components/AddImage";
+import AddImage from "../../../../../../components/AddImage";
 import { ISliderImage } from "../Table/model";
+import { ICategorySlider } from "../../../../../../services/utils/api/Admin/models";
+import api from "../../../../../../services/utils/api";
+import useSWR, { mutate } from "swr";
+import { baseAdminUrl } from "../../../../../../services/utils/api/Admin";
+import { fetcherWithParam } from "../../../../../../services/axios/fetchers";
+import { useCategoyId } from "../../../../../../services/contexts/CategoryIdContext/context";
+import SliderCard from "../../../../../../components/SliderCard";
+const EditCategorySlider: React.FC = () => {
+  const categoryId = useCategoyId();
+  const { data, mutate } = useSWR<ICategorySlider[]>(
+    [`${baseAdminUrl}/category_slider/`, "category", categoryId], // here we wanna mutate and trigger the swr with key /category_slider/companyId
+    fetcherWithParam
+  );
 
-// interface ISliderImage {
-//   image: string;
-//   index: number;
-// }
+  const handleDeleteItem = async (id: number) => {
+    mutate(
+      data!.filter((item) => item.id !== id),
+      false
+    );
+    const res = await api.adminApi.deleteCategorySlider(id);
+    mutate();
+    return res;
 
-// const sliders: ISliderImage[] = [
-//   {
-//     image: Img1,
-//     index: Math.random(),
-//   },
-//   {
-//     image: Img2,
-//     index: Math.random(),
-//   },
-//   {
-//     image: Img3,
-//     index: Math.random(),
-//   },
-//   {
-//     image: Img4,
-//     index: Math.random(),
-//   },
-// ];
-interface IProps {
-  slider: ISliderImage[];
-}
-const EditCategorySlider:React.FC<IProps> = ({slider}) => {
-  const [items, setItems] = useState<ISliderImage[]>(slider);
-  const handleDeleteItem = (id: number) => {
-    const newItems = items.filter((item) => item.index !== id);
-    setItems(newItems);
+    // const newItems = items.filter((item) => item.id !== id);
+    // setItems(newItems);
   };
+  const handleSubmitImage = async (image: File) => {
+    await api.adminApi.addCategorySlider({ category: categoryId, image });
+    mutate();
+  };
+
   return (
     <div className="tab-pane active">
       <div className="p-20 container">
         <div className="row el-element-overlay">
-          {items.map((item, index) => (
-            <SliderCards {...item} onDelete={handleDeleteItem} />
-          ))}
-          <AddImage url="/" />
+          {data &&
+            data.map((item) => (
+              <div className="col-lg-4 col-md-6">
+                <SliderCard
+                  key={item.id}
+                  image={item.image}
+                  id={item.id}
+                  onDelete={handleDeleteItem}
+                />
+              </div>
+            ))}
+          <AddImage url="/" onSubmit={handleSubmitImage} />
         </div>
       </div>
     </div>

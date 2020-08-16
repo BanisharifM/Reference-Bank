@@ -18,6 +18,8 @@ export const dashboardRoutes: IRoute[] = [
   },
   {
 	  path:"/dashboard/companies-list",
-	  component:CompaniesList
+	  component:CompaniesList,
+	  private:true,
+	  toHavePermissions : ['company:companylist']
   }
 ];

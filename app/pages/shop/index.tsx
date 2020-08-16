@@ -7,6 +7,7 @@ export const index = () => {
     </>
   );
 };
+export default index
 
 // import React from "react";
 // import { useSelector } from "react-redux";

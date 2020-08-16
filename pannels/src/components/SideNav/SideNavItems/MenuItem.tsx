@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 const MenuItem: React.FC<IMenuItem> = ({ path, title }) => {
   return (
     <li>
-      <NavLink to={path} activeClassName={"active"}>
+      <NavLink to={path!} activeClassName={"active"}>
         {title}
       </NavLink>
     </li>

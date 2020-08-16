@@ -1,5 +1,5 @@
-import { axiosInstance } from "./../../../axios/axios";
 import { ICategoryApi } from "./models";
+import { axiosInstance } from "../../axios/axios";
 
 const baseCategoryUrl = "/category";
 

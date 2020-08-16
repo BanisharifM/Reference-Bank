@@ -3,6 +3,7 @@ import ProfileName from "./ProfileName";
 import ProfileMenuItem from "./ProfileMenuItem";
 import ProfileDropDownDevider from "./ProfileDropDownDevider";
 import { useOutsideClicker } from "../../../services/hooks/useOutsideClicker";
+import ProfileMenuExitItem from "./ProfileMenuExitItem";
 
 const ProfileDropDown = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -55,10 +56,10 @@ const ProfileDropDown = () => {
           toHavePermissions={[]}
         />
         <ProfileDropDownDevider />
-        <ProfileMenuItem
+
+        <ProfileMenuExitItem
           title="خروج"
           icon="fa fa-power-off"
-          path="/aaaa"
           toHavePermissions={[]}
         />
       </div>

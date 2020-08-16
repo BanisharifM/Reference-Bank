@@ -1,4 +1,4 @@
-import { IReqFunction, NotRequire } from "../models";
+import { IReqFunction, ICompanyRes } from "./../models";
 
 //TODO :
 //Put and patch for company
@@ -10,33 +10,20 @@ export interface IAdminApi {
   >;
   createCompany: IReqFunction<ICompanyRes, ICompanyCreate>;
   getCompany: IReqFunction<ICompanyRes, number>;
-  editCompany: IReqFunction<
-    ICompanyRes,
-    { id: number } & Partial<ICompanyRes>
-  >;
+  editCompany: IReqFunction<ICompanyRes, { id: number } & Partial<ICompanyRes>>;
   deleteCompany: IReqFunction<undefined, number>;
-  getCategories : IReqFunction<ICategoryRes>
+  getCategories: (
+    params: ICategoryParams
+  ) => ReturnType<IReqFunction<ICategoryRes[], void, ICompanyParams>>;
+  editCategory: IReqFunction<undefined, Partial<ICategoryRes>>;
+  deleteCategory: IReqFunction<undefined, number>;
+  deleteCategorySlider: IReqFunction<undefined, number>;
+  addCategorySlider: IReqFunction<undefined, { category: number; image: File }>;
+  createCategory : IReqFunction<undefined , ICreateCategory>
+  
 }
 //Start GetCompanies
-export interface ICompanyRes {
-  id: number;
-  user: number;
-  username: string;
-  email: string;
-  mobile_number: string;
-  name: string;
-  manager_name: string;
-  phone_number: string;
-  website: string;
-  address: string;
-  location: string;
-  logo: string | null;
-  category: number | null;
-  category_title: string;
-  description: string;
-  status: "s" | "a";
-  [index : string] : string | number|null
-}
+//ICompany Res moved to .. directory
 
 export interface ICompanyPaginateRes {
   num_pages: number;
@@ -65,9 +52,26 @@ interface ICompanyCreate {
 
 //start Category
 export interface ICategoryRes {
-	id : number | null,
-	parent :number | null
-	parent_title?: "" 
-	children : ICategoryRes[]| []
+  id: number;
+  title: string;
+  parent: number | null;
+  parent_title?: "";
+  children: ICategoryRes[] | [];
+}
+interface ICategoryParams {
+  search: string;
 }
 //end Category
+//Category_Slider
+export interface ICategorySlider {
+  id: number;
+  category: number|number;
+  image: string;
+}
+//End Category-slider
+
+//start create category 
+export interface ICreateCategory {
+  title :string
+  parent:number|null
+}

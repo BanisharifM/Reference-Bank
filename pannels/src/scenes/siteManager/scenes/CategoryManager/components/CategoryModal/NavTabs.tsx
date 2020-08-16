@@ -13,16 +13,16 @@ const NavTabs: React.FC<IProps> = ({ activeItem, onChangeActiveItem }) => {
 
   return (
     <ul className="nav nav-tabs customtab">
-      <li className="nav-item" onClick={(e) => onChangeActiveItem(picCategory)}>
-        <div
-          className={`nav-link ${itemOneActive ? "active" : ""}  `}
-          data-toggle="tab"
-          role="tab"
-          aria-selected="false"
-        >
-          <span className="hidden-xs-down">تصویر دسته بندی</span>
-        </div>
-      </li>
+	  {/* <li className="nav-item" onClick={(e) => onChangeActiveItem(picCategory)}>
+		<div
+		  className={`nav-link ${itemOneActive ? "active" : ""}  `}
+		  data-toggle="tab"
+		  role="tab"
+		  aria-selected="false"
+		>
+		  <span className="hidden-xs-down">تصویر دسته بندی</span>
+		</div>
+	  </li> */}
       <li
         className="nav-item"
         onClick={(e) => onChangeActiveItem(sliderCategory)}

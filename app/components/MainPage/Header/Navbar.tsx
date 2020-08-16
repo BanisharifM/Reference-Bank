@@ -31,7 +31,7 @@ const Navbar = () => {
           id="navbarSidetoggle"
         >
           <ul className="navbar-nav">
-            <NavbarLi itemName="خانه" />
+            <NavbarLi path='/' itemName="خانه" />
             <NavbarDropDown itemName="بلاگ" reverse>
               <DropDownItem itemName="grids">
                 <DropDownLink itemName="3 column" />
@@ -116,8 +116,8 @@ const Navbar = () => {
               </MegaMenuLi>
             </NavbarMegaMenu>
 
-            <NavbarLi itemName="تماس با ما" />
-            <NavbarLi itemName="درباره ما" />
+            <NavbarLi path ='/' itemName="تماس با ما" />
+            <NavbarLi path='/' itemName="درباره ما" />
           </ul>
         </div>
         <ul className="navbar-nav attr-nav align-items-center">

@@ -8,34 +8,64 @@ import EditChangeName from "./EditChangeName";
 import NavTabs from "./NavTabs";
 import ImageEditSection from "./ImageEditSection";
 import SubmitModalButton from "../../../../../../components/SubmitModalButton";
-import { ISliderImage, ICategory } from "../Table/model";
+import {
+  ICategoryRes,
+  ICategorySlider,
+} from "../../../../../../services/utils/api/Admin/models";
+import { TCompanyTableData } from "../../../../../Dashboard/Scenes/CompaniesList/components/models";
+import { TCategoryTableData } from "../../models";
+import useSWR from "swr";
+import { fetcherWithParam } from "../../../../../../services/axios/fetchers";
+import { baseAdminUrl } from "../../../../../../services/utils/api/Admin";
+import Spinner from "../../../../../../components/Spinner";
+import CategoryIdProvider from "../../../../../../services/contexts/CategoryIdContext/CategoryIdProvider";
+import api from "../../../../../../services/utils/api";
+import Button from "../../../../../../components/Button";
+import Centerise from "../../../../../../components/Centerise";
+import { toast } from "react-toastify";
 //-----------------------------------------------------------------
+
 interface IProps {
   modalDispatcher: (actions: AppActions) => void;
 }
 
-const EditCategoryModal: React.FC<IProps & ICategory> = ({
+const EditCategoryModal: React.FC<IProps & TCategoryTableData> = ({
   modalDispatcher,
   id,
-  name,
-  image,
-  slider,
+  title,
 }) => {
+  const { mutate } = useSWR<ICategoryRes[]>(`${baseAdminUrl}/category/`);
+  const { data } = useSWR<ICategorySlider[]>(
+    [`${baseAdminUrl}/category_slider/`, "category", id],
+    fetcherWithParam
+  );
+
   const handleCloseModal = () => {
     modalDispatcher({ type: EModalActionTypes.HIDE_MODAL });
   };
+
   const modalContentRef = useRef<HTMLDivElement>(null);
   useOutsideClicker(modalContentRef, handleCloseModal);
-  const [activeItem, setActiveItem] = useState("تصویر دسته بندی");
+  const [activeItem, setActiveItem] = useState("اسلایدر دسته بندی");
+  const [loading, setLoading] = useState(false);
   const handleCahngeActiveItem = (item: string) => {
     setActiveItem(item);
   };
   //----------------form states----------------------//
-  const [categoryName, setCategoryName] = useState(name);
+  const [categoryName, setCategoryName] = useState(title);
   const handleEditCategoryName = (e: React.ChangeEvent<HTMLInputElement>) =>
     setCategoryName(e.currentTarget.value);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    setLoading(true);
+    try {
+      await api.adminApi.editCategory({ id, title: categoryName });
+      toast.info('با موفقیت تغییر یافت')
+      mutate();
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -49,12 +79,13 @@ const EditCategoryModal: React.FC<IProps & ICategory> = ({
           <div className="modal-content" ref={modalContentRef}>
             <div className="modal-header">
               <h4 className="modal-title" id="myModalLabel">
-                {name}
+                {title}
               </h4>
               <CloseModalIcon handleCloseModal={handleCloseModal} />
             </div>
             <div className="modal-body">
               <EditChangeName
+                label="عنوان دسته بندی"
                 categoryName={categoryName}
                 onEditCategoryName={handleEditCategoryName}
               />
@@ -63,15 +94,33 @@ const EditCategoryModal: React.FC<IProps & ICategory> = ({
               activeItem={activeItem}
               onChangeActiveItem={handleCahngeActiveItem}
             />
-            <ImageEditSection
-              picture={image}
-              slider={slider}
-              activeItem={activeItem}
-              onChangeActiveItem={handleCahngeActiveItem}
-            />
+
+            {!data && (
+              <Centerise height="170px" width="auto">
+                <Spinner size="lg" />
+              </Centerise>
+            )}
+            {data && (
+              <>
+                <CategoryIdProvider categoryId={id}>
+                  <ImageEditSection
+                    // picture={image}
+
+                    activeItem={activeItem}
+                    onChangeActiveItem={handleCahngeActiveItem}
+                  />
+                </CategoryIdProvider>
+              </>
+            )}
+
             <div className="modal-footer">
-              <SubmitModalButton handleSubmitModal={handleSubmit} />
-              <CloseModalButton handleCloseModal={handleCloseModal} />
+              <Button
+                onClick={handleSubmit}
+                type="success"
+                text="ویرایش"
+                loading={loading}
+              />
+              <Button onClick={handleCloseModal} type="danger" text="بستن" />
             </div>
           </div>
         </div>
@@ -81,15 +130,6 @@ const EditCategoryModal: React.FC<IProps & ICategory> = ({
 };
 
 export default EditCategoryModal;
-
-
-
-
-
-
-
-
-
 
 // user{
 
