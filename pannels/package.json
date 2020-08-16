@@ -82,6 +82,7 @@
       "last 1 safari version"
     ]
   },
+  
   "devDependencies": {
     "@types/classnames": "^2.2.10",
     "@types/debounce": "^1.2.0",

@@ -1,47 +1,48 @@
 // Render Prop
+import classnames from "classnames";
 import { Field, Form, Formik } from "formik";
 import React from "react";
+import { toast } from "react-toastify";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
-import CustomeSelectCategory from "../CustomeSelectCategory";
 import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
 import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
 import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Profile/constants";
-import { ICompanyEditFormikState } from "../../scenes/UserServices/scenes/Profile/models";
+import { IEditCompany } from "../../services/utils/api/myCompany/models";
+import { calculateLeafs } from "../../services/utils/calculateOptions";
 import CustomInputComponent from "../CustomeInputComponent";
+import CustomeSelectCategory from "../CustomeSelectCategory";
 import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
-import { ICompanyRes } from "../../services/utils/api/models";
-import classnames from 'classnames'
-import {stat} from "fs";
-import {calculateLeafs} from "../../services/utils/calculateOptions";
-
-// declare function fromType<T extends boolean>(
-//   x: T
-// ): T extends true
-//   ? IAdminCreateCompanyFormikState
-//   : ICompanyikState;
 
 interface IProps<T> {
   status: "admin-create" | "company-edit";
   initialValue: T;
+  onSubmit: (values: T) => void;
 }
 
-const CompanyForm = <T extends IAdminCreateCompanyFormikState | ICompanyRes>({
+const CompanyForm = <T extends IAdminCreateCompanyFormikState | IEditCompany>({
   status,
   initialValue,
+  onSubmit,
 }: IProps<T>) => {
-	const canCreate= status === 'admin-create'
-	const canEdit= status === 'company-edit'
+  console.log(initialValue);
+  const canCreate = status === "admin-create";
+  const canEdit = status === "company-edit";
   return (
     <div>
       <Formik<T, {}>
         initialValues={initialValue}
         validationSchema={
-          status === "admin-create"
-            ? adminCreatevalidationSchema
-            : companyEditValitionSchema
+          canCreate ? adminCreatevalidationSchema : companyEditValitionSchema
         }
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting }) => {
           console.log(values);
+          try {
+            if (canEdit) {
+              await onSubmit(values);
+              toast.success("درخواست تغییر با موفقیت ارسال گردید");
+            } else if (canCreate) {
+            }
+          } catch (err) {}
         }}
       >
         {({ isSubmitting, values }) => (
@@ -69,7 +70,12 @@ const CompanyForm = <T extends IAdminCreateCompanyFormikState | ICompanyRes>({
                   />
                 </div>
               )}
-              <div className={classnames({'col-md-4' : canCreate , 'col-md-6' : canEdit})}>
+              <div
+                className={classnames({
+                  "col-md-4": canCreate,
+                  "col-md-6": canEdit,
+                })}
+              >
                 <Field
                   label="نام شرکت"
                   type="text"
@@ -82,14 +88,19 @@ const CompanyForm = <T extends IAdminCreateCompanyFormikState | ICompanyRes>({
                   name="manager_name"
                   component={CustomInputComponent}
                 />
-                <Field
+                {/* <Field
                   label="شماره همراه"
                   type="text"
                   name="mobile_number"
                   component={CustomInputComponent}
-                />
+                /> */}
               </div>
-              <div className={classnames({'col-md-4' : canCreate , 'col-md-6' : canEdit})}>
+              <div
+                className={classnames({
+                  "col-md-4": canCreate,
+                  "col-md-6": canEdit,
+                })}
+              >
                 <Field
                   label="شماره تلفن شرکت"
                   type="text"
@@ -103,8 +114,8 @@ const CompanyForm = <T extends IAdminCreateCompanyFormikState | ICompanyRes>({
                   component={CustomInputComponent}
                 />
                 <Field
-				label="فیلد کاری"
-				calculateOptions={calculateLeafs}
+                  label="فیلد کاری"
+                  calculateOptions={calculateLeafs}
                   type="text"
                   name="category"
                   component={CustomeSelectCategory}
@@ -135,7 +146,20 @@ const CompanyForm = <T extends IAdminCreateCompanyFormikState | ICompanyRes>({
               </div>
             </div>
 
-            {/* <div className="row">
+            <button type="submit" className="btn btn-success">
+              <i className="fa fa-check" />{" "}
+              {canCreate ? "ثبت شرکت" : "ارسال درخواست تفییر"}
+            </button>
+
+            {JSON.stringify(values, null, 4)}
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
+{
+  /* <div className="row">
               {status === "admin-create" && (
                 <>
                   <div className="col-12 col-md-6 col-xl-4 ">
@@ -169,19 +193,7 @@ const CompanyForm = <T extends IAdminCreateCompanyFormikState | ICompanyRes>({
                 />
                 <CompanyMap />
               </div>
-            </div> */}
-
-            <button type="submit" className="btn btn-success">
-              <i className="fa fa-check" />{" "}
-              {canCreate ? "ثبت شرکت" : "ارسال درخواست تفییر"}
-            </button>
-
-            {JSON.stringify(values, null, 2)}
-          </Form>
-        )}
-      </Formik>
-    </div>
-  );
-};
+            </div> */
+}
 
 export default CompanyForm;

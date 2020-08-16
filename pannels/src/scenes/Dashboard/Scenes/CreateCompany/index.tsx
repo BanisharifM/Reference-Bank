@@ -1,6 +1,6 @@
 import React from "react";
-import { IAdminCreateCompanyFormikState } from "./models";
 import CompanyForm from "../../../../components/forms/CompanyForm";
+import { IAdminCreateCompanyFormikState } from "./models";
 
 const defaultValues: IAdminCreateCompanyFormikState = {
   username: "",
@@ -18,6 +18,7 @@ const defaultValues: IAdminCreateCompanyFormikState = {
 };
 
 const Index = () => {
+  const handleSubmit = () => {};
   return (
     <div className="row">
       <div className="col-sm-12">
@@ -27,6 +28,7 @@ const Index = () => {
           <CompanyForm<IAdminCreateCompanyFormikState>
             status="admin-create"
             initialValue={defaultValues}
+            onSubmit={handleSubmit}
           />
         </div>
       </div>
