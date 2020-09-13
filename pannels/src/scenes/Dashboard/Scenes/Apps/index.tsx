@@ -4,6 +4,11 @@ import { axiosInstance } from "../../../../services/axios/axios";
 import axios from "axios";
 import Post from "./Post";
 
+
+
+
+
+
 const Index = () => {
   const { data } = useSWR("https://jsonplaceholder.typicode.com/users");
   const handleLogin = () => {};

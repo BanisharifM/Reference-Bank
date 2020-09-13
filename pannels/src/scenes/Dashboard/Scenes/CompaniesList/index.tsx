@@ -1,26 +1,26 @@
-import React, { useState, useEffect, useCallback } from "react";
-import useSWR from "swr";
-import api from "../../../../services/utils/api";
+import React, { useCallback, useEffect, useState } from "react";
 import {
-  useTable,
-  usePagination,
+  CellProps,
   useColumnOrder,
-  useFilters,
-  useGroupBy,
-  useSortBy,
   useExpanded,
+  useFilters,
   useFlexLayout,
+  useGroupBy,
+  usePagination,
   useResizeColumns,
   useRowSelect,
-  CellProps,
+  useSortBy,
+  useTable,
 } from "react-table";
-import { TCompanyTableData } from "./components/models";
+import { toast } from "react-toastify";
+import useSWR from "swr";
 import Button from "../../../../components/Button";
-import { baseAdminUrl } from "../../../../services/utils/api/Admin";
-import TableContainer from "../../../../components/Table/TableContainer";
 import { ReactTable } from "../../../../components/Table/ReactTable";
-import { Tree, renameProp } from "../../../../services/utils/treeTravers";
-import {ICompanyRes} from "../../../../services/utils/api/models";
+import TableContainer from "../../../../components/Table/TableContainer";
+import api from "../../../../services/utils/api";
+import { baseAdminUrl } from "../../../../services/utils/api/Admin";
+import { ICompanyRes } from "../../../../services/utils/api/models";
+import { TCompanyTableData } from "./components/models";
 const hooks = [
   useColumnOrder,
   useFilters,
@@ -41,27 +41,35 @@ const Index = () => {
     async (original: TCompanyTableData) => {
       setClicked(original.identifier!);
       setLoading(true);
-      if (original.status === "s") {
-        if (window.confirm("آیا وضعیت شرکت فعال شود؟")) {
-          await api.adminApi.editCompany({
-            id: original.id!,
-            status: "a",
-          });
-          await revalidate();
+      try {
+        if (original.status === "s") {
+          if (window.confirm("آیا وضعیت شرکت فعال شود؟")) {
+            await api.adminApi.editCompany({
+              id: original.id!,
+              status: "a",
+            });
+            await revalidate();
+            toast.success("وضعیت شرکت فعال شد");
+            setLoading(false);
+          }
           setLoading(false);
-		}
-		setLoading(false)
-      }
-      if (original.status === "a") {
-        if (window.confirm("آیا میخواهید شرکت غیر فعال شود؟")) {
-          await api.adminApi.editCompany({
-            id: original.id!,
-            status: "s",
-          });
-          await revalidate();
+        }
+        if (original.status === "a") {
+          if (window.confirm("آیا میخواهید شرکت غیر فعال شود؟")) {
+            await api.adminApi.editCompany({
+              id: original.id!,
+              status: "s",
+            });
+            await revalidate();
+            toast.success("وضعیت شرکت غیر فعال شد");
+            setLoading(false);
+          }
           setLoading(false);
-		}
-		setLoading(false)
+        }
+      } catch (err) {
+        toast.error("تغییر وضعیت شرکت صورت نپذیرفت");
+        setLoading(false);
+        setClicked(-1);
       }
     },
     [revalidate]
@@ -143,7 +151,6 @@ const Index = () => {
             <h5 className="card-subtitle">
               در اینجا میتوانید لیست شرکت‌ها را مشاهده کنید
             </h5>
-
             <TableContainer<TCompanyTableData> {...tableInstance}>
               <ReactTable<TCompanyTableData> {...tableInstance} />
             </TableContainer>

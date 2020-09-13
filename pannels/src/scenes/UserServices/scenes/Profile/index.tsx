@@ -1,15 +1,72 @@
 import React from "react";
 import useSWR from "swr";
-import CompanyForm from "../../../../components/forms/CompanyForm";
 import Spinner from "../../../../components/Spinner";
+import api from "../../../../services/utils/api";
 import { ICompanyRes } from "../../../../services/utils/api/models";
 import { baseCompanyUrl } from "../../../../services/utils/api/myCompany";
 import { IEditCompany } from "../../../../services/utils/api/myCompany/models";
+import EditCompanyForm from "./components/EditCompanyForm";
+
+// name: string;
+// manager_name: string;
+// phone_number: string;
+// website: string;
+// address: string;
+// location: [number, number];
+// logo: string | null;
+// category: number | null;
+// description: string;
+
+// id: number;
+// user: number;
+// username: string;
+// email: string;
+// mobile_number: string;
+// name: string;
+// manager_name: string;
+// phone_number: string;
+// website: string;
+// address: string;
+// location: [number, number];
+// logo: string | null;
+// category: number | null;
+// category_title: string;
+// description: string;
+// status: "s" | "a";
 
 export const Index = () => {
   const { data } = useSWR<ICompanyRes[]>(`${baseCompanyUrl}/my_company/`);
-  const handleSubmit = (values: IEditCompany) => {
-    console.log(values);
+  let editableData = {} as IEditCompany;
+  if (data) {
+    const {
+      name,
+      manager_name,
+      phone_number,
+      website,
+      address,
+      location,
+      logo,
+      category,
+      description,
+    } = data[0];
+    editableData = {
+      name,
+      manager_name,
+      phone_number,
+      website,
+      address,
+      location,
+      logo,
+      category,
+      description,
+    };
+  }
+
+  const handleSubmit = async (values: Partial<IEditCompany>) => {
+    return (
+      data &&
+      (await api.myCompanyApi.editMyCompany({ id: data[0].id, ...values }))
+    );
   };
   return (
     <div className="row">
@@ -20,10 +77,9 @@ export const Index = () => {
         </h5>
         {!data && <Spinner />}
         {data && (
-          <CompanyForm<IEditCompany>
-            status="company-edit"
-            initialValue={data[0]}
+          <EditCompanyForm
             onSubmit={handleSubmit}
+            initialValue={editableData}
           />
         )}
       </div>
