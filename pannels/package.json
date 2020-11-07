@@ -2,7 +2,7 @@
   "name": "pannels",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://185.206.92.24/pannel",
+  "homepage": "http://171.22.24.129/pannel",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
