@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, {Suspense} from "react";
-import {Switch} from "react-router-dom";
-import {SWRConfig} from "swr";
+import React, { Suspense } from "react";
+import { Switch } from "react-router-dom";
+import { SWRConfig } from "swr";
 import BaseLayout from "../components/BaseLayout";
 import Loading from "../components/Loading";
-import {useUserState} from "../services/contexts/UserContext/UserContext";
-import routes, {renderRoutes} from "./routes";
+import { useUserState } from "../services/contexts/UserContext/UserContext";
+import routes, { renderRoutes } from "./routes";
 
 const App = () => {
   // useEffect(() => {
@@ -20,7 +20,7 @@ const App = () => {
       <Suspense fallback={<Loading />}>
         <SWRConfig
           value={{
-            fetcher: (url) => axios.get('/api'+url).then((r) => r.data),
+            fetcher: (url) => axios.get("/api" + url).then((r) => r.data),
           }}
         >
           <BaseLayout>

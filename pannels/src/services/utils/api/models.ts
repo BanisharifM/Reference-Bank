@@ -1,4 +1,4 @@
-import {  AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 
 export type IReqFunction<U, T = void, Y = void> = (
   t: T,
@@ -29,7 +29,7 @@ export interface ICompanyRes {
   category_title: string;
   description: string;
   status: "s" | "a";
-  [index : string] : string | number|null | [number , number]
+  [index: string]: string | number | null | [number, number];
 }
 
 //     fetch('http://bank.pythonanywhere.com/auth/login/', {

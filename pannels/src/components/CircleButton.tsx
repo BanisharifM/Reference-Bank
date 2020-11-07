@@ -27,8 +27,12 @@ export const CircleButton: React.FC<IProps> = ({
   className,
 }) => {
   return (
-	  <button onClick={onClick} type="button" className={`btn btn-${type} btn-circle btn-${size} ${className}`}>
-      {loading ? <Spinner /> :<i className={icon}></i> }
+    <button
+      onClick={onClick}
+      type="button"
+      className={`btn btn-${type} btn-circle btn-${size} ${className}`}
+    >
+      {loading ? <Spinner /> : <i className={icon}></i>}
     </button>
   );
 };

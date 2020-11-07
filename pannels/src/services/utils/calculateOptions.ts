@@ -1,6 +1,6 @@
-import { ICategoryRes } from "./api/Admin/models";
-import { Tree, notHaveChildren, flattenToArray } from "./treeTravers";
 import * as _ from "lodash";
+import { ICategoryRes } from "./api/Admin/models";
+import { flattenToArray, notHaveChildren, Tree } from "./treeTravers";
 
 export const calculateLeafs = (data: ICategoryRes[]) => {
   if (data) {
@@ -11,7 +11,7 @@ export const calculateLeafs = (data: ICategoryRes[]) => {
     const options = flattenVersion.map((item) => ({
       value: item.id,
       label: item.title,
-      parent_title: item.parent_title,
+      // parent_title: item.parent_title,
     }));
     return options;
   }
@@ -24,9 +24,9 @@ export const calculateFlatten = (data: ICategoryRes[]) => {
     const options = flattenVersion.map((item) => ({
       value: item.id,
       label: item.title,
-      parent_title: item.parent_title,
+      // parent_title: item.parent_title,
     }));
-	return options
+    return options;
     // return flattenTree
   }
 };

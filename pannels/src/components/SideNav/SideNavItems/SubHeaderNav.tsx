@@ -19,7 +19,7 @@ const SubHeaderNav: React.FC<IProps & RouteComponentProps> = ({
   items,
   history,
 }) => {
-  const [isCollapse, setIsCollapse] = useState(true);
+  const [isCollapse, setIsCollapse] = useState(false);
   const handleToggleubMenu = () => {
     setIsCollapse(!isCollapse);
   };

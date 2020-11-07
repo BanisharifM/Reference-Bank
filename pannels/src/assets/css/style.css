@@ -11359,9 +11359,7 @@ label {
 
 @font-face {
   font-family: "Material Design Icons";
-  src:
-    url(fonts/materialdesignicons-webfont.ttf)
-      format("truetype");
+  src: url(fonts/materialdesignicons-webfont.ttf) format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -42859,7 +42857,7 @@ a.text-purple:hover {
   height: 0;
   width: 0;
   box-sizing: border-box;
-  border: 0 solid #4F5467;
+  border: 0 solid #4f5467;
   border-radius: 50%;
   -webkit-animation: loader-figure 1.15s infinite
     cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -42879,7 +42877,7 @@ a.text-purple:hover {
   font-size: 0.875em;
   letter-spacing: 0.1em;
   line-height: 1.5em;
-  color: #4F5467;
+  color: #4f5467;
   -webkit-animation: loader-label 1.15s infinite
     cubic-bezier(0.215, 0.61, 0.355, 1);
   -moz-animation: loader-label 1.15s infinite
@@ -47943,8 +47941,45 @@ html body .dd3-item > button {
   opacity: 0.6;
 }
 
+.leaflet-container {
+  height: 300px;
+}
+.Toastify__toast {
+  font-family: "Vazir" !important;
+  padding: 0.75rem 1.25rem !important;
+  margin-bottom: 1rem !important;
+  border: 1px solid transparent !important;
+  border-radius: 0.25rem !important;
+  /* direction: rtl; */
+}
 
+.Toastify__close-button {
+  color : #000 !important;
+}
+.Toastify__toast--success {
+  color: #00654c !important;
+  background-color: #ccf3e9 !important;
+  border-color: #b8eee0 !important;
+}
 
-.leaflet-container{
-	height :300px
+.Toastify__toast--info {
+    color: #02587e !important;
+    background-color: #cdeefd !important;
+    border-color: #b8e7fc !important;
+}
+
+.Toastify__toast--warning {
+  color: #846404 !important;
+  background-color: #fff3cd !important;
+  border-color: #ffeeba !important;
+}
+.Toastify__toast--error {
+  color: #77373d !important;
+    background-color: #fae1e4 !important;
+    border-color: #f7d5d9 !important;
+}
+.Toastify__progress-bar {
+ 
+  opacity: 0.99;
+  background-color: rgba(255, 255, 255);
 }

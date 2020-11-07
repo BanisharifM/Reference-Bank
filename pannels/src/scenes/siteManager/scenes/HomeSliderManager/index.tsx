@@ -1,57 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import Img1 from "../../../../assets/images/Slider/1.jpg";
 import Img2 from "../../../../assets/images/Slider/2.jpg";
 import Img3 from "../../../../assets/images/Slider/3.jpg";
 import Img4 from "../../../../assets/images/Slider/4.jpg";
-import SliderCards from "../../components/SliderCards";
-import AddImage from "../../components/AddImage";
-import axios from "axios";
+import Main from "./components/Main";
 
-interface ISliderImage {
-  image: string;
-  index: number;
-}
-const sliders: ISliderImage[] = [
-  {
-    image: Img1,
-    index: 1,
-  },
-  {
-    image: Img2,
-    index: 2,
-  },
-  {
-    image: Img3,
-    index: 3,
-  },
-  {
-    image: Img4,
-    index: 4,
-  },
-];
 const Index = () => {
-  const [items, setItems] = useState<ISliderImage[]>(sliders);
-  const handleDeleteItem = (id: number) => {
-	  return new Promise((resolve) => resolve('hi'))
-    const newItems = items.filter((item) => item.index !== id);
-    setItems(newItems);
-  };
-  const handleSendSubmit = () => new Promise(res=>res)
-
   return (
     <>
-      <div className="card">
-        <div className="card-body">
-          {/* <div id="image-popups" className="row"> */}
+      <div className="row">
+        <div className="col-12">
+          <h4 className="d-inline">اسلایدر شرکت</h4>
+          <p className="text-muted m-t-0">
+            میتوانید اسلایدر شرکت خود را به دلخواه تغییر دهید
+          </p>
           <div className="row el-element-overlay">
-            {items.map((item, index) => (
-              <SliderCards
-                key={item.index}
-                {...item}
-                onDelete={handleDeleteItem}
-              />
-            ))}
-            <AddImage url="/" onSubmit={handleSendSubmit}/>
+            <Main />
           </div>
         </div>
       </div>
