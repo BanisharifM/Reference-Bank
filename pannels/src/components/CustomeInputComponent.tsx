@@ -1,7 +1,9 @@
+import { FieldProps } from "formik";
 import React from "react";
-import { FieldAttributes } from "formik";
 
-const CustomInputComponent: React.FC<FieldAttributes<any>> = ({
+const CustomInputComponent: React.FC<
+  FieldProps<any> & { label: string; className: string }
+> = ({
   label,
   field, // { name, value, onChange, onBlur }
   form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -10,7 +12,9 @@ const CustomInputComponent: React.FC<FieldAttributes<any>> = ({
   const isError = touched[field.name] && errors[field.name];
   return (
     <div
-      className={`form-group  ${props.className? props.className: ""} ${isError ? "has-danger" : ""}`}
+      className={`form-group  ${props.className ? props.className : ""} ${
+        isError ? "has-danger" : ""
+      }`}
     >
       <label>{label}</label>
       <input

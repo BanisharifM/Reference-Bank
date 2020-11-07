@@ -1,10 +1,9 @@
-import {FieldAttributes} from "formik";
+import { FieldAttributes } from "formik";
 import * as _ from "lodash";
-import React, {useCallback, useState} from "react";
-import {OptionsType, OptionTypeBase, StylesConfig} from "react-select";
+import React, { useCallback, useState } from "react";
+import { OptionsType, StylesConfig } from "react-select";
 import AsyncSelect from "react-select/async";
 import api from "../services/utils/api";
-
 
 const styles: StylesConfig = {
   control: (provided) => ({
@@ -16,7 +15,8 @@ const styles: StylesConfig = {
 };
 
 const CustomeSelectCategory: React.FC<FieldAttributes<any>> = ({
-	calculateOptions,
+  calculateOptions,
+  defaultValue,
   label,
   field, // { name, value, onChange, onBlur }
   form: { touched, errors, setFieldValue, setFieldTouched }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
@@ -38,7 +38,12 @@ const CustomeSelectCategory: React.FC<FieldAttributes<any>> = ({
   };
   const promiseOptions = (
     inputValue: string,
-    callback: (options: OptionsType<OptionTypeBase>) => void
+    callback: (
+      options: OptionsType<{
+        value: number | string;
+        label: string;
+      }>
+    ) => void
   ) => {
     api.adminApi.getCategories({ search: inputValue }).then(({ data }) => {
       callback(calculateOptions(data)!);
@@ -49,11 +54,13 @@ const CustomeSelectCategory: React.FC<FieldAttributes<any>> = ({
     _.debounce(promiseOptions, 1000),
     []
   );
+  // console.log(defaultValue , 'defaulttttttttt');
 
   return (
     <>
       <label>{label}</label>
       <AsyncSelect
+        defaultValue={defaultValue}
         cacheOptions
         isClearable
         defaultOptions

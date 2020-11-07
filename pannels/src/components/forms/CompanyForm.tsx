@@ -3,20 +3,23 @@ import classnames from "classnames";
 import { Field, Form, Formik } from "formik";
 import React from "react";
 import { toast } from "react-toastify";
+import useSWR from "swr";
 import CompanyMap from "../../scenes/Dashboard/Scenes/CreateCompany/components/CompanyMap";
 import { adminCreatevalidationSchema } from "../../scenes/Dashboard/Scenes/CreateCompany/constants";
 import { IAdminCreateCompanyFormikState } from "../../scenes/Dashboard/Scenes/CreateCompany/models";
 import { companyEditValitionSchema } from "../../scenes/UserServices/scenes/Profile/constants";
+import { baseCompanyUrl } from "../../services/utils/api/myCompany";
 import { IEditCompany } from "../../services/utils/api/myCompany/models";
 import { calculateLeafs } from "../../services/utils/calculateOptions";
+import { objectComparison } from "../../services/utils/objectComparison";
 import CustomInputComponent from "../CustomeInputComponent";
 import CustomeSelectCategory from "../CustomeSelectCategory";
 import CustomeTextAreaComponent from "../CustomeTextAreaComponent";
 
-interface IProps<T> {
+interface IProps<T extends IAdminCreateCompanyFormikState | IEditCompany> {
   status: "admin-create" | "company-edit";
   initialValue: T;
-  onSubmit: (values: T) => void;
+  onSubmit: (values: Partial<T>) => Promise<any>;
 }
 
 const CompanyForm = <T extends IAdminCreateCompanyFormikState | IEditCompany>({
@@ -24,21 +27,23 @@ const CompanyForm = <T extends IAdminCreateCompanyFormikState | IEditCompany>({
   initialValue,
   onSubmit,
 }: IProps<T>) => {
-  console.log(initialValue);
+  const { mutate } = useSWR(`${baseCompanyUrl}/my_company/`);
   const canCreate = status === "admin-create";
   const canEdit = status === "company-edit";
   return (
     <div>
       <Formik<T, {}>
         initialValues={initialValue}
+        enableReinitialize
         validationSchema={
           canCreate ? adminCreatevalidationSchema : companyEditValitionSchema
         }
         onSubmit={async (values, { setSubmitting }) => {
-          console.log(values);
           try {
             if (canEdit) {
-              await onSubmit(values);
+              const tobeSent = objectComparison<T>(initialValue, values);
+              await onSubmit(tobeSent);
+              await mutate();
               toast.success("درخواست تغییر با موفقیت ارسال گردید");
             } else if (canCreate) {
             }
