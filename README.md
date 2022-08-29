@@ -5,7 +5,7 @@
   <br>
 </h1>
 
-<h4 align="center">School Online Platform</h4>
+<h4 align="center">بانک جامع صنایع غذایی</h4>
 
 ![screenshot](./pannels/src/assets/images/View.png)
 
