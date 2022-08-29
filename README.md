@@ -2,7 +2,6 @@
   <br>
   <a href="#"><img src="./pannels/src/assets/images/logo4.png" alt="Reference Bank" width="200"></a>
   <br>
-  Reference Bank
   <br>
 </h1>
 
